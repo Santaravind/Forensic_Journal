@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../assets/logos.png'
+import Content from "./home/Content";
 
 function Home() {
   const image=[
@@ -19,7 +20,9 @@ function Home() {
     name:"sant"
   },
     ]
+      
   return (
+    <>  
     <div className="min-h-screen bg-gray-200 py-6 px-4">
       <div className="max-w-7xl mx-auto bg-white shadow-lg border">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6">
@@ -113,6 +116,18 @@ function Home() {
         </div>
       </div>
     </div>
+
+{/* this for navigation */}
+   <Content/>
+    
+
+  
+
+
+
+
+
+    </>
   );
 }
 

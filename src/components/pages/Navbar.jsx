@@ -114,11 +114,11 @@ export default function Navbar() {
   {/* Logo – OUTSIDE Navbar */}
   <div className="flex items-center mt-5">
   <div className=" rounded-full h-40 w-40 flex items-center justify-center drop-shadow-md">
-    <img
+    {/* <img
       src={logo}
       alt="Patrika Logo"
       className="h-40 w-auto object-contain"
-    />
+    /> */}
   </div>
 </div>
 
@@ -190,7 +190,7 @@ export default function Navbar() {
 
       {/* Mobile Controls */}
       <div className="lg:hidden flex items-center gap-3">
-        <FaUserCircle className="text-3xl text-gray-700" />
+        {/* <FaUserCircle className="text-3xl text-gray-700" /> */}
         <button
           onClick={toggleMenu}
           className="text-gray-700 hover:text-indigo-700 p-2"
@@ -213,7 +213,7 @@ export default function Navbar() {
             to={item.to}
             onClick={closeMenu}
             className={({ isActive }) =>
-              `px-4 py-2 rounded-lg font-semibold transition
+              `px-4 py-2 rounded-xl font-semibold transition
               ${isActive ? "bg-indigo-100 text-indigo-700" : "hover:bg-pink-100"}`
             }
           >

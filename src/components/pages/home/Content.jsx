@@ -48,6 +48,7 @@ import { GoGoal } from "react-icons/go";
 import { FaAddressBook } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
 import CaseStudy from './CaseStudy';
+import Publicus from "./Publicus";
 
 function Content() {
   // 1. State to track the active section
@@ -67,7 +68,9 @@ function Content() {
       case "Case Study":
         return <CaseStudy />;
       case "Publish With Us":
-        return <div className="p-8 text-serif italic">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea perspiciatis ex a, perferendis distinctio eius tempora totam. Quaerat distinctio odio natus, harum suscipit atque dolorem optio sapiente nobis labore sed fugit laboriosam voluptas dolores at numquam accusantium quo facere accusamus.</div>;
+        return <Publicus/>;
+      case "Learning Resources":
+        return <div> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae unde molestiae nobis, odit voluptatem rerum tempore sint, voluptatum inventore et molestias reiciendis minima iusto libero obcaecati, deserunt impedit deleniti fuga?</div>;
       default:
         return (
           <div className="p-10 text-center font-serif text-gray-500">
@@ -104,7 +107,10 @@ function Content() {
       </div>
 
       {/* DYNAMIC CONTENT AREA */}
-      <div className="bg-white min-h-[400px] border border-gray-100 shadow-sm rounded-sm p-4">
+      <div className="bg-white min-h-100 border border-gray-100 shadow-sm rounded-sm p-4 mt-3">
+         <div className="border-b-4 border-black/40 text-4xl  mt-3.5">
+        <h1 className=" uppercase font-serif " >Recent</h1>
+      </div>
         {renderActiveContent()}
       </div>
     </div>

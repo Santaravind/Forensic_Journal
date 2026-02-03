@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from '../assets/logos.png'
 import Content from "./home/Content";
+import CaseStudy from "./home/CaseStudy";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+  const [showCaseStudy, setShowCaseStudy] = useState(false);
+
+ const handleArticle = () => {
+    setShowCaseStudy(true);
+  };
+
   const image=[
     {
       id:1,
@@ -119,13 +128,17 @@ function Home() {
 
 {/* this for navigation */}
    <Content/>
+
+   <div className="border-b-4 border-black/40 text-3xl flex gap-10 ml-2 mr-3 font-semibold ">
+    <button className=" hover:text-blue-500 cursor-pointer " onClick={handleArticle}>Articles in press </button>
+    <button className="hover:text-blue-500 cursor-pointer "  onClick={handleArticle}>Case Study </button>
+    <button className="hover:text-blue-500 cursor-pointer"  onClick={handleArticle}>Top cited  </button>  
+    <button className="hover:text-blue-500 cursor-pointer"  onClick={handleArticle}>Most popular  </button>
+   </div>
     
-
-  
-
-
-
-
+    <div className="mt-6 ml-5 border-white shadow px-2 py-2 mr-3">
+        {showCaseStudy && <CaseStudy />}
+      </div>
 
     </>
   );

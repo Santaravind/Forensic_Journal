@@ -22,6 +22,7 @@ import bg from '../assets/bg.jpeg'
 import bg1 from '../assets/bg1.jpeg'
 import bg2 from '../assets/bg2.jpeg'
 import bg3 from '../assets/bg3.jpeg'
+import logo from '../assets/logoss.png'
 
 function Hero() {
   const images = [bg, bg1, bg2, bg3]
@@ -83,6 +84,11 @@ function Hero() {
       {/* Content */}
       <div className="relative h-full flex items-center mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <img
+      src={logo}
+      alt="Patrika Logo"
+      className="h-40 w-auto object-contain -mt-38"
+    />
           <div className="text-white max-w-3xl">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ml-8 leading-tight animate-fadeInUp">
               Journal of Forensic Science

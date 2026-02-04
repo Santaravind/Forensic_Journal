@@ -92,7 +92,7 @@ function Hero() {
           <div className="text-white max-w-3xl">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ml-8 leading-tight animate-fadeInUp">
                 Forensic Patrika
-             <span className="block text-2xl md:text-4xl lg:text-5xl text-indigo-200 mt-4 ml-2.5">Journal of Forensic Science    </span> 
+             <span className="block text-2xl md:text-4xl lg:text-5xl text-indigo-200 mt-4 ml-2.5">  A Journal of Forensic Science    </span> 
               <span className="block text-2xl md:text-4xl lg:text-5xl text-indigo-200 mt-4 ml-3">
                 न्यायिक अनुसंधानम्
               </span>

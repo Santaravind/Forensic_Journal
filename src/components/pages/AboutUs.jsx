@@ -50,7 +50,7 @@ const AboutUs = () => {
             </p>
             <p className="text-sm md:text-base">
               Aligned with the academic vision of <strong>Bundelkhand University</strong>, the journal 
-              reflects the institution’s commitment to knowledge creation and scholarly integrity. 
+              reflects the institution's commitment to knowledge creation and scholarly integrity. 
               The university fosters an environment that values academic excellence and 
               interdisciplinary collaboration.
             </p>
@@ -62,7 +62,7 @@ const AboutUs = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-6 tracking-wide uppercase">Our Scholarly Standards</h3>
             <p className="text-blue-100 leading-loose">
-              Through a structured peer review process involving students and faculty members, the platformaimstouphold academic standards whie nurturing emerging researchers. FORENSIC SCIENCE : AJOURNALOFFORENSIC SCIENCE stands as a representation of the department and university’s dedicationtoresponsiblescholarship, critical engagement, and the disseminationof research that contributes to the advancementofforensic science and criminology at both national and global levels.
+              Through a structured peer review process involving students and faculty members, the platform aims to uphold academic standards whie nurturing emerging researchers. FORENSIC SCIENCE : A JOURNAL OF FORENSIC SCIENCE stands as a representation of the department and university's dedication to responsible scholarship, critical engagement, and the dissemination of research that contributes to the advancement of forensic science and criminology at both national and global levels.
             </p>
           </div>
         </div>

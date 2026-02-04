@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FaPhone } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import { MdMarkEmailRead } from "react-icons/md";
 import Navbar from './Navbar';
 import Hero from './Hero';
@@ -22,7 +22,7 @@ function Header() {
       {/* Contact Info */}
       <div className="flex flex-col sm:flex-row items-center gap-2 text-white">
         <p className="flex items-center gap-2 text-lg">
-          <FaPhone className="text-yellow-300" />
+          <FaPhoneAlt  className="text-yellow-300" />
           <span>+91-8957445211</span>
         </p>
   
@@ -46,7 +46,7 @@ function Header() {
         <span className="bg-[oklch(45.5%_0.188_100.697)] text-white px-3 py-2 mr-2 text-2xl header-notice-label rounded-r-full">CURRENT </span>
         <div className="overflow-hidden relative w-full">
           <div className="animate-marquee whitespace-nowrap py-2 ">
-          welcome to  Journal of Forensic Science 
+          welcome to Forensic Patrika  (A Journal of Forensic Science )
             <span className="text-yellow-400 ml-2 cursor-pointer " 
            
             >• न्यायिक अनुसंधानम् </span> 

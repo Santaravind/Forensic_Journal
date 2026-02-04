@@ -14,7 +14,7 @@ function CaseStudy() {
 
       <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl mt-6 border-l-4 border-blue-100 pl-6 italic">
         The journal welcomes submissions from undergraduate, postgraduate, and doctoral scholars. 
-        By fostering an academically rigorous environment, <strong className="font-bold text-blue-900">FORENSIC PATRIKA</strong> 
+        By fostering an academically rigorous environment, <strong className="font-bold text-blue-900">FORENSIC PATRIKA </strong> 
         seeks to strengthen emerging academic voices and facilitate the responsible dissemination of knowledge 
         within the global scholarly community.
       </p>

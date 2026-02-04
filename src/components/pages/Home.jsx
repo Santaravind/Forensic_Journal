@@ -47,7 +47,7 @@ function Home() {
       <div className="max-w-7xl mx-auto bg-white shadow-lg border">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6">
 
-          {/* LEFT IMAGE COLUMN */}
+          {/* LEFT IMAGE COLUMN  this working but not so good in mobile view  */}
           {/* <div className="space-y-6 border-r pr-4">
             {image.map((item) => (
               <> 
@@ -72,6 +72,7 @@ function Home() {
           </>
             ))}
           </div> */}
+           {/*  LEFT IMAGE COLUMN */}
           <div className="space-y-8 border-r pr-0 md:pr-4 sm:border-b-4  sm:border-blue-900">
   {image.map((item) => (
     <div
@@ -151,8 +152,8 @@ function Home() {
 
       <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl mt-6 border-l-4 border-blue-100 pl-6 italic">
         The journal welcomes submissions from undergraduate, postgraduate, and doctoral scholars. 
-        By fostering an academically rigorous environment, <strong className="font-bold text-blue-900">FORENSIC PATRIKA</strong> 
-        seeks to strengthen emerging academic voices and facilitate the responsible dissemination of knowledge 
+        By fostering an academically rigorous environment, <strong className="font-bold text-blue-900">FORENSIC PATRIKA  </strong> 
+          seeks to strengthen emerging academic voices and facilitate the responsible dissemination of knowledge 
         within the global scholarly community.
       </p>
     </div>

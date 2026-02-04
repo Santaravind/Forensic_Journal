@@ -81,6 +81,10 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+const [isScrolled, setIsScrolled] = useState(false);
+
+
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -98,6 +102,20 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
   const menuItems = [
     { to: "/", label: "Home", icon: <FaHome /> },
     { to: "/about", label: "About Us" },
@@ -125,7 +143,8 @@ export default function Navbar() {
 
 
   {/* Navbar */}
-  <div className="flex-1 max-w-6xl ml-6 bg-white/90 backdrop-blur-md shadow-lg lg:rounded-full sm:rounded-lg md:rounded-lg px-6">
+  <div className={`flex-1 max-w-6xl ml-6 bg-white/90 backdrop-blur-md shadow-lg lg:rounded-full sm:rounded-lg md:rounded-lg px-6  
+     ${isScrolled ? "opacity-20 backdrop-blur-sm" : "opacity-100"}`}>
     <div className="flex items-center justify-between h-16">
 
       {/* Desktop Menu */}

@@ -3,7 +3,9 @@ import logo from '../assets/logos.png'
 import Content from "./home/Content";
 import CaseStudy from "./home/CaseStudy";
 import { useNavigate } from "react-router-dom";
-
+import mukesh from '../assets/Mukesh.jpeg'
+import vijay from '../assets/VIJAY.jpeg'
+import rahul from '../assets/indresh.jpeg'
 function Home() {
   const navigate = useNavigate();
   const [showCaseStudy, setShowCaseStudy] = useState(false);
@@ -15,18 +17,27 @@ function Home() {
   const image=[
     {
       id:1,
-    im:logo,
-    name:"sant"
+    im:mukesh,
+    link:"",
+    name:"Prof (Dr.) Mukesh Pandey",
+    title:'Vice Chancellor',
+    college:'Bundelkhand University, Jhansi Uttar Pradesh(India)'
   },
     {
       id:2,
-    im:logo,
-    name:"sant"
+    im:vijay,
+    link:'https://ums.bujhansi.ac.in/bujhansi/frmViewCampusFacultyProfile.aspx?FacultyID=39',
+     name:"DR. VIJAY KUMAR YADAV ",
+    title:'Coordinator/Head',
+    college:'Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology'
   },
     {
       id:3,
-    im:logo,
-    name:"sant"
+    im:rahul,
+    link:"",
+    name:"Indresh Kumar",
+    title:"Founder and CEO - Forensic Patrika" 
+
   },
     ]
       
@@ -37,30 +48,65 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6">
 
           {/* LEFT IMAGE COLUMN */}
-          <div className="space-y-6 border-r pr-4">
+          {/* <div className="space-y-6 border-r pr-4">
             {image.map((item) => (
               <> 
               <div
                 key={item.id}
-                className="h-44 border shadow-sm bg-gray-100 flex items-center justify-center"
+                className="h-48 border shadow-sm bg-gray-100 flex items-center justify-center"
               >
                 <img
                   src={item.im}
                   alt="Forensic"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full  object-fill"
                 />
               
                    
                
               </div>
               <div className="-mt-7">
-                <p> Name : {item.name}</p>
+                <h1 className="text-xl  font-serif text-center">  {item.name} </h1>
+                <p className="font-serif text-center text-black/60 -mt-2"> {item.title} </p>
+                <p className="text-[14px] text-center text-black/80"> {item.college} </p>
               </div>
           </>
             ))}
-          </div>
+          </div> */}
+          <div className="space-y-8 border-r pr-0 md:pr-4 sm:border-b-4  sm:border-blue-900">
+  {image.map((item) => (
+    <div
+      key={item.id}
+      className="flex flex-col items-center text-center"
+    >
+      {/* Image */}
+      <div className="w-full sm:w-70 md:w-full  bg-gray-100 border shadow-sm overflow-hidden rounded-md">
+       <a href= {item.link}> <img
+          src={item.im}
+          alt="Forensic"
+          className="w-full h-full object-cover"
+        /></a>
+      </div>
 
-          {/* RIGHT CONTENT SECTION */}
+      {/* Text */}
+      <div className="mt-3 px-2">
+        <h1 className="text-lg md:text-xl font-serif">
+          {item.name}
+        </h1>
+
+        <p className="font-serif text-sm md:text-base text-black/60">
+          {item.title}
+        </p>
+
+        <p className="text-xs md:text-sm text-black/80">
+          {item.college}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+          
           
           {/* RIGHT CONTENT SECTION */}
 <div className="md:col-span-3 space-y-8 relative p-6 bg-white">

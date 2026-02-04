@@ -1,4 +1,6 @@
 
+   ![Screenshot](/forensic/src/components/assets/sc1.png/)
+
        Welcome to Forensic Patrika: A Journal of Forensic Science
         an academic publication platform committed to advancing scholarly research, critical inquiry, and ethical academic writing. 
         With a primary emphasis on forensic science, criminology, and related interdisciplinary domains, this platform provides 

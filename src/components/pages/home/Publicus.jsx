@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logos.png"; // update path
 
 const categories = [
-  "Serology",
+     "Serology",
   "Toxicology",
   "Ballistics",
   "Genetics",
@@ -38,7 +38,7 @@ function Publicus() {
         {categories.map((cat, index) => (
           <button
             key={index}
-            onClick={() => navigate(`${cat}`)}
+            onClick={() => navigate('/reserchform')}
             className="
               h-28 rounded-2xl
               bg-linear-to-r from-blue-500 to-cyan-400

@@ -13,6 +13,7 @@ import Register from './components/auth/Register';
 import {Toaster} from 'react-hot-toast' 
 import Header from './components/pages/Header';
 import Footer from './components/pages/Footer';
+import ResearchPaperForm from './components/pages/ResearchPaperForm';
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
       <Route path='/research' element={<Research/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/reserchform' element={<ResearchPaperForm/>}/>
       </Routes>
       <Footer/>
 

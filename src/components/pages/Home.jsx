@@ -6,9 +6,18 @@ import { useNavigate } from "react-router-dom";
 import mukesh from '../assets/Mukesh.jpeg'
 import vijay from '../assets/VIJAY.jpeg'
 import rahul from '../assets/indresh.jpeg'
+import OurTeam from "./home/OurTeam";
 function Home() {
   const navigate = useNavigate();
   const [showCaseStudy, setShowCaseStudy] = useState(false);
+  const [activeTab, setActiveTab] = React.useState('Articles in Press');
+
+const tabs = [
+  { id: 'articles', label: 'Articles in Press', pulse: true },
+  { id: 'case', label: 'Case Study', pulse: true },
+  { id: 'cited', label: 'Top Cited', pulse: true },
+  { id: 'popular', label: 'Most Popular', pulse: true },
+];
 
  const handleArticle = () => {
     setShowCaseStudy(true);
@@ -176,17 +185,46 @@ function Home() {
 {/* this for navigation */}
    <Content/>
 
-   <div className="border-b-4 border-black/40 text-3xl flex gap-10 ml-2 mr-3 font-semibold ">
-    <button className=" hover:text-blue-500 cursor-pointer " onClick={handleArticle}>Articles in press </button>
-    <button className="hover:text-blue-500 cursor-pointer "  onClick={handleArticle}>Case Study </button>
-    <button className="hover:text-blue-500 cursor-pointer"  onClick={handleArticle}>Top cited  </button>  
-    <button className="hover:text-blue-500 cursor-pointer"  onClick={handleArticle}>Most popular  </button>
-   </div>
+  <div className="flex flex-wrap gap-6 ml-2 mr-3 border-b-4 border-gray-200 pb-4">
+    {tabs.map((tab) => (
+      <button
+        key={tab.id}
+        onClick={() => {
+          setActiveTab(tab.label);
+          handleArticle(tab.id);
+          setShowCaseStudy(true)
+        }}
+        className={`
+          group relative flex items-center gap-3 px-6 py-3 rounded-xl font-bold transition-all duration-300 cursor-pointer
+          ${activeTab === tab.label 
+            ? 'bg-blue-50 text-blue-600 shadow-md ring-1 ring-blue-200' 
+            : 'bg-white text-gray-600 hover:text-blue-600 hover:shadow-xl hover:-translate-y-1 border border-gray-100'
+          }
+        `}
+      >
+        {/* The Indicator Dot - Fixed Logic */}
+        <span className="relative flex h-3 w-3">
+          {tab.pulse && (
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          )}
+          <span className={`relative inline-flex rounded-full h-3 w-3 ${tab.pulse ? 'bg-green-500' : 'bg-gray-300'}`}></span>
+        </span>
+
+        <span className="text-lg tracking-tight">{tab.label}</span>
+        
+        {/* Underline decoration for active tab */}
+        {activeTab === tab.label && (
+          <div className="absolute -bottom-4 left-0 w-full h-1 bg-blue-600 rounded-t-full" />
+        )}
+      </button>
+    ))}
+  </div>
+
     
     <div className="mt-6 ml-5 border-white shadow px-2 py-2 mr-3">
         {showCaseStudy && <CaseStudy />}
       </div>
-
+               <OurTeam/>
     </>
   );
 }

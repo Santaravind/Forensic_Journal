@@ -82,6 +82,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
 const [isScrolled, setIsScrolled] = useState(false);
+const [showNavbar, setShowNavbar] = useState(true);
+const lastScrollY = useRef(0);
+
 
 
 
@@ -105,16 +108,23 @@ const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
   const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setIsScrolled(true);
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+      // scrolling DOWN
+      setShowNavbar(false);
     } else {
-      setIsScrolled(false);
+      // scrolling UP
+      setShowNavbar(true);
     }
+
+    lastScrollY.current = currentScrollY;
   };
 
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
 
   const menuItems = [
     { to: "/", label: "Home", icon: <FaHome /> },
@@ -127,7 +137,7 @@ const [isScrolled, setIsScrolled] = useState(false);
   ];
 
   return (
-<nav className="fixed top-0 z-50 w-full flex items-center justify-between px-4 mt-30 lg:mt-10">
+<nav className="fixed top-0 z-50 w-full flex items-center justify-between px-4 mt-30 lg:mt-10  transition-transform duration-300 ease-in-out">
   
   {/* Logo – OUTSIDE Navbar */}
   <div className="flex items-center mt-5">
@@ -143,8 +153,8 @@ const [isScrolled, setIsScrolled] = useState(false);
 
 
   {/* Navbar */}
-  <div className={`flex-1 max-w-6xl ml-6 bg-white/90 backdrop-blur-md shadow-lg lg:rounded-full sm:rounded-lg md:rounded-lg px-6  
-     ${isScrolled ? "opacity-20 backdrop-blur-sm" : "opacity-100"}`}>
+  <div className={`flex-1 max-w-6xl ml-6 bg-white backdrop-blur-md shadow-md lg:rounded-full sm:rounded-lg md:rounded-lg px-6  
+    ${showNavbar ? " translate-y-0" : "-translate-y-full opacity-0"}`}>
     <div className="flex items-center justify-between h-16">
 
       {/* Desktop Menu */}

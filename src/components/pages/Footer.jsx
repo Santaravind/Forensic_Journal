@@ -85,7 +85,7 @@ const Footer = () => {
 
         {/* COPYRIGHT SUBTEXT */}
         <div className="mt-8 text-center text-[11px] text-gray-400 uppercase tracking-[0.2em]">
-          © {new Date().getFullYear()} Happy Digital Bharat . All Rights Reserved.
+          © {new Date().getFullYear()}<a href='https://www.happydigitalbharat.com/tech' className='hover:text-blue-700'>  Happy Digital Bharat</a> . All Rights Reserved.
         </div>
       </div>
     </footer>

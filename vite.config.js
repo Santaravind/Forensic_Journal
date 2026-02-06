@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
-  base:"/Forensic_Journal/",
+
    "rewrites": [
     {
       "source": "/(.*)",

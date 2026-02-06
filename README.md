@@ -1,5 +1,5 @@
 
-   ![Screenshot](/forensic//src//components/assets/sc1.png)
+
 
  # Forensic Patrika
 

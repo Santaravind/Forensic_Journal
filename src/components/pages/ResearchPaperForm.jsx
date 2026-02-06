@@ -355,7 +355,7 @@
 //         </h3>
 //         <p className="text-yellow-700">
 //           NOTE: 1st author's email and mobile number must be correct. All notifications will be sent to them. 
-//           If your paper/article has more than five authors, please send it to editor@ijjsdr.org
+//           If your paper/article has more than five authors, please send it to f.patrika.india@gmail.com
 //         </p>
 //       </div>
 
@@ -738,7 +738,7 @@
 
 //         <div className="mt-6 text-center text-gray-600 text-sm">
 //           <p>All fields marked with <span className="text-red-500">*</span> are required</p>
-//           <p className="mt-2">For papers with more than 5 authors, please email to: editor@ijjsdr.org</p>
+//           <p className="mt-2">For papers with more than 5 authors, please email to: f.patrika.india@gmail.com</p>
 //         </div>
 //       </div>
 //     </div>
@@ -839,21 +839,14 @@ const ResearchPaperForm = () => {
   });
 
   const researchAreas = [
-    'Computer Science',
-    'Electrical Engineering',
-    'Mechanical Engineering',
-    'Civil Engineering',
-    'Biotechnology',
-    'Medical Sciences',
-    'Physics',
-    'Chemistry',
-    'Mathematics',
-    'Economics',
-    'Business Management',
-    'Social Sciences',
-    'Arts & Humanities',
-    'Environmental Science',
-    'Other'
+     "Serology",
+  "Toxicology",
+  "Ballistics",
+  "Genetics",
+  "Fingerprint",
+  "Anthropology",
+  "Cyber Forensics",  
+  "Others",
   ];
 
   const countryCodes = [
@@ -1206,7 +1199,7 @@ const ResearchPaperForm = () => {
         </h3>
         <p className="text-red-700">
           NOTE: 1st author's email and mobile number must be correct. All notifications will be sent to them. 
-          If your paper/article has more than five authors, please send it to editor@ijjsdr.org
+          If your paper/article has more than five authors, please send it to f.patrika.india@gmail.com
         </p>
       </div>
 
@@ -1638,7 +1631,7 @@ const ResearchPaperForm = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Email us at</p>
-                    <p className="font-medium">editor@ijjsdr.org</p>
+                    <p className="font-medium">f.patrika.india@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -1690,12 +1683,12 @@ const ResearchPaperForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
-            <h1 className="text-3xl font-bold">Paper Submission Form</h1>
-            <p className="mt-2 opacity-90">International Journal of Research</p>
+          <div className="bg-linear-to-r from-blue-600 to-indigo-700 p-6 text-white">
+            <h1 className="text-3xl font-bold text-center">Paper Submission Form</h1>
+            <p className="mt-2 opacity-90 text-center text-2xl">Forensic Patrika(A Journal of Forensic Science)</p>
           </div>
 
           <div className="p-6 md:p-8">
@@ -1734,7 +1727,7 @@ const ResearchPaperForm = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium rounded-lg hover:from-green-600 hover:to-emerald-700 flex items-center transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 text-white font-medium rounded-lg hover:from-green-600 hover:to-emerald-700 flex items-center transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -1756,7 +1749,7 @@ const ResearchPaperForm = () => {
 
         <div className="mt-6 text-center text-gray-600 text-sm">
           <p>All fields marked with <span className="text-red-500">*</span> are required</p>
-          <p className="mt-2">For papers with more than 5 authors, please email to: editor@ijjsdr.org</p>
+          <p className="mt-2">For papers with more than 5 authors, please email to: f.patrika.india@gmail.com</p>
         </div>
       </div>
     </div>

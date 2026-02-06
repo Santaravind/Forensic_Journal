@@ -23,12 +23,12 @@ import bg1 from '../assets/bg1.jpeg'
 import bg2 from '../assets/bg2.jpeg'
 import bg3 from '../assets/bg3.jpeg'
 import logo from '../assets/logoss.png'
-
+import { useNavigate } from "react-router";
 function Hero() {
   const images = [bg, bg1, bg2, bg3]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-
+  const  navigate=useNavigate();
   // Auto slide every 5 seconds
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -58,7 +58,10 @@ function Hero() {
       behavior: 'smooth'
     })
   }
-
+  
+ const  handlenRearch = () =>{
+  navigate('/reserchform')
+ }
   return (
     <section className="relative h-screen w-full overflow-hidden mt-12 ">
       {/* Background Images with fade effect */}
@@ -105,7 +108,7 @@ function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fadeInUp animation-delay-400">
               <button 
-                onClick={() => window.location.href = '/reserchform'}
+                onClick={handlenRearch}
                 className="px-8 py-4 bg-linear-to-r from-indigo-600 to-indigo-700 text-white rounded-full text-lg font-semibold hover:from-indigo-700 hover:to-indigo-800 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Submit Your Research

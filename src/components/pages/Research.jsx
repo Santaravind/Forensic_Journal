@@ -1,9 +1,10 @@
 import React from 'react'
+import ResearchPaperForm from './ResearchPaperForm'
 
 function Research() {
   return (
     <div>
-      This Research page.....
+      <ResearchPaperForm/>
     </div>
   )
 }

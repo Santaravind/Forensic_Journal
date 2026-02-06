@@ -105,7 +105,7 @@ function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fadeInUp animation-delay-400">
               <button 
-                onClick={() => window.location.href = '/publication'}
+                onClick={() => window.location.href = '/reserchform'}
                 className="px-8 py-4 bg-linear-to-r from-indigo-600 to-indigo-700 text-white rounded-full text-lg font-semibold hover:from-indigo-700 hover:to-indigo-800 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Submit Your Research

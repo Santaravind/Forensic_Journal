@@ -59,7 +59,7 @@ function OurTeam() {
           {team.map((member) => (
             <div 
               key={member.id} 
-              className="flex flex-col bg-white rounded-3xl p-6 shadow-xl shadow-blue-900/5 border border-gray-100 w-full sm:w-[300px] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="flex flex-col bg-white rounded-3xl p-6 shadow-xl shadow-blue-900/5 border border-gray-100 w-full sm:w-75 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               {/* Profile Image */}
               <div className="relative mb-6 mx-auto">

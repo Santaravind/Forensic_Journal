@@ -126,15 +126,35 @@ const lastScrollY = useRef(0);
 }, []);
 
 
-  const menuItems = [
-    { to: "/", label: "Home", icon: <FaHome /> },
-    { to: "/about", label: "About Us" },
-    { to: "/research", label: "Research" },
-    { to: "/editorial", label: "Editorial Team" },
-    { to: "/guideline", label: "Guidelines" },
-    { to: "/publication", label: "Publication Procedure" },
-    { to: "/blog", label: "Blog" },
-  ];
+  // const menuItems = [
+  //   { to: "/", label: "Home", icon: <FaHome /> },
+  //   { to: "/about", label: "About Us" },
+  //   { to: "/research", label: "Research" },
+  //   { to: "/editorial", label: "Editorial Team" },
+  //   { to: "/guideline", label: "Guidelines" },
+  //   { to: "/publication", label: "Publication Procedure" },
+  //   { to: "/blog", label: "Blog" },
+  // ];
+
+const menuItems = [
+  { to: "/", label: "Home", icon: <FaHome /> },
+  { to: "/about", label: "About Us" },
+
+  {
+    label: "Research",
+    submenu: [
+      { to: "/article", label: "Article" },
+      { to: "/case-study", label: "Case Study" },
+      { to: "/paper-status", label: "Paper Status" },
+    ],
+  },
+
+  { to: "/editorial", label: "Editorial Team" },
+  { to: "/guideline", label: "Guidelines" },
+  { to: "/publication", label: "Publication Procedure" },
+  { to: "/blog", label: "Blog" },
+];
+
 
   return (
 <nav className="fixed top-0 z-50 w-full flex items-center justify-between px-4 mt-30 lg:mt-10  transition-transform duration-300 ease-in-out">
@@ -158,7 +178,7 @@ const lastScrollY = useRef(0);
     <div className="flex items-center justify-between h-16">
 
       {/* Desktop Menu */}
-      <div className="hidden lg:flex items-center gap-10">
+      {/* <div className="hidden lg:flex items-center gap-10">
         {menuItems.map((item) => (
           <NavLink
             key={item.to}
@@ -172,7 +192,43 @@ const lastScrollY = useRef(0);
             {item.label}
           </NavLink>
         ))}
+      </div> */}
+      <div className="hidden lg:flex items-center gap-10">
+  {menuItems.map((item) =>
+    item.submenu ? (
+      <div key={item.label} className="relative group">
+        <span className="cursor-pointer font-semibold text-gray-800 hover:text-indigo-600">
+          {item.label}
+        </span>
+
+        {/* Submenu */}
+        <div className="absolute left-0 top-6 hidden group-hover:block bg-white shadow-lg rounded-xl w-44 border">
+          {item.submenu.map((sub) => (
+            <NavLink
+              key={sub.to}
+              to={sub.to}
+              className="block px-4 py-2 text-sm font-semibold rounded-lg hover:bg-indigo-500"
+            >
+              {sub.label}
+            </NavLink>
+          ))}
+        </div>
       </div>
+    ) : (
+      <NavLink
+        key={item.to}
+        to={item.to}
+        className={({ isActive }) =>
+          `font-semibold transition-colors duration-200
+          ${isActive ? "text-indigo-700" : "text-gray-800 hover:text-indigo-600"}`
+        }
+      >
+        {item.label}
+      </NavLink>
+    )
+  )}
+</div>
+
 
       {/* Desktop Auth */}
       {/* <div className="hidden lg:flex items-center gap-3">
@@ -236,7 +292,7 @@ const lastScrollY = useRef(0);
       }`}
     >
       <div className="flex flex-col gap-3">
-        {menuItems.map((item) => (
+        {/* {menuItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
@@ -248,7 +304,35 @@ const lastScrollY = useRef(0);
           >
             {item.label}
           </NavLink>
-        ))}
+        ))} */}
+        {menuItems.map((item) =>
+  item.submenu ? (
+    <div key={item.label} className="px-4">
+      <p className="font-semibold text-gray-700 mb-2">{item.label}</p>
+
+      {item.submenu.map((sub) => (
+        <NavLink
+          key={sub.to}
+          to={sub.to}
+          onClick={closeMenu}
+          className="block px-4 py-2 rounded-lg font-semibold hover:bg-pink-100"
+        >
+          {sub.label}
+        </NavLink>
+      ))}
+    </div>
+  ) : (
+    <NavLink
+      key={item.to}
+      to={item.to}
+      onClick={closeMenu}
+      className="px-4 py-2 rounded-xl font-semibold hover:bg-pink-100"
+    >
+      {item.label}
+    </NavLink>
+  )
+)}
+
 
         <div className="border-t pt-3">
           <NavLink to="/register" onClick={closeMenu} className="block px-4 py-2 font-semibold hover:text-indigo-700">

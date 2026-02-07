@@ -1,5 +1,5 @@
 
-   ![Screenshot](/forensic//src//components/assets/sc1.png)
+   ![Screenshot](//components/assets/sc1.png)
 
    [ Forensic Patrika](https://forensic-journal.vercel.app/)
 

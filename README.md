@@ -1,7 +1,7 @@
 
    ![Screenshot](/forensic//src//components/assets/sc1.png)
 
-   # Forensic Patrika
+   [ Forensic Patrika](https://forensic-journal.vercel.app/)
 
    ## A Journal of Forensic Science
     

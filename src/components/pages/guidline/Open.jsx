@@ -3,12 +3,12 @@ import React from 'react'
 function Open() {
   return (
     <>
-    <div class="w-full bg-gradient-to-b from-slate-50 to-white min-h-screen py-12 px-4 sm:px-6">
+    <div class="w-full bg-linear-to-b from-slate-50 to-white min-h-screen py-12 px-4 sm:px-6">
   <div class="max-w-4xl mx-auto">
     
     {/* Page Header */}
     <div class="text-center mb-16">
-      <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-lg mb-6">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-lg mb-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
@@ -16,7 +16,7 @@ function Open() {
       <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
         Open Access Policy
       </h1>
-      <div class="inline-block px-5 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full">
+      <div class="inline-block px-5 py-2 bg-linear-to-r from-indigo-100 to-purple-100 rounded-full">
         <p class="text-lg font-semibold text-indigo-700">
           FORENSIC PATRIKA : A Journal of Forensic Science
         </p>
@@ -29,7 +29,7 @@ function Open() {
     {/* Policy Card */}
     <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
       {/* Card Header */}
-      <div class="bg-gradient-to-r from-slate-900 to-slate-800 p-8">
+      <div class="bg-linear-to-r from-slate-900 to-slate-800 p-8">
         <div class="flex flex-col md:flex-row md:items-center justify-between">
           <div>
             <h2 class="text-2xl font-bold text-white">Our Commitment to Open Science</h2>
@@ -122,7 +122,7 @@ function Open() {
         </div>
 
         {/* Permanent Access */}
-        <div class="bg-gradient-to-r from-slate-50 to-white p-6 rounded-xl border border-slate-200">
+        <div class="bg-linear-to-r from-slate-50 to-white p-6 rounded-xl border border-slate-200">
           <div class="flex items-start">
             <div class="flex-shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -181,7 +181,7 @@ function Open() {
 
     {/* Additional Info */}
     <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-xl border border-indigo-100">
+      <div class="bg-linear-to-br from-indigo-50 to-white p-6 rounded-xl border border-indigo-100">
         <h3 class="text-lg font-bold text-slate-800 mb-3">Benefits for Authors</h3>
         <ul class="space-y-2 text-slate-700">
           <li class="flex items-start">
@@ -204,7 +204,7 @@ function Open() {
           </li>
         </ul>
       </div>
-      <div class="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl border border-slate-200">
+      <div class="bg-linear-to-br from-slate-50 to-white p-6 rounded-xl border border-slate-200">
         <h3 class="text-lg font-bold text-slate-800 mb-3">License Information</h3>
         <p class="text-slate-700 mb-4">
           All content is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).
@@ -213,7 +213,7 @@ function Open() {
           <span>CC BY 4.0</span>
         </div>
       </div>
-      <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border border-purple-100">
+      <div class="bg-linear-to-br from-purple-50 to-white p-6 rounded-xl border border-purple-100">
         <h3 class="text-lg font-bold text-slate-800 mb-3">Contact for Queries</h3>
         <p class="text-slate-700 mb-4">
           For questions regarding our Open Access policy or permissions, please contact:

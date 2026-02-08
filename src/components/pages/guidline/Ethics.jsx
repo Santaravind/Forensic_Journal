@@ -2,7 +2,7 @@ import React from 'react'
 
 function Ethics() {
   return (
-    <div className="w-full bg-gradient-to-b from-slate-50 to-white py-16 px-4">
+    <div className="w-full bg-linear-to-b from-slate-50 to-white py-16 px-4">
   <div className="max-w-6xl mx-auto">
 
     {/* Page Header */}

@@ -7,7 +7,7 @@ import EditorialTeam from './components/pages/EditorialTeam';
 
 
 import Publication from './components/pages/Publication';
-import Research from './components/pages/Research';
+
 import Login from './components/auth/Login';
 
 import {Toaster} from 'react-hot-toast' 
@@ -24,6 +24,7 @@ import Informed from './components/pages/guidline/Informed';
 import Open from './components/pages/guidline/Open';
 import Plagiarism from './components/pages/guidline/Plagiarism';
 import Privacy from './components/pages/guidline/Privacy';
+// import Research from './components/pages/Research.jsx'
 function App() {
   return (
     <>

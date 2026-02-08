@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGraduationCap, FaUniversity, FaUserTie } from 'react-icons/fa';
 import logo from '../../assets/indresh.jpeg';
+import hrigvi  from '../../assets/hrigvi.jpeg'
 import vijay from '../../assets/VIJAY.jpeg'
 
 function OurTeam() {
@@ -20,7 +21,15 @@ function OurTeam() {
       image: logo, 
       post: "Founder and CEO - Forensic Patrika",
       position: "",
-      college: "University of Science & Tech"
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology"
+    },
+     {
+      id: 3,
+      name: "Hrigvi Singh ",
+      image: hrigvi, 
+      post: "",
+      position: "",
+      college: ""
     },
    
   ];

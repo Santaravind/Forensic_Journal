@@ -212,44 +212,52 @@ const menuItems = [
       <div className="hidden lg:flex items-center gap-10">
   {menuItems.map((item) =>
     item.submenu ? (
-      // <div key={item.label} className="relative group">
-      //   <span className="cursor-pointer font-semibold text-gray-800 hover:text-indigo-600">
-      //     {item.label}
-      //   </span>
+      
+//       <div key={item.label} className="relative group">
+//   <span className="cursor-pointer font-semibold text-gray-800 hover:text-indigo-600">
+//     {item.label}
+//   </span>
 
-      //   {/* Submenu */}
-      //   <div className="absolute left-0 top-6 hidden group-hover:block bg-white shadow-lg rounded-xl w-44 border">
-      //     {item.submenu.map((sub) => (
-      //       <NavLink
-      //         key={sub.to}
-      //         to={sub.to}
-      //         className="block px-4 py-2 text-sm font-semibold rounded-lg hover:bg-indigo-500"
-      //       >
-      //         {sub.label}
-      //       </NavLink>
-      //     ))}
-      //   </div>
-      // </div>
-      <div key={item.label} className="relative group">
-  <span className="cursor-pointer font-semibold text-gray-800 hover:text-indigo-600">
+//   {/* Submenu */}
+//   <div className="absolute left-0 top-full mt-2 hidden group-hover:block 
+//                   bg-white shadow-lg rounded-xl w-52 border z-50">
+//     {item.submenu.map((sub) => (
+//       <NavLink
+//         key={sub.to}
+//         to={sub.to}
+//         className="block px-4 py-2 text-sm font-semibold rounded-lg
+//                    hover:bg-indigo-500 hover:text-white transition"
+//       >
+//         {sub.label}
+//       </NavLink>
+//     ))}
+//   </div>
+// </div>
+<div key={item.label} className="relative group">
+  <button className="font-semibold text-gray-800 hover:text-indigo-600">
     {item.label}
-  </span>
+  </button>
 
-  {/* Submenu */}
-  <div className="absolute left-0 top-full mt-2 hidden group-hover:block 
-                  bg-white shadow-lg rounded-xl w-52 border z-50">
+  <div className="
+    absolute left-0 top-full
+    invisible opacity-0
+    group-hover:visible group-hover:opacity-100
+    transition-all duration-200
+    bg-white shadow-lg rounded-xl w-52 border z-50
+  ">
     {item.submenu.map((sub) => (
       <NavLink
         key={sub.to}
         to={sub.to}
-        className="block px-4 py-2 text-sm font-semibold rounded-lg
-                   hover:bg-indigo-500 hover:text-white transition"
+        className="block px-4 py-2 text-sm font-semibold
+                   hover:bg-indigo-500 hover:text-white"
       >
         {sub.label}
       </NavLink>
     ))}
   </div>
 </div>
+
 
     ) : (
       <NavLink

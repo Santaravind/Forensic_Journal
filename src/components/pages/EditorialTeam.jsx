@@ -1,9 +1,10 @@
 import React from 'react'
+import OurTeam from './home/OurTeam'
 
 function EditorialTeam() {
   return (
     <div>
-      EditorialTeam .....
+      <OurTeam/>
     </div>
   )
 }

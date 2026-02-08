@@ -1,49 +1,28 @@
 import React from 'react';
 import { FaGraduationCap, FaUniversity, FaUserTie } from 'react-icons/fa';
 import logo from '../../assets/indresh.jpeg';
+import vijay from '../../assets/VIJAY.jpeg'
 
 function OurTeam() {
   const team = [
-    {
-      id: 1,
-      name: "Dr. Sant ",
-      image: logo, // Use the imported variable directly
-      post: "Professor",
-      position: "Head of Department",
-      college: "University of Science & Tech"
-    },
+   
    {
+      id: 1,
+      name: "DR. VIJAY KUMAR YADAV",
+      image: vijay, 
+      post: "Coordinator/Head",
+      position: "Head of Department",
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology "
+    },
+     {
       id: 2,
-      name: "Dr. Sant ",
-      image: logo, // Use the imported variable directly
-      post: "Professor",
-      position: "Head of Department",
+      name: "Indresh Kumar ",
+      image: logo, 
+      post: "Founder and CEO - Forensic Patrika",
+      position: "",
       college: "University of Science & Tech"
     },
-    {
-      id: 3,
-      name: "Dr. Sant ",
-      image: logo, // Use the imported variable directly
-      post: "Professor",
-      position: "Head of Department",
-      college: "University of Science & Tech"
-    },
-    {
-      id: 4,
-      name: "Rahul",
-      image: logo, // Use the imported variable directly
-      post: "Professor",
-      position: "Head of Department",
-      college: "University of Science & Tech"
-    },
-    {
-      id: 5,
-      name: "Rahul",
-      image: logo, // Use the imported variable directly
-      post: "Professor",
-      position: "Head of Department",
-      college: "University of Science & Tech"
-    },
+   
   ];
 
   return (

@@ -158,7 +158,7 @@ const menuItems = [
   { 
      label: "Guidelines" ,
     submenu:[
-      {to: "/peer" , label: "Peer review Policy"},
+      {to: "/peer" , label: "Peer Review Policy"},
       {to: "/open" , label: "Open Access Policy"},
       {to: "/author" , label: "Author guidelines"},
       {to: "/plag" , label: "Plagiarism Policy"},

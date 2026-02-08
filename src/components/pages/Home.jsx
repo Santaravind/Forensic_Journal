@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import logo from '../assets/logos.png'
 import Content from "./home/Content";
-import CaseStudy from "./home/CaseStudy";
+
 import { useNavigate } from "react-router-dom";
 import mukesh from '../assets/Mukesh.jpeg'
 import vijay from '../assets/VIJAY.jpeg'
 import rahul from '../assets/indresh.jpeg'
 import OurTeam from "./home/OurTeam";
+import Case from "./home/Case";
 function Home() {
   const navigate = useNavigate();
   const [showCaseStudy, setShowCaseStudy] = useState(false);
@@ -222,7 +223,7 @@ const tabs = [
 
     
     <div className="mt-6 ml-5 border-white shadow px-2 py-2 mr-3">
-        {showCaseStudy && <CaseStudy />}
+        {showCaseStudy && <Case/>}
       </div>
                <OurTeam/>
     </>

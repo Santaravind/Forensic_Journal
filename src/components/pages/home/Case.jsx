@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CaseStudy() {
+function Case() {
   return (
     <div>
       <div className="prose prose-blue max-w-none">
@@ -24,4 +24,4 @@ function CaseStudy() {
   )
 }
 
-export default CaseStudy
+export default Case

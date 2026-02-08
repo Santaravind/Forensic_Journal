@@ -47,8 +47,9 @@ import { BsFingerprint } from "react-icons/bs";
 import { GoGoal } from "react-icons/go";
 import { FaAddressBook } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
-import CaseStudy from './CaseStudy';
+
 import Publicus from "./Publicus";
+import Case from "./Case.jsx"
 
 function Content() {
   // 1. State to track the active section
@@ -66,7 +67,7 @@ function Content() {
   const renderActiveContent = () => {
     switch (activeTab) {
       case "Case Study":
-        return <CaseStudy />;
+        return <Case/>
       case "Publish With Us":
         return <Publicus/>;
       case "Learning Resources":

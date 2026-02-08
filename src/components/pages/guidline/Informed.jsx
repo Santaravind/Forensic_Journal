@@ -2,8 +2,8 @@ import React from 'react'
 
 function Informed() {
   return (
-   <div className="w-full bg-gradient-to-b from-slate-50 to-white py-16 px-4">
-  <div className="max-w-6xl mx-auto">
+   <div className="w-full bg-linear-b from-slate-50 to-white py-16 px-4">
+  <div className="max-w-6xl mx-auto ">
 
     {/* Page Header */}
     <div className="text-center mb-12">

@@ -165,6 +165,17 @@ const tabs = [
         By fostering an academically rigorous environment, <strong className="font-bold text-blue-900">FORENSIC PATRIKA  </strong> 
           seeks to strengthen emerging academic voices and facilitate the responsible dissemination of knowledge 
         within the global scholarly community.
+        
+      </p>
+      <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl mt-6 border-l-4 border-blue-100 pl-6 italic">
+        In addition to promoting academic excellence, Forensic Patrika: A Journal of Forensic Science seeks to bridge the gap between theoretical research and practical application within forensic and investigative sciences. The journal actively encourages interdisciplinary collaboration by welcoming research that integrates law, psychology, digital forensics, forensic biology, toxicology, cybercrime studies, criminal justice, and emerging technological innovations influencing modern investigative methodologies. Through this inclusive academic framework, the journal aspires to cultivate holistic, analytical, and solution-oriented research perspectives.
+        
+      </p>
+      <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl mt-6 border-l-4 border-blue-100 pl-6 italic">
+        Forensic Patrika is committed to maintaining transparency, academic integrity, and ethical publishing standards through a structured peer-review process designed to ensure research quality, originality, and scholarly credibility. The journal strictly adheres to plagiarism-screening protocols, ethical research guidelines, and responsible authorship practices in order to uphold the trust and reliability expected within both academic and professional communities.
+      </p>
+      <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl mt-6 border-l-4 border-blue-100 pl-6 italic">
+      The platform also functions as a developmental academic space, supporting first-time researchers and student scholars by promoting constructive peer-review feedback, mentorship opportunities, and exposure to structured scholarly publication standards. Promoting constructive peer-review feedback, mentorship opportunities, and exposure to structured scholarly publication standards. 
       </p>
     </div>
   </div>

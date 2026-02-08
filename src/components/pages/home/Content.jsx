@@ -59,7 +59,7 @@ function Content() {
      { icon: <BsFingerprint />, label: "Case Study" },
     { icon: <LuNotebookPen />, label: "Publish With Us" },
     { icon: <FaAddressBook />, label: "Learning Resources" },
-    { icon: <GoGoal />, label: "Achievement Ranking" },
+    { icon: <GoGoal />, label: "Achievement " },
     { icon: <FcMoneyTransfer />, label: "Donation" },
   ];
 

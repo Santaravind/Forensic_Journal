@@ -76,7 +76,7 @@ const Footer = () => {
 
           {/* SOCIAL LINKS */}
           <div className="flex items-center gap-8">
-            <a href="#" className="text-xl hover:text-blue-700 transition-all hover:scale-110"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/aravind-sant" className="text-xl hover:text-blue-700 transition-all hover:scale-110"><FaLinkedin /></a>
             <a href="#" className="text-xl hover:text-black transition-all hover:scale-110"><FaXTwitter /></a>
             <a href="#" className="text-xl hover:text-blue-600 transition-all hover:scale-110"><FaFacebook /></a>
             <a href="#" className="text-xl hover:text-red-600 transition-all hover:scale-110"><FaYoutube /></a>

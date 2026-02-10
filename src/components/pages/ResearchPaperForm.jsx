@@ -772,6 +772,7 @@ const ResearchPaperForm = () => {
     paperTitle: '',
     researchArea: '',
     countryCode: '',
+    mobileNumber:'',
     paperFile: null,
     abstract: '',
     keywords: '',
@@ -1115,7 +1116,7 @@ const ResearchPaperForm = () => {
           </select>
         </div>
 
-        <div>
+        {/* <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Country Code <span className="text-red-500">*</span>
           </label>
@@ -1131,9 +1132,75 @@ const ResearchPaperForm = () => {
               <option key={code} value={code}>{code} ({country})</option>
             ))}
           </select>
+        </div> */}
+        <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    Mobile Number <span className="text-red-500">*</span>
+  </label>
+
+  <div className="flex gap-2">
+    {/* Country Code */}
+    <select
+      name="countryCode"
+      value={formData.countryCode}
+      onChange={handleInputChange}
+      className="w-1/3 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+      required
+    >
+      <option value="">Code</option>
+      {countryCodes.map(({ code, country }) => (
+        <option key={code} value={code}>
+          {code} ({country})
+        </option>
+      ))}
+    </select>
+
+    {/* Mobile Number */}
+    <input
+      type="tel"
+      name="mobileNumber"
+      value={formData.mobileNumber}
+      onChange={handleInputChange}
+      placeholder="Enter mobile number"
+      className="w-2/3 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+      required
+      maxLength={10}
+    />
+  </div>
+</div>
+
+       
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Abstract <span className="text-red-500">*</span>
+          </label>
+          <textarea
+            name="abstract"
+            value={formData.abstract}
+            onChange={handleInputChange}
+            rows={6}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="The abstract is a brief summary of the main manuscript. It highlights the research topic, objective, methodology, key findings, and the significance of the study"
+            required
+          />
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Keywords
+          </label>
+          <input
+            type="text"
+            name="keywords"
+            value={formData.keywords}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Keywords of your paper (comma-separated)"
+          />
+        </div>
+
+         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Upload Paper <span className="text-red-500">*</span>
           </label>
@@ -1155,35 +1222,6 @@ const ResearchPaperForm = () => {
             </span>
           </div>
           <p className="mt-1 text-sm text-gray-500">File type: .doc or .docx only</p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Abstract <span className="text-red-500">*</span>
-          </label>
-          <textarea
-            name="abstract"
-            value={formData.abstract}
-            onChange={handleInputChange}
-            rows={6}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Copy your complete Abstract Here"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Keywords
-          </label>
-          <input
-            type="text"
-            name="keywords"
-            value={formData.keywords}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Keywords of your paper (comma-separated)"
-          />
         </div>
       </div>
     </div>

@@ -7,12 +7,12 @@ import Hero from './Hero';
 function Header() {
   return (
     <div>
-         <div className="bg-blue-400 px-3 py-2 rounded fixed top-0 z-50 w-full">
+         <div className="bg-blue-400 px-3 py-2 rounded fixed top-0 z-50 w-full md:p-2">
               {/* top header  */}
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between lg:gap-4 md:gap-0.5">
       
       {/* Left Content */}
-      <h2 className="text-xl md:text-2xl  font-serif  text-white text-center md:text-left">
+      <h2 className="text-xl md:text-2xl  font-serif md:m-1 text-white text-center md:text-left">
         We'd appreciate your feedback.{" "}
         <span className="text-yellow-300 font-bold">
           Tell us what you think!
@@ -20,7 +20,7 @@ function Header() {
       </h2>
   
       {/* Contact Info */}
-      <div className="flex flex-col sm:flex-row items-center gap-2 text-white">
+      <div className="flex flex-col sm:flex-row items-center lg:gap-2 md:gap-0.5 text-white">
         <p className="flex items-center gap-2 text-lg">
           <FaPhoneAlt  className="text-yellow-300" />
           <span>+91-8957445211</span>

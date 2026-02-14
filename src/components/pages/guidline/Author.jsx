@@ -239,25 +239,31 @@
 
 
 import React from 'react'
-
+import logos from '../../assets/logoss.png'
 function Author() {
   return (
    <div className="w-full bg-linear-to-b from-slate-50 to-white py-16 px-4">
-  <div className="max-w-6xl mx-auto">
+  <div className="max-w-6xl mx-auto  ">
 
     {/* Page Header */}
-    <div className="text-center mb-12">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900">
+    <div className="text-center mb-12 flex  ">
+      <div className='w-80 '>
+      <img src={logos} alt="logo pages" />
+      </div>
+       <div className='lg:mt-20 '>
+      <h1 className="text-4xl md:text-4xl font-extrabold text-slate-900">
         Author Guidelines
       </h1>
-      <p className="mt-3 text-lg font-medium text-indigo-700">
+      <p className="mt-3 text-2xl font-medium text-indigo-700">
         FORENSIC PATRIKA : A Journal of Forensic Science
       </p>
+        </div>
+      
     </div>
-
+    
     {/* Guidelines Card */}
     <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 md:p-12 text-slate-700 leading-relaxed space-y-10">
-
+     
       {/* Intro */}
       <p>
         Authors are advised to carefully review and adhere to the following

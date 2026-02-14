@@ -1564,11 +1564,11 @@ const ResearchPaperForm = () => {
   );
 
   const renderSuccessPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Success Header */}
-          <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-8 text-center text-white">
+          <div className="bg-linear-to-r from-green-500 to-emerald-600 p-8 text-center text-white">
             <div className="w-24 h-24 mx-auto mb-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
               <FaCheck className="text-5xl" />
             </div>
@@ -1598,7 +1598,7 @@ const ResearchPaperForm = () => {
             </div>
 
             {/* Submission Details */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 mb-8 border border-blue-200">
+            <div className="bg-linear-to-br from-blue-50 to-indigo-50 rounded-xl p-6 mb-8 border border-blue-200">
               <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                 <FaPaperPlane className="mr-3 text-blue-600" />
                 Submission Details
@@ -1688,7 +1688,7 @@ const ResearchPaperForm = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={goToHome}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                className="px-8 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
               >
                 <FaHome className="mr-3" />
                 Go to Home Page

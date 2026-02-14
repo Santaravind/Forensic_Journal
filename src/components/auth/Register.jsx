@@ -115,8 +115,8 @@
 
 
 
-
-// export default function Register() {
+// import React, { useState } from "react";
+//  function Register() {
 //   const [formData, setFormData] = useState({
 //     fullName: '',
 //     email: '',
@@ -456,15 +456,15 @@
 //       </div>
 //     </div>
 //   );
-// }
+// };
 
-
+// export default Register;
 
 
 // deepseek wala page
 import { useState } from "react";
 import { Fingerprint, Microscope, Scale, FileText, Mail, Phone, MapPin, User, Lock, Eye, EyeOff } from 'lucide-react';
-
+import logos from '../assets/logoss.png'
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -524,13 +524,14 @@ const Register = () => {
             <div className="relative z-10 h-full flex flex-col">
               
               {/* Logo and Title */}
-              <div className="flex items-center space-x-3 mb-12">
-                <div className="p-3 bg-gradient-to-br from-yellow-400 to-red-500 rounded-2xl shadow-lg">
+              <div className=" items-center space-x-3 mb-10">
+                <div className="p-3 bg-linear-to-br from-yellow-300 to-red-300 rounded-2xl shadow-lg">
                   <Scale className="w-8 h-8 text-white" />
+                  <img src={logos} alt="Logo image" />
                 </div>
-                <div>
-                  <h1 className="text-3xl font-bold text-white">Forensic</h1>
-                  <p className="text-blue-200 text-sm">Patrika • Official</p>
+                <div className="">
+                  <h1 className="text-3xl font-bold text-white text-center uppercase mt-2">Forensic Patrika</h1>
+                  <p className="text-blue-200 text-sm text-center">Patrika • Official</p>
                 </div>
               </div>
 

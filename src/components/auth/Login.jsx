@@ -178,7 +178,8 @@ export default function Login() {
     { name: "author", label: "Author", icon: <User size={32} /> },
     { name: "reviewer", label: "Reviewer", icon: <BookOpen size={32} /> },
     { name: "editor", label: "Editor", icon: <ShieldCheck size={32} /> },
-    { name: "publisher", label: "Publisher", icon: <FileText size={32} /> }
+    { name: "publisher", label: "Publisher", icon: <FileText size={32} /> },
+    { name: "reader", label: "Reader", icon: <FileText size={32} /> }
   ];
 
   return (

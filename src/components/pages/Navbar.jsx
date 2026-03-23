@@ -114,7 +114,6 @@ const toggleMobileDropdown = (label) => {
   useEffect(() => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-
     if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
       // scrolling DOWN
       setShowNavbar(false);

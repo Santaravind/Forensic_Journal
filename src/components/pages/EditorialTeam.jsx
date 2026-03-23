@@ -27,7 +27,7 @@ function EditorialTeam() {
     { id: 9, name: "Ms. Richa Jaiswal", position: "Reviewers", image :logo },
     { id: 10, name: "Ms. Ankita Sikoria", position: "Communication Officer",image:logo },
     { id: 11, name: "Hrigvi Singh Banafar", position: "Publication Manager",image:hrigiv },
-    { id: 12, name: "Aravind Sant Singh", position: "Technical Head" , image:sant },
+    { id: 12, name: "Aravind Sant Singh", position: "Technical Head"  },
   ]
 };
   
@@ -35,7 +35,7 @@ function EditorialTeam() {
   
   const MemberCard = ({ member, size = "large" }) => (
     <div className="flex flex-col items-center text-center p-4 transition-transform hover:scale-105">
-      <div className={`relative mb-3 rounded-full border-4 border-blue-600 p-1 shadow-lg overflow-hidden ${size === 'large' ? 'w-36 h-36' : 'w-40 h-40'}`}>
+      <div className={`relative mb-3 rounded-full border-4 border-blue-600 p-1 shadow-lg overflow-hidden ${size === 'large' ? 'w-36 h-36' : 'w-34 h-34'}`}>
         <img 
           src={member.image ||''} 
           alt={member.name}

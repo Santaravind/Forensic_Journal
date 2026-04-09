@@ -35,7 +35,7 @@ function EditorialTeam() {
   
   const MemberCard = ({ member, size = "large" }) => (
     <div className="flex flex-col items-center text-center p-4 transition-transform hover:scale-105">
-      <div className={`relative mb-3 rounded-full border-4 border-blue-600 p-1 shadow-lg overflow-hidden ${size === 'large' ? 'w-36 h-36' : 'w-34 h-34'}`}>
+      <div className={`relative mb-3 rounded-full border-4 border-blue-600 p-1 shadow-lg overflow-hidden ${size ==='large' ? 'w-36 h-36' : 'w-34 h-34'}`}>
         <img 
           src={member.image ||''} 
           alt={member.name}
@@ -49,11 +49,12 @@ function EditorialTeam() {
   );
 
   return (
+    <>
     <section className="bg-white py-16 px-4 max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-black text-gray-900 tracking-tight">Editorial Team Structure</h1>
-        <div className="mt-4 inline-block bg-yellow-400 px-6 py-1">
+        <div className="mt-4 inline-block bg-yellow-400 px-6 py-1 rounded-lg">
           <h2 className="text-3xl font-bold text-black">Forensic Patrika</h2>
         </div>
         <p className="text-xl font-bold mt-2 text-gray-800">(A Journal of Forensic Science)</p>
@@ -97,6 +98,7 @@ function EditorialTeam() {
       </div>
     </section>
   
+    </>
     
   )
 }

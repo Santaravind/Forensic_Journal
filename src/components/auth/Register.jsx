@@ -37,7 +37,8 @@ const Register = () => {
     'Toxicology',
     'Ballistics',
     'Fingerprint Analysis',
-    'Document Examination'
+    'Document Examination',
+    'Others '
   ];
 
   return (

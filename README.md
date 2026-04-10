@@ -17,7 +17,7 @@
    >Forensic Patrika is an academic publication platform committed to advancing   scholarly research, critical inquiry, and ethical academic writing. With a primary emphasis on forensic science, criminology, and allied interdisciplinary domains, the journal provides a structured, peer-reviewed environment for publishing high-quality academic work.
 
      ##The platform encourages the publication of:
->>>>>>> 3cb50a7e7d815ecd372797a728eef2b6cfe9961e
+
 
 ## The platform encourages the publication of:
 
@@ -33,4 +33,4 @@
 =======
     ##Each contribution is expected to meaningfully engage with contemporary academic discourse and uphold the highest standards of research integrity.
   
->>>>>>> 3cb50a7e7d815ecd372797a728eef2b6cfe9961e
+

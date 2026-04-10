@@ -30,14 +30,12 @@
 //     { id: 12, name: "Aravind Sant Singh", position: "Technical Head"  },
 //   ]
 // };
-  
 
-  
 //   const MemberCard = ({ member, size = "large" }) => (
 //     <div className="flex flex-col items-center text-center p-4 transition-transform hover:scale-105">
 //       <div className={`relative mb-3 rounded-full border-4 border-blue-600 p-1 shadow-lg overflow-hidden ${size ==='large' ? 'w-36 h-36' : 'w-34 h-34'}`}>
-//         <img 
-//           src={member.image ||''} 
+//         <img
+//           src={member.image ||''}
 //           alt={member.name}
 //           className="w-full h-full object-cover rounded-full"
 //         />
@@ -63,7 +61,7 @@
 //       <div className="grid grid-cols-12 gap-8">
 //         {/* Main Hierarchy (Left 9 columns) */}
 //         <div className="col-span-12 lg:col-span-9 space-y-12">
-          
+
 //           {/* Tier 1: Leadership */}
 //           <div className="flex justify-around items-start max-w-2xl mx-auto">
 //             {editorialTeam.leadership.map(m => <MemberCard key={m.id} member={m} />)}
@@ -97,53 +95,123 @@
 //         </div>
 //       </div>
 //     </section>
-  
+
 //     </>
-    
+
 //   )
 // }
 
 // export default EditorialTeam
 
-import React from 'react';
-
+import React from "react";
+import logo from "../assets/logos.png";
 const EditorialTeam = () => {
   const editorialTeam = {
     leadership: [
-      { id: 1, name: "Dr. Vijay Kumar Yadav", post: "Founder", position: "Editor-in-Chief", initials: "VK" },
-      { id: 2, name: "Indresh Kumar", post: "Co-Founder", position: "Publisher", initials: "IK" },
+      {
+        id: 1,
+        name: "Dr. Vijay Kumar Yadav",
+        post: "Founder",
+        position: "Editor-in-Chief",
+        initials: "VK",
+      },
+      {
+        id: 2,
+        name: "Indresh Kumar",
+        post: "Co-Founder",
+        position: "Publisher",
+        initials: "IK",
+      },
     ],
     seniorEditors: [
-      { id: 3, name: "Dr. Murali Manohar Yadav", position: "Co-Editor-in-Chief", initials: "MM" },
-      { id: 4, name: "Dr. Akash Kumar", position: "Co-Editor-in-Chief", initials: "AK" },
+      {
+        id: 3,
+        name: "Dr. Murali Manohar Yadav",
+        position: "Co-Editor-in-Chief",
+        initials: "MM",
+      },
+      {
+        id: 4,
+        name: "Dr. Akash Kumar",
+        position: "Co-Editor-in-Chief",
+        initials: "AK",
+      },
+      {
+        id: 8,
+        name: "Nawab John Dar",
+        position: "Intl. Editorial Head",
+        initials: "NJ",
+      },
     ],
     editorialStaff: [
-      { id: 5, name: "Dr. Abhimanyu Harshey", position: "Managing Editor", initials: "AH" },
-      { id: 6, name: "Dr. Prakash Chandra", position: "Associate Editor", initials: "PC" },
-      { id: 7, name: "Mr. Shantanu Singh", position: "Section Editor", initials: "SS" },
+      {
+        id: 5,
+        name: "Dr. Abhimanyu Harshey",
+        position: "Managing Editor",
+        initials: "AH",
+      },
+      {
+        id: 6,
+        name: "Dr. Prakash Chandra",
+        position: "Associate Editor",
+        initials: "PC",
+      },
+      {
+        id: 7,
+        name: "Mr. Shantanu Singh",
+        position: "Section Editor",
+        initials: "SS",
+      },
+      {
+        id: 11,
+        name: "Hrigvi Singh Banafar",
+        position: "Publication Manager",
+        initials: "HS",
+      },
     ],
     support: [
-      { id: 8, name: "Nawab John Dar", position: "Intl. Editorial Head", initials: "NJ" },
-      { id: 9, name: "Ms. Richa Jaiswal", position: "Reviewer", initials: "RJ" },
-      { id: 10, name: "Ms. Ankita Sikoria", position: "Communication Officer", initials: "AS" },
-      { id: 11, name: "Hrigvi Singh Banafar", position: "Publication Manager", initials: "HS" },
-      { id: 12, name: "Aravind Sant Singh", position: "Technical Head", initials: "AS" },
-    ]
+      {
+        id: 9,
+        name: "Ms. Richa Jaiswal",
+        position: "Reviewer",
+        initials: "RJ",
+      },
+      {
+        id: 10,
+        name: "Ms. Ankita Sikoria",
+        position: "Communication Officer",
+        initials: "AS",
+      },
+      {
+        id: 12,
+        name: "Aravind Sant Singh",
+        position: "Technical Head",
+        initials: "AS",
+      },
+    ],
   };
 
   const Card = ({ member, featured = false }) => (
-    <div className={`relative group flex flex-col items-center p-6 bg-white rounded-2xl transition-all duration-300 hover:shadow-xl border ${featured ? 'border-slate-800 ring-1 ring-slate-800' : 'border-slate-100 shadow-sm'}`}>
+    <div
+      className={`relative group flex flex-col items-center p-6 bg-white rounded-2xl transition-all duration-300 hover:shadow-xl border ${featured ? "border-slate-800 ring-1 ring-slate-800" : "border-slate-100 shadow-sm"}`}
+    >
       {/* Decorative Role Badge */}
-      <div className={`absolute -top-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm ${featured ? 'bg-slate-800 text-white' : 'bg-blue-50 text-blue-700'}`}>
+      <div
+        className={`absolute -top-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm ${featured ? "bg-slate-800 text-white" : "bg-blue-50 text-blue-700"}`}
+      >
         {member.position}
       </div>
-      
+
       {/* Avatar Placeholder */}
-      <div className={`w-20 h-20 rounded-full mb-4 flex items-center justify-center text-xl font-semibold border-2 transition-transform group-hover:scale-110 ${featured ? 'bg-slate-50 border-slate-200 text-slate-700' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
+      <div
+        className={`w-20 h-20 rounded-full mb-4 flex items-center justify-center text-xl font-semibold border-2 transition-transform group-hover:scale-110 ${featured ? "bg-slate-50 border-slate-200 text-slate-700" : "bg-blue-50 border-blue-100 text-blue-600"}`}
+      >
         {member.initials}
       </div>
 
-      <h3 className="text-sm font-bold text-slate-900 text-center leading-tight">{member.name}</h3>
+      <h3 className="text-sm font-bold text-slate-900 text-center leading-tight">
+        {member.name}
+      </h3>
       {member.post && (
         <span className="mt-1 text-[11px] font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
           {member.post}
@@ -155,7 +223,6 @@ const EditorialTeam = () => {
   return (
     <div className="min-h-screen bg-slate-50 py-16 px-4 font-sans">
       <div className="max-w-6xl mx-auto">
-        
         {/* Header Section */}
         <header className="text-center mb-20">
           <span className="text-blue-600 font-bold tracking-[0.2em] text-xs uppercase bg-blue-50 px-4 py-2 rounded-full">
@@ -164,17 +231,23 @@ const EditorialTeam = () => {
           <h1 className="mt-6 text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Forensic Patrika
           </h1>
-          <p className="mt-2 text-slate-500 font-medium text-lg italic">Editorial Team Structure</p>
+          <p className="mt-2 text-slate-500 font-medium text-lg italic">
+            Editorial Team Structure
+          </p>
           <div className="mt-6 w-20 h-1.5 bg-slate-800 mx-auto rounded-full"></div>
         </header>
 
         {/* Leadership Tier */}
         <section className="mb-16">
           <div className="flex flex-col items-center mb-8">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">Board Leadership</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
+              Board Leadership
+            </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {editorialTeam.leadership.map(m => <Card key={m.id} member={m} featured={true} />)}
+            {editorialTeam.leadership.map((m) => (
+              <Card key={m.id} member={m} featured={true} />
+            ))}
           </div>
         </section>
 
@@ -184,10 +257,14 @@ const EditorialTeam = () => {
         {/* Senior Editors Tier */}
         <section className="mb-16">
           <div className="flex flex-col items-center mb-8">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">Senior Editorial Board</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
+              Senior Editorial Board
+            </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto">
-            {editorialTeam.seniorEditors.map(m => <Card key={m.id} member={m} />)}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3 gap-6 max-w-4xl mx-auto">
+            {editorialTeam.seniorEditors.map((m) => (
+              <Card key={m.id} member={m} />
+            ))}
           </div>
         </section>
 
@@ -195,10 +272,14 @@ const EditorialTeam = () => {
         <section className="mb-16">
           <div className="flex flex-col items-center mb-8 text-center">
             <div className="w-full h-px bg-slate-200 max-w-3xl mb-8"></div>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">Operational Staff</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
+              Operational Staff
+            </span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {editorialTeam.editorialStaff.map(m => <Card key={m.id} member={m} />)}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {editorialTeam.editorialStaff.map((m) => (
+              <Card key={m.id} member={m} />
+            ))}
           </div>
         </section>
 
@@ -206,18 +287,24 @@ const EditorialTeam = () => {
         <section>
           <div className="flex flex-col items-center mb-8 text-center">
             <div className="w-full h-px bg-slate-200 max-w-3xl mb-8"></div>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">International & Technical Support</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.3em]">
+              International & Technical Support
+            </span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {editorialTeam.support.map(m => (
-              <div key={m.id} className="p-4 bg-white border border-slate-100 rounded-xl hover:border-blue-200 transition-colors">
-                <div className="text-[9px] font-bold text-blue-600 uppercase mb-2 truncate">{m.position}</div>
-                <div className="text-xs font-bold text-slate-800">{m.name}</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-8 text-center">
+            {editorialTeam.support.map((m) => (
+              <div
+                key={m.id}
+                className="p-4 bg-white border border-slate-100 rounded-xl hover:border-blue-200 transition-colors"
+              >
+                <div className="text-[9px] font-bold text-blue-600 uppercase mb-2 truncate justify-center items-center">
+                  {m.position}
+                </div>
+                <div className="text-2xs font-bold text-slate-800">{m.name}</div>
               </div>
             ))}
           </div>
         </section>
-
       </div>
     </div>
   );

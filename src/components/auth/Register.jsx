@@ -30,6 +30,7 @@ const Register = () => {
   };
 
   const specializations = [
+    'Reader',
     'Digital Forensics',
     'Cyber Crime Investigation',
     'Forensic Accounting',
@@ -42,7 +43,7 @@ const Register = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center p-6 relative overflow-hidden">
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -55,12 +56,12 @@ const Register = () => {
       <div className="relative w-full max-w-6xl bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
         
         {/* Decorative Header Strip */}
-        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600"></div>
+        <div className="absolute top-0 left-0 right-0 h-2 bg-linear-to-r from-yellow-400 via-red-500 to-purple-600"></div>
         
         <div className="grid md:grid-cols-2 gap-0">
           
           {/* Left Side - Hero Section */}
-          <div className="relative hidden md:block p-12 bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm">
+          <div className="relative hidden md:block p-12 bg-linear-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm">
             <div className="relative z-10 h-full flex flex-col">
               
               {/* Logo and Title */}
@@ -79,7 +80,7 @@ const Register = () => {
               <div className="flex-1 flex flex-col justify-center">
                 <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
                   Unveiling Truth,<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-red-500">
                     One Case at a Time
                   </span>
                 </h2>
@@ -126,7 +127,7 @@ const Register = () => {
               
               {/* Mobile Logo */}
               <div className="md:hidden flex items-center space-x-3 mb-8">
-                <div className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl">
+                <div className="p-2 bg-linear-to-br from-blue-600 to-purple-600 rounded-xl">
                   <Scale className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -223,7 +224,7 @@ const Register = () => {
                 {/* Specialization */}
                 <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Specialization
+                    Specialization/Role
                   </label>
                   <div className="relative">
                     <Microscope className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10" />
@@ -234,7 +235,7 @@ const Register = () => {
                       className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white"
                       required
                     >
-                      <option value="">Select specialization</option>
+                      <option value="">Select specialization/role</option>
                       {specializations.map((spec) => (
                         <option key={spec} value={spec}>{spec}</option>
                       ))}
@@ -306,7 +307,7 @@ const Register = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:ring-4 focus:ring-blue-500/50"
+                  className="w-full py-4 px-6 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:ring-4 focus:ring-blue-500/50"
                 >
                   Register for Forensic Patrika
                 </button>
@@ -314,7 +315,7 @@ const Register = () => {
                 {/* Login Link */}
                 <p className="text-center text-gray-600 text-sm">
                   Already have an account?{' '}
-                  <a href="#" className="text-blue-600 font-semibold hover:underline">
+                  <a href="/login" className="text-blue-600 font-semibold hover:underline">
                     Sign in
                   </a>
                 </p>

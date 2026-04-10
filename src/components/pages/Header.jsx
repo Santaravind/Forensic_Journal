@@ -12,7 +12,7 @@ function Header() {
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between lg:gap-4 md:gap-0.5">
       
       {/* Left Content */}
-      <h2 className="text-xl md:text-2xl  font-serif md:m-1 text-white text-center md:text-left">
+      <h2 className="text-[16px] md:text-2xl  font-serif md:m-1 text-white text-center md:text-left">
         We'd appreciate your feedback.{" "}
         <span className="text-yellow-300 font-bold">
           Tell us what you think!
@@ -21,12 +21,12 @@ function Header() {
   
       {/* Contact Info */}
       <div className="flex flex-col sm:flex-row items-center lg:gap-2 md:gap-0.5 text-white">
-        <p className="flex items-center gap-2 text-lg">
+        <p className="flex items-center gap-2 text-lg md:text-[16px]">
           <FaPhoneAlt  className="text-yellow-300" />
           <span>+91-8957445211</span>
         </p>
   
-        <p className="flex items-center gap-2 text-lg">
+        <p className="flex items-center gap-2 text-lg md:text-[16px]">
           <MdMarkEmailRead className="text-yellow-300" />
           <span>f.patrika.india@gmail.com</span>
         </p>

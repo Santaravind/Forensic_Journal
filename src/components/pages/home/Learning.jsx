@@ -106,15 +106,17 @@
 
 
 import React, { useState } from "react";
+import learning from '../../assets/Learn.jpeg'
+import learn from '../../assets/Learnguid.jpeg'
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
 
 const data = {
   "Forensic Science": [
-    { title: "Forensic Assignment", img: "/navpic.jpg", desc: "Detailed analysis of evidence." },
-    { title: "Biosensors Intro", img: "https://via.placeholder.com/150", desc: "Basics of biological sensors." },
-    { title: "Arduino Coding", img: "https://via.placeholder.com/150", desc: "Embedded systems for labs." },
-    { title: "Crime Analysis", img: "https://via.placeholder.com/150", desc: "Pattern recognition in crimes." }
+    { title: "Forensic Assignment", img: learning, desc: "Detailed analysis of evidence." },
+    { title: "Biosensors Intro", img: learn, desc: "Basics of biological sensors." },
+    { title: "Arduino Coding", img: learn, desc: "Embedded systems for labs." },
+    { title: "Crime Analysis", img: learning, desc: "Pattern recognition in crimes." }
   ],
   "Serology": [
     { title: "Blood Analysis", img: "https://via.placeholder.com/150", desc: "Study of bodily fluids." },
@@ -142,7 +144,7 @@ export default function LearningResources() {
   return (
     <div className="flex h-screen bg-slate-50 font-sans text-slate-900">
       
-      {/* 🔹 Sidebar: Sleek & Sticky */}
+      {/*  Sidebar: Sleek & Sticky */}
       <div className="w-1/4 bg-white border-r border-slate-200 p-6 shadow-[4px_0_24px_rgba(0,0,0,0.02)] overflow-y-auto">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">F</div>
@@ -189,7 +191,7 @@ export default function LearningResources() {
         </nav>
       </div>
 
-      {/* 🔹 Content Area: Clean & Spacious */}
+      {/*  Content Area: Clean & Spacious */}
       <div className="w-3/4 p-10 overflow-y-auto">
         <header className="mb-10 flex justify-between items-end">
           <div>
@@ -213,7 +215,7 @@ export default function LearningResources() {
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">Explore Module</span>
                   </div>
                 </div>

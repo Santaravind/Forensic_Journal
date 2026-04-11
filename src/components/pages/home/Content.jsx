@@ -49,7 +49,8 @@ import { FaAddressBook } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
 
 import Publicus from "./Publicus";
-import Case from "./Case.jsx"
+import Case from "./Case.jsx";
+import Learning from "./Learning.jsx";
 
 function Content() {
   // 1. State to track the active section
@@ -71,7 +72,7 @@ function Content() {
       case "Publish With Us":
         return <Publicus/>;
       case "Learning Resources":
-        return <div> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae unde molestiae nobis, odit voluptatem rerum tempore sint, voluptatum inventore et molestias reiciendis minima iusto libero obcaecati, deserunt impedit deleniti fuga?</div>;
+        return <Learning/>
       default:
         return (
           <div className="p-10 text-center font-serif text-gray-500">

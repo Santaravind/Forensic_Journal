@@ -284,7 +284,7 @@ export default function LearningResources() {
                     </button>
 
                     {/* Center: Price (Styled as a label, not a button) */}
-                    <span className="text-sm font-extrabold text-slate-800 hover:cursor-alias hover:bg-gradient-to-r from-red-400 to-pink-600  rounded-full   p-2 hover:text-[14px] hover:text-blue-600">
+                    <span className="text-sm font-extrabold text-slate-800 hover:cursor-alias hover:bg-gradient-to-r from-red-400 to-pink-600  rounded-full  font-serif   p-2 hover:text-[14px] hover:text-blue-600">
                       Price {item.price}
                     </span>
 

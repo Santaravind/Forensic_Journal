@@ -109,15 +109,20 @@ import React, { useState } from "react";
 import learning from '../../assets/Learn.jpeg'
 import learn from '../../assets/Learnguid.jpeg'
 import bio from '../../assets/bio.jpeg'
+import learn2 from '../../assets/learn2.jpeg'
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
 
 const data = {
   "Forensic Science": [
-    { title: "Forensic Assignment", img: learn, desc: "Detailed analysis of evidence." },
-    { title: "Biosensors Intro", img: bio, desc: "Basics of biological sensors." },
-    { title: "Arduino Coding", img: learning, desc: "Embedded systems for labs." },
-    { title: "Crime Analysis", img: learning, desc: "Pattern recognition in crimes." }
+    { title: "Forensic Patrika", img: learn2,price: 100, 
+      originalPrice: 399 , desc: "Detailed analysis of evidence." },
+    { title: "Biosensors Intro", img: bio,price: 150, 
+      originalPrice: 399 , desc: "Basics of biological sensors." },
+    { title: "Arduino Coding", img: learning,price: 200, 
+      originalPrice: 399 , desc: "Embedded systems for labs." },
+    { title: "Crime Analysis", img: learning,price: 200, 
+      originalPrice: 399 , desc: "Pattern recognition in crimes." }
   ],
   "Serology": [
     { title: "Blood Analysis", img: "https://via.placeholder.com/150", desc: "Study of bodily fluids." },
@@ -235,37 +240,52 @@ export default function LearningResources() {
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{item.title}</h3>
-                  <p className="mt-2 text-sm text-slate-500 line-clamp-2">This is a professional description for the {item.title} module.</p>
-                  
-                 
-                  {/* <div className="mt-6 flex items-center justify-between">
-                    <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 group/btn hover:translate-x-1 transition-transform">
-                      View Details <span>→</span>
-                    </button>
-                    <div className="flex -space-x-2">
-                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-200" />
-                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-300" />
-                    </div>
-                  </div> */}
-<div className="mt-6 flex items-center justify-between">
-  
-  {/* Left side → View Details */}
-  <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
-    View Details <span>→</span>
-  </button>
+                <div className="p-5">
 
-  {/* Right side → Buy Now */}
-  <button className="text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow hover:scale-105 transition">
-    BUY NOW
-  </button>
+  {/* Title */}
+  <h3 className="text-base font-semibold text-slate-800 group-hover:text-indigo-600 transition">
+    {item.title}
+  </h3>
+
+  {/* 🔹 Price Section */}
+  <div className="mt-2 flex items-center gap-2">
+    
+    {/* Current Price */}
+    <span className="text-lg font-bold text-slate-900">
+      ₹{item.price}
+    </span>
+
+    {/* Original Price */}
+    <span className="text-sm text-slate-400 line-through">
+      ₹{item.originalPrice}
+    </span>
+
+    {/* Discount */}
+    <span className="text-xs font-semibold text-green-600">
+      {Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}% OFF
+    </span>
+    
+  </div>
+
+  {/* 🔹 Buttons */}
+  <div className="mt-4 flex items-center justify-between">
+    
+    {/* View Details */}
+    <button className="text-sm font-semibold text-indigo-600 hover:translate-x-1 transition">
+      View Details →
+    </button>
+
+    {/* Buy Now */}
+    <button className="text-xs font-bold bg-red-500 text-white px-3 py-1 rounded-full hover:bg-red-600 transition">
+      BUY NOW
+    </button>
+
+  </div>
 
 </div>
 
 
 
-                </div>
               </div>
             ))}
           </div>

@@ -108,14 +108,15 @@
 import React, { useState } from "react";
 import learning from '../../assets/Learn.jpeg'
 import learn from '../../assets/Learnguid.jpeg'
+import bio from '../../assets/bio.jpeg'
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
 
 const data = {
   "Forensic Science": [
-    { title: "Forensic Assignment", img: learning, desc: "Detailed analysis of evidence." },
-    { title: "Biosensors Intro", img: learn, desc: "Basics of biological sensors." },
-    { title: "Arduino Coding", img: learn, desc: "Embedded systems for labs." },
+    { title: "Forensic Assignment", img: learn, desc: "Detailed analysis of evidence." },
+    { title: "Biosensors Intro", img: bio, desc: "Basics of biological sensors." },
+    { title: "Arduino Coding", img: learning, desc: "Embedded systems for labs." },
     { title: "Crime Analysis", img: learning, desc: "Pattern recognition in crimes." }
   ],
   "Serology": [
@@ -148,7 +149,7 @@ export default function LearningResources() {
       <div className="w-1/4 bg-white border-r border-slate-200 p-6 shadow-[4px_0_24px_rgba(0,0,0,0.02)] overflow-y-auto">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">F</div>
-          <h2 className="text-xl font-extrabold tracking-tight text-slate-800">Forensic<span className="text-indigo-600">Hub</span></h2>
+          <h2 className="text-xl font-extrabold tracking-tight text-slate-800">Forensic<span className="text-indigo-600">Patrika</span></h2>
         </div>
 
         <nav className="space-y-1">
@@ -210,11 +211,25 @@ export default function LearningResources() {
               >
                 {/* Image Container */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  {/* <img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                  /> */}
+                   {/* 🔹 Blurred Background (fills space) */}
+  <img
+    src={item.img}
+    alt=""
+    className="absolute inset-0 w-full h-full object-cover blur-lg scale-110"
+  />
+                  {/* 🔹 Main Image (full visible) */}
+  <img
+    src={item.img}
+    alt={item.title}
+    className="relative w-full h-full object-contain"
+  />
+
+                  
                   <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">Explore Module</span>
                   </div>
@@ -224,7 +239,8 @@ export default function LearningResources() {
                   <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{item.title}</h3>
                   <p className="mt-2 text-sm text-slate-500 line-clamp-2">This is a professional description for the {item.title} module.</p>
                   
-                  <div className="mt-6 flex items-center justify-between">
+                 
+                  {/* <div className="mt-6 flex items-center justify-between">
                     <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 group/btn hover:translate-x-1 transition-transform">
                       View Details <span>→</span>
                     </button>
@@ -232,7 +248,23 @@ export default function LearningResources() {
                       <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-200" />
                       <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-300" />
                     </div>
-                  </div>
+                  </div> */}
+<div className="mt-6 flex items-center justify-between">
+  
+  {/* Left side → View Details */}
+  <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
+    View Details <span>→</span>
+  </button>
+
+  {/* Right side → Buy Now */}
+  <button className="text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow hover:scale-105 transition">
+    BUY NOW
+  </button>
+
+</div>
+
+
+
                 </div>
               </div>
             ))}

@@ -1,4 +1,3 @@
-
 // import React, { useState } from "react";
 // // ✅ Simple data (NO subcategory nesting)
 // const data = {
@@ -103,38 +102,64 @@
 //   );
 // }
 
-
-
 import React, { useState } from "react";
-import learning from '../../assets/Learn.jpeg'
-import learn from '../../assets/Learnguid.jpeg'
-import bio from '../../assets/bio.jpeg'
+import learning from "../../assets/Learn.jpeg";
+import learn from "../../assets/Learnguid.jpeg";
+import bio from "../../assets/bio.jpeg";
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
 
 const data = {
   "Forensic Science": [
-    { title: "Forensic Assignment", img: learn, desc: "Detailed analysis of evidence." },
-    { title: "Biosensors Intro", img: bio, desc: "Basics of biological sensors." },
-    { title: "Arduino Coding", img: learning, desc: "Embedded systems for labs." },
-    { title: "Crime Analysis", img: learning, desc: "Pattern recognition in crimes." }
+    {
+      title: "Forensic Assignment",
+      img: learn,
+      desc: "Detailed analysis of evidence.",
+    },
+    {
+      title: "Biosensors Intro",
+      img: bio,
+      desc: "Basics of biological sensors.",
+    },
+    {
+      title: "Arduino Coding",
+      img: learning,
+      desc: "Embedded systems for labs.",
+    },
+    {
+      title: "Crime Analysis",
+      img: learning,
+      desc: "Pattern recognition in crimes.",
+    },
   ],
-  "Serology": [
-    { title: "Blood Analysis", img: "https://via.placeholder.com/150", desc: "Study of bodily fluids." },
-    { title: "DNA Basics", img: "https://via.placeholder.com/150", desc: "Genetic identification." }
+  Serology: [
+    {
+      title: "Blood Analysis",
+      img: "https://via.placeholder.com/150",
+      desc: "Study of bodily fluids.",
+    },
+    {
+      title: "DNA Basics",
+      img: "https://via.placeholder.com/150",
+      desc: "Genetic identification.",
+    },
   ],
-  "Toxicology": [
-    { title: "Poison Study", img: "https://via.placeholder.com/150", desc: "Chemical substance effects." }
+  Toxicology: [
+    {
+      title: "Poison Study",
+      img: "https://via.placeholder.com/150",
+      desc: "Chemical substance effects.",
+    },
   ],
-  "Ballistics": [],
-  "Fingerprint": [],
-  "Biosensors": [],
+  Ballistics: [],
+  Fingerprint: [],
+  Biosensors: [],
   "Cyber Forensics": [],
-  "Anthropology": [],
-  "Genetics": [],
+  Anthropology: [],
+  Genetics: [],
   "Case Study": [],
   "Crime Investigation": [],
-  "Other": []
+  Other: [],
 };
 
 export default function LearningResources() {
@@ -144,12 +169,15 @@ export default function LearningResources() {
 
   return (
     <div className="flex h-screen bg-slate-50 font-sans text-slate-900">
-      
       {/*  Sidebar: Sleek & Sticky */}
       <div className="w-1/4 bg-white border-r border-slate-200 p-6 shadow-[4px_0_24px_rgba(0,0,0,0.02)] overflow-y-auto">
         <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">F</div>
-          <h2 className="text-xl font-extrabold tracking-tight text-slate-800">Forensic<span className="text-indigo-600">Patrika</span></h2>
+          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+            F
+          </div>
+          <h2 className="text-xl font-extrabold tracking-tight text-slate-800">
+            Forensic<span className="text-indigo-600">Patrika</span>
+          </h2>
         </div>
 
         <nav className="space-y-1">
@@ -167,8 +195,14 @@ export default function LearningResources() {
                     : "bg-transparent border-transparent hover:bg-slate-100 text-slate-600"
                 }`}
               >
-                <span className={`font-semibold text-[15px] ${selected === cat ? 'scale-105' : ''}`}>{cat}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-full ${selected === cat ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
+                <span
+                  className={`font-semibold text-[15px] ${selected === cat ? "scale-105" : ""}`}
+                >
+                  {cat}
+                </span>
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full ${selected === cat ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-400 group-hover:bg-slate-200"}`}
+                >
                   {data[cat].length}
                 </span>
               </div>
@@ -196,83 +230,68 @@ export default function LearningResources() {
       <div className="w-3/4 p-10 overflow-y-auto">
         <header className="mb-10 flex justify-between items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-500 mb-1">Resource Library</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-500 mb-1">
+              Resource Library
+            </p>
             <h1 className="text-4xl font-black text-slate-900">{selected}</h1>
           </div>
-          <div className="text-slate-400 text-sm italic">Showing {data[selected]?.length || 0} resources</div>
+          <div className="text-slate-400 text-sm italic">
+            Showing {data[selected]?.length || 0} resources
+          </div>
         </header>
 
         {data[selected]?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data[selected].map((item, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 transform hover:-translate-y-2"
               >
                 {/* Image Container */}
-                <div className="relative h-48 overflow-hidden">
-                  {/* <img
+                <div className="relative h-56 overflow-hidden">
+                  {/* 🔹 Main Image (full visible) */}
+                  <img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
-                  /> */}
-                   {/* 🔹 Blurred Background (fills space) */}
-  <img
-    src={item.img}
-    alt=""
-    className="absolute inset-0 w-full h-full object-cover blur-lg scale-110"
-  />
-                  {/* 🔹 Main Image (full visible) */}
-  <img
-    src={item.img}
-    alt={item.title}
-    className="relative w-full h-full object-contain"
-  />
+                    className="relative w-full h-full object-contain "
+                  />
 
-                  
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  {/* <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">Explore Module</span>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{item.title}</h3>
-                  <p className="mt-2 text-sm text-slate-500 line-clamp-2">This is a professional description for the {item.title} module.</p>
-                  
+                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-500 line-clamp-2">
+                    This is a professional description for the {item.title}{" "}
+                    module.
+                  </p>
+
                  
-                  {/* <div className="mt-6 flex items-center justify-between">
-                    <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 group/btn hover:translate-x-1 transition-transform">
+                  <div className="mt-6 flex items-center justify-between">
+                    {/* Left side → View Details */}
+                    <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
                       View Details <span>→</span>
                     </button>
-                    <div className="flex -space-x-2">
-                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-200" />
-                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-300" />
-                    </div>
-                  </div> */}
-<div className="mt-6 flex items-center justify-between">
-  
-  {/* Left side → View Details */}
-  <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
-    View Details <span>→</span>
-  </button>
 
-  {/* Right side → Buy Now */}
-  <button className="text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow hover:scale-105 transition">
-    BUY NOW
-  </button>
-
-</div>
-
-
-
+                    {/* Right side → Buy Now */}
+                    <button className="text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow hover:scale-105 transition">
+                      BUY NOW
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed border-slate-200 rounded-3xl">
-             <div className="text-slate-300 text-5xl mb-4">📭</div>
-             <p className="text-slate-400 font-medium">No resources found in this category.</p>
+            <div className="text-slate-300 text-5xl mb-4">📭</div>
+            <p className="text-slate-400 font-medium">
+              No resources found in this category.
+            </p>
           </div>
         )}
       </div>

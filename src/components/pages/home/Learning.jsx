@@ -115,21 +115,25 @@ const data = {
       title: "Forensic Assignment",
       img: learn,
       desc: "Detailed analysis of evidence.",
+      price: "₹499",
     },
     {
       title: "Biosensors Intro",
       img: bio,
       desc: "Basics of biological sensors.",
+      price: "₹499",
     },
     {
       title: "Arduino Coding",
       img: learning,
       desc: "Embedded systems for labs.",
+      price: "₹499",
     },
     {
       title: "Crime Analysis",
       img: learning,
       desc: "Pattern recognition in crimes.",
+      price: "₹499",
     },
   ],
   Serology: [
@@ -137,11 +141,13 @@ const data = {
       title: "Blood Analysis",
       img: "https://via.placeholder.com/150",
       desc: "Study of bodily fluids.",
+      price: "₹499",
     },
     {
       title: "DNA Basics",
       img: "https://via.placeholder.com/150",
       desc: "Genetic identification.",
+      price: "₹499",
     },
   ],
   Toxicology: [
@@ -149,6 +155,7 @@ const data = {
       title: "Poison Study",
       img: "https://via.placeholder.com/150",
       desc: "Chemical substance effects.",
+      price: "₹499",
     },
   ],
   Ballistics: [],
@@ -270,15 +277,19 @@ export default function LearningResources() {
                     module.
                   </p>
 
-                 
-                  <div className="mt-6 flex items-center justify-between">
-                    {/* Left side → View Details */}
-                    <button className="text-sm font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
-                      View Details <span>→</span>
+                  <div className="mt-6 flex items-center justify-between border-t pt-4 gap-2">
+                    {/* Left: View Details */}
+                    <button className="text-[12px] font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
+                      View Details
                     </button>
 
-                    {/* Right side → Buy Now */}
-                    <button className="text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow hover:scale-105 transition">
+                    {/* Center: Price (Styled as a label, not a button) */}
+                    <span className="text-sm font-extrabold text-slate-800 hover:cursor-alias hover:bg-gradient-to-r from-red-400 to-pink-600  rounded-full   p-2 hover:text-[14px] hover:text-blue-600">
+                      Price {item.price}
+                    </span>
+
+                    {/* Right: Buy Now */}
+                    <button className="text-[12px] font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-1.5 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition">
                       BUY NOW
                     </button>
                   </div>

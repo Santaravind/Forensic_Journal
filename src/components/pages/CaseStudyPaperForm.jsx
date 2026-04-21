@@ -1,6 +1,4 @@
 
-
-// export default ResearchPaperForm;
 import React, { useState } from 'react';
 import { 
   FaUser, 
@@ -18,7 +16,7 @@ import {
 } from 'react-icons/fa';
 import {toast } from 'react-hot-toast'
 
-const ResearchPaperForm = () => {
+const CaseStudyPaperForm = () => {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -95,7 +93,7 @@ const ResearchPaperForm = () => {
   });
 
   const researchAreas = [
-     "Serology",
+      "Serology",
   "Toxicology",
   "Ballistics",
   "Genetics",
@@ -327,14 +325,14 @@ const ResearchPaperForm = () => {
     <div className="space-y-6">
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h3 className="text-lg font-semibold text-blue-800 mb-2 flex items-center">
-          <FaFileAlt className="mr-2" />
-          Important Instructions
-        </h3>
-        <p className="text-purple-700">
-          Fill in all the required details properly. 
-          The Next process will be  based on the information you provide. 
-          Make sure your 1st Author email and mobile number are active, as notifications will be sent there.
-        </p>
+                 <FaFileAlt className="mr-2" />
+                 Important Instructions
+               </h3>
+               <p className="text-purple-700">
+                 Fill in all the required details properly. 
+                 The Next process will be  based on the information you provide. 
+                 Make sure your 1st Author email and mobile number are active, as notifications will be sent there.
+               </p>
       </div>
 
       <div className="space-y-4">
@@ -505,13 +503,14 @@ const ResearchPaperForm = () => {
             name="authorCategory"
             value={formData.authorCategory}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-4 py-2 border font-semibold border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             required
           >
             <option value="">Please select author category</option>
             <option value="student">Student</option>
             <option value="researcher">Researcher</option>
             <option value="professor">Professor</option>
+            <option value="Media_Personnel">Media Personnel </option>
             <option value="industry_professional">Industry Professional</option>
             <option value="other">Other</option>
           </select>
@@ -980,7 +979,7 @@ const ResearchPaperForm = () => {
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="bg-linear-to-r from-blue-600 to-indigo-700 p-6 text-white">
-            <h1 className="text-3xl font-bold text-center">Paper Submission Form</h1>
+            <h1 className="text-3xl font-bold text-center">Case Study Submission </h1>
             <p className="mt-2 opacity-90 text-center text-2xl">Forensic Patrika(A Journal of Forensic Science)</p>
           </div>
 
@@ -1049,4 +1048,5 @@ const ResearchPaperForm = () => {
   );
 };
 
-export default ResearchPaperForm;
+
+export default CaseStudyPaperForm

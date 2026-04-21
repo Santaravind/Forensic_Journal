@@ -104,7 +104,8 @@
 
 import React, { useState } from "react";
 import learning from "../../assets/Learn.jpeg";
-import learn from "../../assets/Learnguid.jpeg";
+// import learn from "../../assets/Learnguid.jpeg";
+import learn from "../../assets/newimage.jpeg";
 import bio from "../../assets/bio.jpeg";
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
@@ -248,7 +249,7 @@ export default function LearningResources() {
         </header>
 
         {data[selected]?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {data[selected].map((item, index) => (
               <div
                 key={index}
@@ -277,22 +278,48 @@ export default function LearningResources() {
                     module.
                   </p>
 
-                  <div className="mt-6 flex items-center justify-between border-t pt-4 gap-2">
-                    {/* Left: View Details */}
-                    <button className="text-[12px] font-bold text-indigo-600 flex items-center gap-1 hover:translate-x-1 transition-transform">
-                      View Details
-                    </button>
+                   
+                  <div className="mt-6 border-t pt-4">
+  {/* Price and Discount Section */}
+   <div className="p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
 
-                    {/* Center: Price (Styled as a label, not a button) */}
-                    <span className="text-sm font-extrabold text-slate-800 hover:cursor-alias hover:bg-gradient-to-r from-red-400 to-pink-600  rounded-full  font-serif   p-2 hover:text-[14px] hover:text-blue-600">
-                      Price {item.price}
-                    </span>
+  {/* Price Section */}
+  <div className="flex items-center gap-3 mb-3">
+    <span className="text-2xl font-bold text-slate-900">
+      {item.price}
+    </span>
 
-                    {/* Right: Buy Now */}
-                    <button className="text-[12px] font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-1.5 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition">
-                      BUY NOW
-                    </button>
-                  </div>
+    {/* <span className="text-sm text-slate-400 line-through">
+      ₹{(item.price * 2).toFixed(0)}
+    </span> */}
+
+    <span className="ml-auto bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+      50% OFF
+    </span>
+  </div>
+
+  {/* Divider */}
+  <div className="h-px bg-slate-100 mb-4"></div>
+
+  {/* Action Buttons */}
+  <div className="flex items-center justify-between">
+
+    {/* View Details */}
+    <button className="text-sm font-medium text-slate-500 hover:text-indigo-600 transition flex items-center gap-1">
+      View Details
+      <span className="transition-transform duration-200 group-hover:translate-x-1">
+        →
+      </span>
+    </button>
+
+    {/* Buy Now */}
+    <button className="relative px-5 py-2 text-sm font-semibold text-white rounded-xl bg-linear-to-r from-indigo-600 to-blue-600 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200">
+      BUY NOW
+    </button>
+
+  </div>
+</div>
+</div>
                 </div>
               </div>
             ))}

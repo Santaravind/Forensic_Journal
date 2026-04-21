@@ -51,6 +51,7 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import Publicus from "./Publicus";
 import Case from "./Case.jsx";
 import Learning from "./Learning.jsx";
+import CaseStudyPaperForm from '../CaseStudyPaperForm.jsx'
 
 function Content() {
   // 1. State to track the active section
@@ -68,7 +69,7 @@ function Content() {
   const renderActiveContent = () => {
     switch (activeTab) {
       case "Case Study":
-        return <Case/>
+        return <CaseStudyPaperForm/>
       case "Publish With Us":
         return <Publicus/>;
       case "Learning Resources":
@@ -91,7 +92,7 @@ function Content() {
             key={index}
             onClick={() => setActiveTab(item.label)}
             className={`
-              flex items-center gap-3 px-6 py-3 font-serif transition-all duration-300
+              flex items-center gap-3 px-6 py-3 font-serif transition-all duration-300 hover:cursor-pointer
               ${activeTab === item.label 
                 ? "bg-blue-900 text-white shadow-md transform -translate-y-1" 
                 : "bg-stone-50 text-blue-900 hover:bg-stone-100 border border-stone-200"
@@ -110,9 +111,9 @@ function Content() {
 
       {/* DYNAMIC CONTENT AREA */}
       <div className="bg-white min-h-100 border border-gray-100 shadow-sm rounded-sm p-4 mt-3">
-         <div className="border-b-4 border-black/40 text-4xl  mt-3.5">
+         {/* <div className="border-b-4 border-black/40 text-4xl  mt-3.5">
         <h1 className=" uppercase font-serif " >Recent</h1>
-      </div>
+      </div> */}
         {renderActiveContent()}
       </div>
     </div>

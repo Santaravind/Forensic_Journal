@@ -22,7 +22,7 @@ const CaseStudyPaperForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     // Paper Details
-    paperTitle: '',
+    caseTitle: '',
     researchArea: '',
     countryCode: '',
     mobileNumber:'',
@@ -273,13 +273,13 @@ const CaseStudyPaperForm = () => {
   const nextStep = () => {
     if (validateForm()) {
       setStep(step + 1);
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }
   };
 
   const prevStep = () => {
     setStep(step - 1);
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   };
 
   const goToHome = () => {
@@ -289,7 +289,7 @@ const CaseStudyPaperForm = () => {
 
   const renderStepIndicator = () => {
     const steps = [
-      { number: 1, icon: <FaFileAlt />, label: 'Paper Details' },
+      { number: 1, icon: <FaFileAlt />, label: 'Case Details' },
       { number: 2, icon: <FaUser />, label: 'Author Details' },
       { number: 3, icon: <FaAddressCard />, label: 'Address' }
     ];
@@ -338,7 +338,7 @@ const CaseStudyPaperForm = () => {
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Paper Title <span className="text-red-500">*</span>
+            Case Title <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -353,7 +353,7 @@ const CaseStudyPaperForm = () => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Research Area <span className="text-red-500">*</span>
+            Case Domain <span className="text-red-500">*</span>
           </label>
           <select
             name="researchArea"
@@ -426,7 +426,7 @@ const CaseStudyPaperForm = () => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Abstract <span className="text-red-500">*</span>
+            Case Manuscript <span className="text-red-500">*</span>
           </label>
           <textarea
             name="abstract"
@@ -441,7 +441,7 @@ const CaseStudyPaperForm = () => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Keywords
+            References
           </label>
           <input
             type="text"
@@ -455,7 +455,7 @@ const CaseStudyPaperForm = () => {
 
          <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Upload Paper <span className="text-red-500">*</span>
+            Upload Case Study <span className="text-red-500">*</span>
           </label>
           <div className="mt-1 flex items-center">
             <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
@@ -866,7 +866,7 @@ const CaseStudyPaperForm = () => {
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <span className="font-medium text-gray-700 w-40">Paper Title:</span>
+                  <span className="font-medium text-gray-700 w-40">Case Title:</span>
                   <span className="text-gray-800">{formData.paperTitle}</span>
                 </div>
                 <div className="flex items-center">

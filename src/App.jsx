@@ -25,6 +25,7 @@ import Open from './components/pages/guidline/Open';
 import Plagiarism from './components/pages/guidline/Plagiarism';
 import Privacy from './components/pages/guidline/Privacy';
 import Register from './components/auth/Register';
+import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/reserchform' element={<ResearchPaperForm/>}/>
+      <Route path='/caseStudyForm' element={<CaseStudyPaperForm/>}/>
       </Routes>
       <Footer/>
 

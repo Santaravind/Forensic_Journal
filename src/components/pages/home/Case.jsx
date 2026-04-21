@@ -2,15 +2,31 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logos.png";
 const categories = [
-  "Student",
-  "Researcher",
-  "Media Personnel",
-  "Professor",
-  "Others",
+  // "Student",
+  // "Researcher",
+  // "Media Personnel",
+  // "Professor",
+  // "Others",
+  "Serology",
+  "Toxicology",
+  "Ballistics",
+  "Genetics",
+  "Fingerprint",
+  "Anthropology",
+  "Cyber Forensics",
+  "Others"
 ];
 
 function Case() {
   const navigate = useNavigate();
+
+  const navi=(e)=>{
+    e.preventDefault();
+    navigate("/caseStudyForm");
+    window.scrollTo(0, 0);
+    // () => navigate("/caseStudyForm")
+
+  }
 
   return (
     <div className="min-h-screen bg-[#FCFCFC] px-6 py-12 font-serif text-slate-900">
@@ -19,14 +35,14 @@ function Case() {
         <img
           src={logo}
           alt="Patrika Logo"
-          className="w-24 h-24 md:w-32 md:h-32 object-contain grayscale hover:grayscale-0 transition duration-500"
+          className="w-24 h-24 md:w-32 md:h-32 object-contain hover:grayscale-0 transition duration-500"
         />
         <div className="text-center md:text-right">
           <h1 className="text-5xl font-black tracking-tighter italic text-slate-900">
             ARTICLE
           </h1>
-          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-slate-400 mt-1">
-            The Research Publication Portal
+          <p className="font-sans text-[14px] uppercase tracking-[0.3em] text-slate-400 mt-1">
+            The Case Study Publication Portal
           </p>
         </div>
       </header>
@@ -44,7 +60,7 @@ function Case() {
           {categories.map((cat, index) => (
             <button
               key={index}
-              onClick={() => navigate("/reserchform")}
+              onClick={navi}
               className="group relative h-40 flex flex-col items-center justify-center bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 hover:border-indigo-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:cursor-pointer"
             >
               {/* Subtle number indicator */}

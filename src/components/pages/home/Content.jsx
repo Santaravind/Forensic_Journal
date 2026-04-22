@@ -55,11 +55,12 @@ import CaseStudyPaperForm from '../CaseStudyPaperForm.jsx'
 
 function Content() {
   // 1. State to track the active section
-  const [activeTab, setActiveTab] = useState("Case Study");
+  const [activeTab, setActiveTab] = useState("Publish With Us");
 
   const btn = [
-     { icon: <BsFingerprint />, label: "Case Study" },
+     
     { icon: <LuNotebookPen />, label: "Publish With Us" },
+    { icon: <BsFingerprint />, label: "Case Study" },
     { icon: <FaAddressBook />, label: "Learning Resources" },
     { icon: <GoGoal />, label: "Achievement " },
     { icon: <FcMoneyTransfer />, label: "Donation" },
@@ -68,10 +69,11 @@ function Content() {
   // 2. Logic to render content based on selection
   const renderActiveContent = () => {
     switch (activeTab) {
+       case "Publish With Us":
+        return <Publicus/>;
       case "Case Study":
         return <CaseStudyPaperForm/>
-      case "Publish With Us":
-        return <Publicus/>;
+     
       case "Learning Resources":
         return <Learning/>
       default:

@@ -90,6 +90,12 @@ const handleGoogleLogin = (credentialResponse) => {
   navigate("/");
 };
 
+//orcid id login
+ const handleOrcID = (e) => {
+  e.preventDefault();
+  window.open("https://orcid.org/signin", "_blank");
+};
+
   
   
 
@@ -294,7 +300,13 @@ const handleGoogleLogin = (credentialResponse) => {
                     text="signin_with"
                   />
                 </div>
-
+           <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
+                <button onClick={handleOrcID} className="flex items-center gap-2 px-5 py-2.5 bg-[#A6CE39] hover:bg-[#95ba32] text-white font-medium rounded-md shadow-sm transition-colors duration-200 text-sm tracking-wide">
+             {/* Optional: Add ORCID Icon SVG here */}
+               <span className="w-4 h-4 bg-white text-[#A6CE39] rounded-full inline-flex items-center justify-center text-[10px] font-bold font-sans">iD</span>
+                 Continue with ORCID iD -
+                </button>
+          </div>
                 <p className="text-center text-gray-600 text-sm">
                   Don't have an account?{" "}
                   <a

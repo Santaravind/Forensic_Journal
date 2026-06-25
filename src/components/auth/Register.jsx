@@ -688,7 +688,11 @@ const Register = () => {
       localStorage.removeItem("user");
     }
   }, []);
-
+  
+  const handleOrcID = (e) => {
+  e.preventDefault();
+  window.open("https://orcid.org/signin", "_blank");
+};
   const handleChange = (e) =>
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -988,17 +992,14 @@ const Register = () => {
                   />
                 </div>
 
-            {/* <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
-                  <GoogleLogin
-                    onSuccess={handleGoogleRegister} 
-                    onError={handleGoogleError}
-                    theme="outline" 
-                    size="large" 
-                    shape="pill" 
-                    width="340" 
-                    text="signup_with"
-                  />
-                </div> */}
+           
+                 <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
+                <button onClick={handleOrcID} className="flex items-center gap-2 px-5 py-2.5 bg-[#A6CE39] hover:bg-[#95ba32] text-white font-medium rounded-md shadow-sm transition-colors duration-200 text-sm tracking-wide">
+    {/* Optional: Add ORCID Icon SVG here */}
+               <span className="w-4 h-4 bg-white text-[#A6CE39] rounded-full inline-flex items-center justify-center text-[10px] font-bold font-sans">iD</span>
+                 Continue with ORCID iD -
+                </button>
+          </div>
                 <p className="text-center text-slate-500 text-xs pt-2">
                   Already mapped in our system?{" "}
                   <a href="/login" className="text-blue-600 font-semibold hover:underline hover:text-blue-700 transition-colors">Sign in here</a>

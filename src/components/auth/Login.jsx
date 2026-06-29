@@ -18,9 +18,9 @@ import {
 import logos from "../assets/logoss.png";
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
-
+// author/ Reader , Editor, reviewer, publisher , Institute , Admin
 const ROLES = [
-  { id: "author", label: "Author", icon: User, color: "text-emerald-400" },
+  { id: "author/reader", label: "Author/Reader", icon: User, color: "text-emerald-400" },
   {
     id: "reviewer",
     label: "Reviewer",
@@ -34,7 +34,8 @@ const ROLES = [
     icon: FileText,
     color: "text-purple-400",
   },
-  { id: "reader", label: "Reader", icon: User, color: "text-slate-400" },
+  { id: "institute", label: "Institute", icon: User, color: "text-slate-400" },
+  { id: "admin", label: "Admin", icon:BookOpen, color: "text-slate-400" },
 ];
 
 export default function Login() {

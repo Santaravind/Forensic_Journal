@@ -821,10 +821,10 @@ const Register = () => {
 
             <div className="relative z-10 my-auto py-8">
               <h2 className="text-3xl font-bold text-white mb-3 tracking-tight leading-snug">
-                Welcome Promoting Scientific
+                Welcome 
                 <br />
-                <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-blue-400 via-indigo-300 to-purple-400">
-                  Excellence and Innovation in Forensic Research
+                <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-blue-400 via-indigo-300 to-purple-400">  
+              Promoting Scientific Excellence and Innovation in Forensic Research  
                 </span>
               </h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xs">

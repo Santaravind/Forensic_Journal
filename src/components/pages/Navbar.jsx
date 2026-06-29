@@ -147,8 +147,8 @@ export default function Navbar() {
   ];
 
   // Debug log to see if user is logged in
-  console.log('Is user logged in?', isLoggedIn);
-  console.log('User data:', user);
+  // console.log('Is user logged in?', isLoggedIn);
+  // console.log('User data:', user);
 
   return (
     <nav className="fixed top-0 z-50 w-full flex items-center justify-between px-4 mt-30 lg:mt-10 transition-transform duration-300 ease-in-out">

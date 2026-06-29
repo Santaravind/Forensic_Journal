@@ -821,10 +821,10 @@ const Register = () => {
 
             <div className="relative z-10 my-auto py-8">
               <h2 className="text-3xl font-bold text-white mb-3 tracking-tight leading-snug">
-                Unveiling Truth,
+                Welcome Promoting Scientific
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">
-                  One Case at a Time.
+                <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-blue-400 via-indigo-300 to-purple-400">
+                  Excellence and Innovation in Forensic Research
                 </span>
               </h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
@@ -890,7 +890,7 @@ const Register = () => {
             <div className="max-w-md w-full mx-auto">
               {/* Header Context */}
               <div className="mb-6">
-                <h3 className="text-3xl text-center font-bold mt-6 text-slate-900 tracking-tight">
+                <h3 className="text-3xl text-center font-bold mt-8 text-slate-900 tracking-tight">
                   Create Account
                 </h3>
                 <p className="text-slate-500 text-sm mt-1">

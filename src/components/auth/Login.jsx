@@ -140,9 +140,9 @@ const handleGoogleLogin = (credentialResponse) => {
 
               <div className="space-y-6 font-serif">
                 <h2 className="text-3xl font-bold text-white leading-tight">
-                  Welcome Back Advancing  <br />
+                   Advancing Forensic Science  <br />
                   <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-yellow-400 to-red-500">
-                    Forensic Science Research : Explore, Learn, Discover
+              Research : Explore, Learn, Discover
                   </span>
                 </h2>
                 <p className="text-blue-100 opacity-80">

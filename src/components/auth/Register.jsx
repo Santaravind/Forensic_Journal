@@ -890,11 +890,11 @@ const Register = () => {
             <div className="max-w-md w-full mx-auto">
               {/* Header Context */}
               <div className="mb-6">
-                <h3 className="text-3xl text-center font-bold mt-8 text-slate-900 tracking-tight">
+                <h3 className="text-4xl text-center font-bold mt-8 text-slate-900 tracking-tight">
                   Create Account
                 </h3>
-                <p className="text-slate-500 text-sm mt-1">
-                  Get configured within the global investigator registry.
+                <p className="text-slate-500 text-sm mt-3">
+                  {/* Get configured within the global investigator registry. */}
                 </p>
               </div>
 

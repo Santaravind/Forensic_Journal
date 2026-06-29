@@ -356,7 +356,7 @@ const ResearchPaperForm = () => {
             Menu Scripts <span className="text-red-500">*</span>
           </label>
           <select
-            name="menuscript"
+            name="menuScript"
             value={formData.menuScript}
             onChange={menuScriptChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"

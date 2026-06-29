@@ -136,6 +136,13 @@ export default function Navbar() {
       ]
     },
     { to: "/publication", label: "Publication Procedure" },
+   { 
+      label: "Instuction",
+      submenu: [
+        { to: "/authorIn", label: "Author" },
+        
+      ],
+    },
     { to: "/blog", label: "Blog" },
   ];
 

@@ -26,6 +26,7 @@ import Plagiarism from './components/pages/guidline/Plagiarism';
 import Privacy from './components/pages/guidline/Privacy';
 import Register from './components/auth/Register';
 import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
+import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
@@ -55,7 +56,9 @@ function App() {
       <Route path='/open' element={<Open/>}/>
       <Route path='/plag' element={<Plagiarism/>}/>
       <Route path='/privacy' element={<Privacy/>}/>
-
+   
+   {/* instructions  */}
+   <Route path='/authorIn' element={<AuthorInsturctions/>}/>
 
 
       <Route path='/login' element={<Login/>}/>

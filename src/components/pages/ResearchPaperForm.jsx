@@ -24,6 +24,7 @@ const ResearchPaperForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     // Paper Details
+    menuScript:'',
     paperTitle: '',
     researchArea: '',
     countryCode: '',
@@ -104,6 +105,12 @@ const ResearchPaperForm = () => {
   "Cyber Forensics",  
   "Others",
   ];
+  const menuScript = [
+    'Original research paper',
+    'Review paper' ,
+    'Case study',
+     'Other'
+  ];
 
   const countryCodes = [
     { code: '+1', country: 'USA' },
@@ -133,6 +140,14 @@ const ResearchPaperForm = () => {
   ];
 
   const handleInputChange = (e) => {
+    const { name, value, type, checked, files } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : 
+              type === 'file' ? files[0] : value
+    }));
+  };
+  const menuScriptChange = (e) => {
     const { name, value, type, checked, files } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -336,6 +351,23 @@ const ResearchPaperForm = () => {
           Make sure your 1st Author email and mobile number are active, as notifications will be sent there.
         </p>
       </div>
+    <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Menu Scripts <span className="text-red-500">*</span>
+          </label>
+          <select
+            name="menuscript"
+            value={formData.menuScript}
+            onChange={menuScriptChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          >
+            <option value="">Please select your research area</option>
+            {menuScript.map(area => (
+              <option key={area} value={area}>{area}</option>
+            ))}
+          </select>
+        </div>
 
       <div className="space-y-4">
         <div>

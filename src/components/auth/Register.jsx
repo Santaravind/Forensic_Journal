@@ -1,32 +1,10 @@
+
+
+
 import { useEffect, useState } from "react";
-import {
-  FiUser,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiLock,
-  FiEye,
-  FiEyeOff,
-} from "react-icons/fi";
-import { GiFingerPrint, GiMicroscope, GiScales } from "react-icons/gi";
-import logos from "../assets/logoss.png";
-import { GoogleLogin } from "@react-oauth/google";
+import { Fingerprint, Microscope, Scale, FileText, Mail, Phone, MapPin, User, Lock, Eye, EyeOff } from 'lucide-react';
+import logos from '../assets/logoss.png'
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-
-const SPECIALIZATIONS = [
-  "Reader",
-  "Digital Forensics",
-  "Cyber Crime Investigation",
-  "Forensic Accounting",
-  "DNA Analysis",
-  "Toxicology",
-  "Ballistics",
-  "Fingerprint Analysis",
-  "Document Examination",
-  "Others",
-];
-
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -72,22 +50,8 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setStatus({ loading: false, error: "Passwords do not match." });
-      return;
-    }
-    setStatus({ loading: true, error: null });
-    setTimeout(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email: formData.email,
-          fullName: formData.fullName,
-          isGoogleUser: false,
-        }),
-      );
-      navigate("/");
-    }, 1500);
+    // Handle registration logic here
+    console.log('Form submitted:', formData);
   };
 
   const handleGoogleRegister = (credentialResponse) => {

@@ -28,6 +28,7 @@ import Privacy from './components/pages/guidline/Privacy';
 import Register from './components/auth/Register';
 import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
 import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
+import Review from './components/pages/Review';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (

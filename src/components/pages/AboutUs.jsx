@@ -35,7 +35,7 @@ const AboutUs = () => {
               and interdisciplinary studies.
             </p>
             <blockquote className="border-l-4 border-blue-900 pl-6 italic text-blue-900 font-medium my-8">
-              "A platform where student voices are valued, research is nurtured, and knowledge is disseminated responsibly."
+              “Curiosity is the first step for research, integrity is what takes it forward"
             </blockquote>
           </div>
 

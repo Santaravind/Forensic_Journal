@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   User,
@@ -12,11 +13,14 @@ import {
   Scale,
   Fingerprint,
   Microscope,
+  LogOut,
 } from "lucide-react";
-import logos from "../assets/logoss.png"; // Make sure the path is correct
-
+import logos from "../assets/logoss.png";
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { useNavigate } from "react-router-dom";
+// author/ Reader , Editor, reviewer, publisher , Institute , Admin
 const ROLES = [
-  { id: "author", label: "Author", icon: User, color: "text-emerald-400" },
+  { id: "author/reader", label: "Author/Reader", icon: User, color: "text-emerald-400" },
   {
     id: "reviewer",
     label: "Reviewer",
@@ -30,7 +34,8 @@ const ROLES = [
     icon: FileText,
     color: "text-purple-400",
   },
-  { id: "reader", label: "Reader", icon: User, color: "text-slate-400" },
+  { id: "institute", label: "Institute", icon: User, color: "text-slate-400" },
+  { id: "admin", label: "Admin", icon:BookOpen, color: "text-slate-400" },
 ];
 
 export default function Login() {
@@ -41,30 +46,68 @@ export default function Login() {
     error: null,
     success: false,
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     if (status.error) setStatus({ ...status, error: null });
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    if (!selectedRole) {
-      setStatus({ ...status, error: "Please select a professional role." });
-      return;
-    }
-    setStatus({ loading: true, error: null, success: false });
+ const handleLogin = async (e) => {
+  e.preventDefault();
+  if (!selectedRole) {
+    setStatus({ ...status, error: "Please select a professional role." });
+    return;
+  }
+  setStatus({ loading: true, error: null, success: false });
 
-    // Your Auth Logic Here
-    setTimeout(
-      () => setStatus({ loading: false, error: null, success: true }),
-      1500,
-    );
+  // Simulate login
+  setTimeout(() => {
+    setStatus({ loading: false, error: null, success: true });
+    // Store user info in localStorage with proper structure
+    const userData = { 
+      email: formData.email,
+      fullName: formData.email.split('@')[0], // Generate name from email
+      role: selectedRole,
+      isGoogleUser: false 
+    };
+    localStorage.setItem('user', JSON.stringify(userData));
+    console.log('User stored in localStorage:', userData); // Debug log
+    navigate("/");
+  }, 1500);
+};
+
+const handleGoogleLogin = (credentialResponse) => {
+  console.log("Google Login Success:", credentialResponse);
+  // Store user info in localStorage
+  const userData = { 
+    email: credentialResponse.email || 'google-user@email.com',
+    fullName: credentialResponse.name || 'Google User',
+    isGoogleUser: true,
+    googleId: credentialResponse.sub
+  };
+  localStorage.setItem('user', JSON.stringify(userData));
+  console.log('Google user stored in localStorage:', userData); // Debug log
+  navigate("/");
+};
+
+//orcid id login
+ const handleOrcID = (e) => {
+  e.preventDefault();
+  window.open("https://orcid.org/signin", "_blank");
+};
+
+  
+  
+
+  const handleGoogleError = () => {
+    console.log("Google Login Failed");
+    setStatus({ ...status, error: "Google login failed. Please try again." });
   };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center p-6 relative overflow-hidden font-sans">
-      {/* Animated Background Elements (Matching Register Page) */}
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -77,15 +120,15 @@ export default function Login() {
         <div className="absolute top-0 left-0 right-0 h-2 bg-linear-to-r from-yellow-400 via-red-500 to-purple-600"></div>
 
         <div className="grid md:grid-cols-2 gap-0 font-serif">
-          {/* Left Side - Branding (Matching Register Page) */}
+          {/* Left Side - Branding */}
           <div className="relative hidden md:block p-8 bg-linear-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm">
             <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="items-center space-x-3 mb-10 text-center">
-                <div className=" bg-white/10 rounded-2xl shadow-lg inline-block mb-2 border border-white/20 hover:border-0 hover:bg-white/5">
+                <div className="bg-white/10 rounded-2xl shadow-lg inline-block mb-2 border border-white/20 hover:border-0 hover:bg-white/5">
                   <img
                     src={logos}
                     alt="Logo"
-                    className="w-30 h-30 object-contain transition-all duration-300 ease-in-out hover:scale-125  "
+                    className="w-30 h-30 object-contain transition-all duration-300 ease-in-out hover:scale-125"
                   />
                 </div>
                 <h1 className="text-3xl font-bold text-white uppercase tracking-wider">
@@ -98,9 +141,9 @@ export default function Login() {
 
               <div className="space-y-6 font-serif">
                 <h2 className="text-3xl font-bold text-white leading-tight">
-                  Welcome Back to the <br />
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-red-500">
-                    Evidence Laboratory
+                   Advancing Forensic Science  <br />
+                  <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-yellow-400 to-red-500">
+              Research : Explore, Learn, Discover
                   </span>
                 </h2>
                 <p className="text-blue-100 opacity-80">
@@ -128,7 +171,6 @@ export default function Login() {
             <div className="max-w-md mx-auto">
               <div className="mb-8">
                 <h3 className="text-3xl font-bold text-center font-serif text-gray-800 mb-2">
-                  {" "}
                   Login
                 </h3>
                 <p className="text-gray-600 text-center">
@@ -237,6 +279,35 @@ export default function Login() {
                   {!status.loading && <ChevronRight size={18} />}
                 </button>
 
+                {/* Divider */}
+                <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-300"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                  </div>
+                </div>
+
+                {/* Google Login Button */}
+                <div className="flex justify-center">
+                  <GoogleLogin
+                    onSuccess={handleGoogleLogin}
+                    onError={handleGoogleError}
+                    theme="outline"
+                    size="large"
+                    shape="rectangular"
+                    width="100%"
+                    text="signin_with"
+                  />
+                </div>
+           <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
+                <button onClick={handleOrcID} className="flex items-center gap-2 px-5 py-2.5 bg-[#A6CE39] hover:bg-[#95ba32] text-white font-medium rounded-md shadow-sm transition-colors duration-200 text-sm tracking-wide">
+             {/* Optional: Add ORCID Icon SVG here */}
+               <span className="w-4 h-4 bg-white text-[#A6CE39] rounded-full inline-flex items-center justify-center text-[10px] font-bold font-sans">iD</span>
+                 Continue with ORCID iD -
+                </button>
+          </div>
                 <p className="text-center text-gray-600 text-sm">
                   Don't have an account?{" "}
                   <a

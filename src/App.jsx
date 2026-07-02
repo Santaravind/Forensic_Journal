@@ -57,7 +57,9 @@ function App() {
       <Route path='/open' element={<Open/>}/>
       <Route path='/plag' element={<Plagiarism/>}/>
       <Route path='/privacy' element={<Privacy/>}/>
-
+   
+   {/* instructions  */}
+   <Route path='/authorIn' element={<AuthorInsturctions/>}/>
 
         <Route path='/review' element={<Review/>}/>
       <Route path='/login' element={<Login/>}/>

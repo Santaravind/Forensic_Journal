@@ -168,6 +168,7 @@ const menuItems = [
   },
   { to: "/publication", label: "Publication Procedure" },
   { to: "/blog", label: "Blog" },
+  // { to: "/review", label: "Review" },
 ];
 
 
@@ -313,6 +314,13 @@ const menuItems = [
           >
             Register
           </NavLink>
+          <NavLink
+            to="/review"
+            className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+            onClick={() => setOpen(false)}
+          >
+            Review
+          </NavLink>
         </div>
       )}
     </div>
@@ -405,6 +413,13 @@ const menuItems = [
         className="block px-4 py-2 font-semibold hover:text-indigo-700"
       >
         Login
+      </NavLink>
+      <NavLink
+        to="/review"
+        onClick={closeMenu}
+        className="block px-4 py-2 font-semibold hover:text-indigo-700"
+      >
+        Review
       </NavLink>
     </div>
 

@@ -28,7 +28,7 @@ export default function Navbar() {
 
           <div>
             <h4 className="font-semibold">
-              Dr. Reviewer
+              Mr . Indresh
             </h4>
 
             <p className="text-sm text-gray-500">

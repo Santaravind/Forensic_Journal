@@ -1,23 +1,23 @@
 import React from 'react'
-import Sidebar from '../components/reviewerDashboard/Sidebar'
-import Navbar from '../components/reviewerDashboard/Navbar'
-import StatsSection from '../components/reviewerDashboard/StatsSection'
-import ReviewCalender from '../components/reviewerDashboard/ReviewCalender'
-import RecentActivity from '../components/reviewerDashboard/RecentActivity'
-import QuickActions from '../components/reviewerDashboard/QuickActions'
-import ManuscriptTable from '../components/reviewerDashboard/ManuscriptTable'
+import Sidebar from '../reviewerDashboard/Sidebar'
+import Navbar from '../reviewerDashboard/Navbar'
+import StatsSection from '../reviewerDashboard/StatsSection'
+import ReviewCalender from '../reviewerDashboard/ReviewCalender'
+import RecentActivity from '../reviewerDashboard/RecentActivity'
+import QuickActions from '../reviewerDashboard/QuickActions'
+import ManuscriptTable from '../reviewerDashboard/ManuscriptTable'
 
 function ReviewerDashboards() {
   return (<>
     <div className="h-screen flex bg-[#f7f8fc]">
-      <Sidebar />
+      <Sidebar/>
 
       <div className="flex-1 overflow-auto">
         <Navbar />
 
         <div className="p-6">
           <h1 className="text-4xl font-bold text-[#171c44]">
-            Welcome Back, Dr. Reviewer 👋
+            Welcome Back, Mr. Indresh 👋
           </h1>
 
           <p className="text-gray-500 mt-2">

@@ -2,6 +2,7 @@
 
 
 import { useState } from "react";
+import axios from "axios"
 import { Fingerprint, Microscope, Scale, FileText, Mail, Phone, MapPin, User, Lock, Eye, EyeOff } from 'lucide-react';
 import logos from '../assets/logoss.png'
 const Register = () => {
@@ -23,11 +24,35 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle registration logic here
-    console.log('Form submitted:', formData);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle registration logic here
+  //   console.log('Form submitted:', formData);
+  // };
+  const handleSubmit = async (e) => {
+
+  e.preventDefault();
+
+  try {
+
+    const response = await axios.post(
+      "http://localhost:3000/api/auth/register",
+      formData
+    );
+
+    console.log(response.data);
+
+    alert("Registration Successful");
+
+  } catch (error) {
+
+    console.log(error.response.data);
+
+    alert(error.response.data.message);
+
+  }
+
+}
 
   const specializations = [
     'Reader',

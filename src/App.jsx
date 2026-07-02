@@ -6,6 +6,7 @@ import AboutUs from './components/pages/AboutUs';
 import EditorialTeam from './components/pages/EditorialTeam';
 
 
+
 import Publication from './components/pages/Publication';
 
 import Login from './components/auth/Login';
@@ -26,7 +27,7 @@ import Plagiarism from './components/pages/guidline/Plagiarism';
 import Privacy from './components/pages/guidline/Privacy';
 import Register from './components/auth/Register';
 import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
-import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
+import Review from './components/pages/Review';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
@@ -60,7 +61,7 @@ function App() {
    {/* instructions  */}
    <Route path='/authorIn' element={<AuthorInsturctions/>}/>
 
-
+        <Route path='/review' element={<Review/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/reserchform' element={<ResearchPaperForm/>}/>

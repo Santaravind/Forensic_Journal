@@ -673,6 +673,10 @@ const SPECIALIZATIONS = [
   "Others",
 ];
 
+import { useState } from "react";
+import axios from "axios"
+import { Fingerprint, Microscope, Scale, FileText, Mail, Phone, MapPin, User, Lock, Eye, EyeOff } from 'lucide-react';
+import logos from '../assets/logoss.png'
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -716,48 +720,35 @@ const Register = () => {
   const handleChange = (e) =>
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setStatus({ loading: false, error: "Passwords do not match." });
-      return;
-    }
-    setStatus({ loading: true, error: null });
-    setTimeout(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email: formData.email,
-          fullName: formData.fullName,
-          isGoogleUser: false,
-        }),
-      );
-      navigate("/");
-    }, 1500);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle registration logic here
+  //   console.log('Form submitted:', formData);
+  // };
+  const handleSubmit = async (e) => {
 
-  const handleGoogleRegister = (credentialResponse) => {
-    try {
-      const decoded = jwtDecode(credentialResponse.credential);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email: decoded.email || "google-user@email.com",
-          fullName: decoded.name || "Google User",
-          isGoogleUser: true,
-          googleId: decoded.sub,
-          picture: decoded.picture || null,
-          emailVerified: decoded.email_verified || false,
-        }),
-      );
-      navigate("/");
-    } catch {
-      setStatus({
-        loading: false,
-        error: "Failed to process Google registration. Please try again.",
-      });
-    }
-  };
+  e.preventDefault();
+
+  try {
+
+    const response = await axios.post(
+      "http://localhost:3000/api/auth/register",
+      formData
+    );
+
+    console.log(response.data);
+
+    alert("Registration Successful");
+
+  } catch (error) {
+
+    console.log(error.response.data);
+
+    alert(error.response.data.message);
+
+  }
+
+}
 
   const handleGoogleError = () =>
     setStatus({

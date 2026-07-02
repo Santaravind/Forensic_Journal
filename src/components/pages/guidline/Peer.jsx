@@ -73,7 +73,7 @@ const Peer = () => {
                 <GraduationCap className="w-4 h-4" /> STUDENT-LED RESEARCH FOCUS
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-snug">
-                A supportive yet rigorous environment that <span className="text-indigo-400">upholds scholarly standards</span> while encouraging new voices.
+               A supportive environment that maintains   <span className="text-indigo-400">high academic standards</span> and encourages forensic science research.
               </h3>
               <p className="text-slate-400 leading-relaxed">
                 Reviewers are required to uphold confidentiality, objectivity, and academic integrity. 

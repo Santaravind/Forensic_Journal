@@ -353,7 +353,7 @@ const ResearchPaperForm = () => {
       </div>
     <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Menu Scripts <span className="text-red-500">*</span>
+           Manuscripts <span className="text-red-500">*</span>
           </label>
           <select
             name="menuScript"

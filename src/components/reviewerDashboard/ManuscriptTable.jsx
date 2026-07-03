@@ -3,7 +3,7 @@ export default function ManuscriptTable() {
     {
       id: "FP-2026-1025",
       title: "Advancements in Forensic DNA Analysis",
-      author: "Dr. A. Sharma",
+      author: "Mr Indresh",
       assigned: "15 May 2026",
       due: "30 May 2026",
       status: "Pending",
@@ -11,7 +11,7 @@ export default function ManuscriptTable() {
     {
       id: "FP-2026-1024",
       title: "Forensic Entomology Review",
-      author: "Dr. R. Verma",
+      author: "Mr Indresh",
       assigned: "10 May 2026",
       due: "25 May 2026",
       status: "Pending",
@@ -19,7 +19,7 @@ export default function ManuscriptTable() {
     {
       id: "FP-2026-1023",
       title: "Fingerprint Analysis Using AI",
-      author: "Ms. P. Singh",
+      author: "Mr Indresh",
       assigned: "05 May 2026",
       due: "20 May 2026",
       status: "Pending",
@@ -27,7 +27,7 @@ export default function ManuscriptTable() {
     {
       id: "FP-2026-1022",
       title: "Ballistic Evidence Examination",
-      author: "Dr. K. Patel",
+      author: "Mr Indresh",
       assigned: "20 Apr 2026",
       due: "Completed",
       status: "Completed",

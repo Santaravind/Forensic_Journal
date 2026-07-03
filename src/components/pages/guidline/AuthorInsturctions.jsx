@@ -320,7 +320,7 @@ export default function AuthorInsturctions() {
             <p className="text-gray-700 text-sm"><strong>Authors must:</strong> Limit pain, suffering, and number of animals used.</p>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-lg border-l-4 border-purple-500">
+          <div className="bg-linear-to-r from-purple-50 to-pink-50 p-5 rounded-lg border-l-4 border-purple-500">
             <h4 className="font-semibold text-gray-900 mb-3">Informed Consent</h4>
             <p className="text-gray-700">Required for research involving human subjects, identifiable personal data, interviews, clinical material, photographs, tape recordings, or reports.</p>
           </div>
@@ -333,7 +333,7 @@ export default function AuthorInsturctions() {
       icon: '🎉',
       content: (
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-cyan-50 to-blue-50 p-5 rounded-lg">
+          <div className="bg-linear-to-r from-cyan-50 to-blue-50 p-5 rounded-lg">
             <h4 className="font-semibold text-gray-900 mb-3">Production Process</h4>
             <p className="text-gray-700 mb-3">Manuscripts undergo:</p>
             <ul className="space-y-2 text-gray-700">
@@ -345,7 +345,7 @@ export default function AuthorInsturctions() {
             <p className="text-gray-700 mt-3 text-sm"><strong>Important:</strong> Authors cannot significantly change scientific elements once accepted.</p>
           </div>
 
-          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-5 rounded-lg">
+          <div className="bg-linear-to-r from-yellow-50 to-orange-50 p-5 rounded-lg">
             <h4 className="font-semibold text-gray-900 mb-3">Proofreading</h4>
             <p className="text-gray-700 mb-2">Corresponding author receives page proofs to check for:</p>
             <ul className="space-y-1 text-gray-700">
@@ -460,7 +460,7 @@ export default function AuthorInsturctions() {
             </div>
 
             {/* Key Points */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl shadow-lg p-8 border-l-4 border-amber-500">
+            <div className="bg-linear-to-r from-amber-50 to-orange-50 rounded-xl shadow-lg p-8 border-l-4 border-amber-500">
               <h3 className="text-xl font-bold text-gray-900 mb-5">Key Submission Points</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[

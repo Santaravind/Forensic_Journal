@@ -1,4 +1,4 @@
-import { FaBell, FaBars } from "react-icons/fa";
+import { FaBell, FaBars,FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   return (
@@ -21,10 +21,10 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <img
-            src="https://i.pravatar.cc/50"
-            className="rounded-full"
-          />
+             <FaUserCircle
+  size={50}
+  className="text-gray-500"
+/>
 
           <div>
             <h4 className="font-semibold">

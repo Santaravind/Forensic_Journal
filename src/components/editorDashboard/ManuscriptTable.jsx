@@ -6,7 +6,7 @@ export default function ManuscriptTable() {
       id: "FP-2026-1056",
       title:
         "Advancements in Forensic DNA Analysis Using NGS Technologies",
-      author: "Dr. A. Sharma",
+      author: "Mr Indresh",
       date: "15 May 2026",
       status: "Under Review",
       stage: "Peer Review",
@@ -16,7 +16,7 @@ export default function ManuscriptTable() {
       id: "FP-2026-1055",
       title:
         "Forensic Entomology: A Review of Recent Applications",
-      author: "Dr. R. Verma",
+      author: "Mr Indresh",
       date: "12 May 2026",
       status: "Under Review",
       stage: "Peer Review",
@@ -26,7 +26,7 @@ export default function ManuscriptTable() {
       id: "FP-2026-1054",
       title:
         "Fingerprint Analysis Using Deep Learning Techniques",
-      author: "Ms. P. Singh",
+      author: "Mr Indresh",
       date: "10 May 2026",
       status: "Awaiting Decision",
       stage: "Editorial Decision",
@@ -36,7 +36,7 @@ export default function ManuscriptTable() {
       id: "FP-2026-1053",
       title:
         "Ballistic Evidence Examination: Methods and Challenges",
-      author: "Dr. K. Patel",
+      author: "Mr Indresh",
       date: "08 May 2026",
       status: "Awaiting Decision",
       stage: "Editorial Decision",
@@ -46,7 +46,7 @@ export default function ManuscriptTable() {
       id: "FP-2026-1052",
       title:
         "Digital Forensics in Cyber Crime Investigation",
-      author: "Mr. S. Kumar",
+      author: "Mr Indresh",
       date: "05 May 2026",
       status: "New Submission",
       stage: "Initial Check",

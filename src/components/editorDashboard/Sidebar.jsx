@@ -12,7 +12,7 @@ import {
   FaHeadset,
   FaShieldAlt,
 } from "react-icons/fa";
-
+import logo from "../assets/logoss.png"
 export default function Sidebar() {
   return (
     <div className="w-[285px] min-h-screen bg-gradient-to-b from-[#1b237e] via-[#261c88] to-[#45108a] text-white flex flex-col border-r border-white/10 overflow-auto">
@@ -20,7 +20,7 @@ export default function Sidebar() {
       {/* Logo Section */}
       <div className="pt-6 pb-4 flex flex-col items-center">
         <img
-          src="/logo.png"
+          src={logo}
           alt="logo"
           className="w-24 h-24 object-contain"
         />

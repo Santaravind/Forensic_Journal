@@ -12,7 +12,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <div className="w-[290px] bg-gradient-to-b from-[#111b67] to-[#5a0db7] text-white flex flex-col">
+    <div className="w-72.5 bg-linear-to-b from-[#111b67] to-[#5a0db7] text-white flex flex-col">
       <div className="text-center py-8">
         <img
           src="/logo.png"
@@ -76,7 +76,7 @@ function Menu({ icon, text, active }) {
     <div
       className={`flex items-center gap-3 p-4 rounded-xl cursor-pointer mb-2 ${
         active
-          ? "bg-gradient-to-r from-blue-600 to-purple-600"
+          ? "bg-linear-to-r from-blue-600 to-purple-600"
           : "hover:bg-white/10"
       }`}
     >

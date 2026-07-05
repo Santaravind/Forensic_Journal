@@ -75,7 +75,7 @@ export default function Navbar() {
 
           <div>
             <h3 className="font-semibold text-[#161B4B]">
-              Dr. Editor
+              Mr Indresh
             </h3>
 
             <p className="text-sm text-gray-500">

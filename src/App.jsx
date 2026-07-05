@@ -29,6 +29,7 @@ import Register from './components/auth/Register';
 import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
 import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
 import Review from './components/pages/Review';
+import EditorDashboard from './components/pages/EditorDashboard';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
@@ -63,6 +64,9 @@ function App() {
    <Route path='/authorIn' element={<AuthorInsturctions/>}/>
 
         <Route path='/review' element={<Review/>}/>
+        <Route path='/editer' element={<EditorDashboard/>}/>
+              
+
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/reserchform' element={<ResearchPaperForm/>}/>

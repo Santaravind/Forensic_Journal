@@ -22,10 +22,11 @@ import bg from '../assets/bg.jpeg'
 import bg1 from '../assets/bg1.jpeg'
 import bg2 from '../assets/bg2.jpeg'
 import bg3 from '../assets/bg3.jpeg'
+import bg6 from '../assets/bg6.jpeg'
 import logo from '../assets/logoss.png'
 import { useNavigate } from "react-router";
 function Hero() {
-  const images = [bg, bg1, bg2, bg3]
+  const images = [bg, bg1, bg2, bg3,bg6]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const  navigate=useNavigate();

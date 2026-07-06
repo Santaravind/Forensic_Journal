@@ -299,7 +299,7 @@ export default function AuthorInsturctions() {
       icon: '⚠️',
       content: (
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 p-5 rounded-lg border-l-4 border-red-500">
+          <div className="bg-linear-to-r from-red-50 to-orange-50 p-5 rounded-lg border-l-4 border-red-500">
             <h4 className="font-semibold text-gray-900 mb-3">Human Participants</h4>
             <p className="text-gray-700 mb-2">Ethical approval required from:</p>
             <ul className="space-y-1 text-gray-700 mb-3">

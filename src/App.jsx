@@ -30,13 +30,15 @@ import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
 import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
 import Review from './components/pages/Review';
 import EditorDashboard from './components/pages/EditorDashboard';
+import AdminDashboard from './components/pages/AdminDashboard';
+import ScrollToTop from './components/pages/ScrollToTop';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
     <>
     <Toaster/>
        <Header/>
-      
+      <ScrollToTop/>
         <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/blog' element={<Blog/>}/>
@@ -65,6 +67,7 @@ function App() {
 
         <Route path='/review' element={<Review/>}/>
         <Route path='/editer' element={<EditorDashboard/>}/>
+        <Route path='/admin' element={<AdminDashboard/>}/>
               
 
       <Route path='/login' element={<Login/>}/>

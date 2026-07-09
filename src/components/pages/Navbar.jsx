@@ -1,9 +1,14 @@
-
-
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaHome, FaUserCircle, FaBars, FaTimes, FaPhone, FaSignOutAlt } from "react-icons/fa";
-import logo from '../assets/logoss.png'
+import {
+  FaHome,
+  FaUserCircle,
+  FaBars,
+  FaTimes,
+  FaPhone,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import logo from "../assets/logoss.png";
 import { MdMarkEmailRead } from "react-icons/md";
 
 export default function Navbar() {
@@ -24,13 +29,13 @@ export default function Navbar() {
   useEffect(() => {
     const checkUser = () => {
       try {
-        const userData = localStorage.getItem('user');
-        console.log('Raw user data from localStorage:', userData); // Debug log
-        
+        const userData = localStorage.getItem("user");
+        console.log("Raw user data from localStorage:", userData); // Debug log
+
         if (userData) {
           const parsedUser = JSON.parse(userData);
-          console.log('Parsed user:', parsedUser); // Debug log
-          
+          console.log("Parsed user:", parsedUser); // Debug log
+
           // Check if user has email or is valid
           if (parsedUser && parsedUser.email) {
             setUser(parsedUser);
@@ -44,7 +49,7 @@ export default function Navbar() {
           setIsLoggedIn(false);
         }
       } catch (error) {
-        console.error('Error parsing user data:', error);
+        console.error("Error parsing user data:", error);
         setUser(null);
         setIsLoggedIn(false);
       }
@@ -53,10 +58,10 @@ export default function Navbar() {
     checkUser();
 
     // Listen for storage changes (in case user logs in/out in another tab)
-    window.addEventListener('storage', checkUser);
-    
+    window.addEventListener("storage", checkUser);
+
     return () => {
-      window.removeEventListener('storage', checkUser);
+      window.removeEventListener("storage", checkUser);
     };
   }, []);
 
@@ -75,7 +80,7 @@ export default function Navbar() {
   // Logout function
   const handleLogout = () => {
     // Clear user data from localStorage
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     // Update state
     setUser(null);
     setIsLoggedIn(false);
@@ -83,7 +88,7 @@ export default function Navbar() {
     setOpen(false);
     setIsMenuOpen(false);
     // Navigate to login page
-    navigate('/login');
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -114,7 +119,7 @@ export default function Navbar() {
   const menuItems = [
     { to: "/", label: "Home", icon: <FaHome /> },
     { to: "/about", label: "About Us" },
-    { 
+    {
       label: "Research",
       submenu: [
         { to: "/article", label: "Article" },
@@ -123,7 +128,7 @@ export default function Navbar() {
       ],
     },
     { to: "/editorial", label: "Editorial Team" },
-    { 
+    {
       label: "Guidelines",
       submenu: [
         { to: "/peer", label: "Peer Review Policy" },
@@ -133,15 +138,12 @@ export default function Navbar() {
         { to: "/ethics", label: "Ethics and malpractice Policy" },
         { to: "/privacy", label: "Privacy statement" },
         { to: "/informed", label: "Informed consent" },
-      ]
+      ],
     },
     { to: "/publication", label: "Publication Procedure" },
-   { 
+    {
       label: "Instuction",
-      submenu: [
-        { to: "/authorIn", label: "Author" },
-        
-      ],
+      submenu: [{ to: "/authorIn", label: "Author" }],
     },
     { to: "/blog", label: "Blog" },
   ];
@@ -152,7 +154,6 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 z-50 w-full flex items-center justify-between px-4 mt-30 lg:mt-10 transition-transform duration-300 ease-in-out">
-      
       {/* Logo – OUTSIDE Navbar */}
       <div className="flex items-center mt-5">
         <div className="rounded-full h-40 w-40 flex items-center justify-center drop-shadow-md">
@@ -165,10 +166,11 @@ export default function Navbar() {
       </div>
 
       {/* Navbar */}
-      <div className={`flex-1 max-w-6xl ml-6 bg-white backdrop-blur-md shadow-md lg:rounded-full sm:rounded-lg md:rounded-lg px-6  
-        ${showNavbar ? " translate-y-0" : "-translate-y-full opacity-0"}`}>
+      <div
+        className={`flex-1 max-w-6xl ml-6 bg-white backdrop-blur-md shadow-md lg:rounded-full sm:rounded-lg md:rounded-lg px-6  
+        ${showNavbar ? " translate-y-0" : "-translate-y-full opacity-0"}`}
+      >
         <div className="flex items-center justify-between h-16">
-
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
             {menuItems.map((item) =>
@@ -177,13 +179,15 @@ export default function Navbar() {
                   <button className="font-semibold text-gray-800 hover:text-indigo-600">
                     {item.label}
                   </button>
-                  <div className="
+                  <div
+                    className="
                     absolute left-0 top-full
                     invisible opacity-0
                     group-hover:visible group-hover:opacity-100
                     transition-all duration-200
                     bg-white shadow-lg rounded-xl w-52 border z-50
-                  ">
+                  "
+                  >
                     {item.submenu.map((sub) => (
                       <NavLink
                         key={sub.to}
@@ -206,7 +210,7 @@ export default function Navbar() {
                 >
                   {item.label}
                 </NavLink>
-              )
+              ),
             )}
           </div>
 
@@ -228,10 +232,10 @@ export default function Navbar() {
                     {/* User Info */}
                     <div className="px-4 py-3 border-b border-gray-100">
                       <p className="text-sm font-semibold text-gray-800 truncate">
-                        {user.fullName || user.email || 'User'}
+                        {user.fullName || user.email || "User"}
                       </p>
                       <p className="text-xs text-gray-500 truncate">
-                        {user.email || 'No email'}
+                        {user.email || "No email"}
                       </p>
                       {user.isGoogleUser && (
                         <span className="inline-block mt-1 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
@@ -239,16 +243,16 @@ export default function Navbar() {
                         </span>
                       )}
                     </div>
-                    
+
                     {/* Dashboard Link (Optional) */}
                     <NavLink
                       to="/"
                       className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                       onClick={() => setOpen(false)}
                     >
-                     Home
+                      Home
                     </NavLink>
-                    
+
                     {/* Logout Button */}
                     <button
                       onClick={handleLogout}
@@ -279,14 +283,21 @@ export default function Navbar() {
                       className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                       onClick={() => setOpen(false)}
                     >
-                    Review
+                      Review
                     </NavLink>
                     <NavLink
                       to="/editer"
                       className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                       onClick={() => setOpen(false)}
                     >
-                    Editer
+                      Editer
+                    </NavLink>
+                    <NavLink
+                      to="/admin"
+                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                      onClick={() => setOpen(false)}
+                    >
+                      Admin
                     </NavLink>
                   </>
                 )}
@@ -308,7 +319,9 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`lg:hidden transition-all duration-300 ${
-            isMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0 overflow-hidden"
+            isMenuOpen
+              ? "max-h-screen opacity-100 py-4"
+              : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
           <div className="flex flex-col gap-3">
@@ -351,7 +364,7 @@ export default function Navbar() {
                 >
                   {item.label}
                 </NavLink>
-              )
+              ),
             )}
 
             {/* Mobile Auth Links */}
@@ -361,10 +374,10 @@ export default function Navbar() {
                   {/* User Info in Mobile */}
                   <div className="px-4 py-2 mb-2">
                     <p className="text-sm font-semibold text-gray-800">
-                      {user.fullName || user.email || 'User'}
+                      {user.fullName || user.email || "User"}
                     </p>
                     <p className="text-xs text-gray-500 truncate">
-                      {user.email || 'No email'}
+                      {user.email || "No email"}
                     </p>
                     {user.isGoogleUser && (
                       <span className="inline-block mt-1 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
@@ -372,7 +385,7 @@ export default function Navbar() {
                       </span>
                     )}
                   </div>
-                  
+
                   {/* Dashboard Link (Optional) */}
                   <NavLink
                     to="/"
@@ -381,7 +394,7 @@ export default function Navbar() {
                   >
                     Home
                   </NavLink>
-                  
+
                   {/* Logout Button */}
                   <button
                     onClick={() => {
@@ -418,12 +431,19 @@ export default function Navbar() {
                     Review
                   </NavLink>
                   <NavLink
-                      to="/editer"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
+                    to="/editer"
+                    className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                    onClick={() => setOpen(false)}
+                  >
                     Editer
-                    </NavLink>
+                  </NavLink>
+                  <NavLink
+                    to="/admin"
+                    className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                    onClick={() => setOpen(false)}
+                  >
+                    Admin
+                  </NavLink>
                 </>
               )}
             </div>

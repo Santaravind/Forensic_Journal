@@ -2,11 +2,11 @@ import React from "react";
 import { User } from "lucide-react";
 
 const leaders = [
-  { rank: 1, name: "Dr. R. Verma", pts: "2,450 pts", rankBg: "bg-amber-400" },
-  { rank: 2, name: "Dr. A. Sharma", pts: "2,120 pts", rankBg: "bg-slate-300" },
-  { rank: 3, name: "Dr. P. Singh", pts: "1,980 pts", rankBg: "bg-orange-400" },
-  { rank: 4, name: "Dr. K. Patel", pts: "1,645 pts", rankBg: "bg-indigo-200" },
-  { rank: 5, name: "Dr. S. Kumar", pts: "1,320 pts", rankBg: "bg-indigo-200" },
+  { rank: 1, name: "Mr.Indresh", pts: "2,450 pts", rankBg: "bg-amber-400" },
+  { rank: 2, name: "Mr.Indresh", pts: "2,120 pts", rankBg: "bg-slate-300" },
+  { rank: 3, name: "Mr.Indresh", pts: "1,980 pts", rankBg: "bg-orange-400" },
+  { rank: 4, name: "Mr.Indresh", pts: "1,645 pts", rankBg: "bg-indigo-200" },
+  { rank: 5, name: "Mr.Indresh", pts: "1,320 pts", rankBg: "bg-indigo-200" },
 ];
 
 export default function AchievementsLeaderboard() {

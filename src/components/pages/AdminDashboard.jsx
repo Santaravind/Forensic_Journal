@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../AdmiAdminDashboard/Sidebar";
+import Sidebar from "../AdminDashboard/Sidebar";
 import Header from "../AdminDashboard/Header";
-import StatsRow from "..AdminDashboard/QuickActions";
+import QuickActions from "../AdminDashboard/QuickActions";
 import ManuscriptSummary from "../AdminDashboard/ManuscriptSummary";
 import UserRolesDistribution from "../AdminDashboard/UserRolesDistribution";
 import CertificatesIssued from "../AdminDashboard/CertificatesIssued";
@@ -12,10 +12,10 @@ import AchievementOverview from "../AdminDashboard/AchievementOverview";
 import AchievementsLeaderboard from "../AdminDashboard/AchievementsLeaderboard";
 import MonthlyActivityOverview from "../AdminDashboard/MonthlyActivityOverview";
 import SystemInformation from "../AdminDashboard/SystemInformation";
-
+ import StatsRow from "../AdminDashboard/StatsRow";
 export default function AdminDashboard() {
   return (
-    <div className="min-h-screen w-full bg-slate-50 flex font-sans">
+    <div className="min-h-screen w-full bg-slate-50 flex font-sans mt-0.5">
       <Sidebar />
 
       <main className="flex-1 flex flex-col min-w-0">

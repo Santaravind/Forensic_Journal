@@ -7,7 +7,7 @@ const notifications = [
     iconBg: "bg-indigo-100",
     iconColor: "text-indigo-600",
     title: "New manuscript submitted",
-    sub: "FP-2026-1056 by Dr. A. Sharma",
+    sub: "FP-2026-1056 by Mr Sant",
     time: "10 min ago",
   },
   {
@@ -23,7 +23,7 @@ const notifications = [
     iconBg: "bg-sky-100",
     iconColor: "text-sky-500",
     title: "New user registered",
-    sub: "Dr. Neha Gupta (Author)",
+    sub: "Mr Indresh (Author)",
     time: "3 hours ago",
   },
   {

@@ -299,6 +299,13 @@ export default function Navbar() {
                     >
                       Admin
                     </NavLink>
+                    <NavLink
+                      to="/publisher"
+                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                      onClick={() => setOpen(false)}
+                    >
+                      Publisher
+                    </NavLink>
                   </>
                 )}
               </div>
@@ -444,6 +451,13 @@ export default function Navbar() {
                   >
                     Admin
                   </NavLink>
+                  <NavLink
+                      to="/publisher"
+                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                      onClick={() => setOpen(false)}
+                    >
+                      Publisher
+                    </NavLink>
                 </>
               )}
             </div>

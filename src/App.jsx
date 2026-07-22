@@ -32,6 +32,7 @@ import Review from './components/pages/Review';
 import EditorDashboard from './components/pages/EditorDashboard';
 import AdminDashboard from './components/pages/AdminDashboard';
 import ScrollToTop from './components/pages/ScrollToTop';
+import Publisher from './components/publisharPage/Publisher';
 // import Research from './components/pages/Research.jsx'
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path='/review' element={<Review/>}/>
         <Route path='/editer' element={<EditorDashboard/>}/>
         <Route path='/admin' element={<AdminDashboard/>}/>
+        <Route path='/publisher' element={<Publisher/>}/>
               
 
       <Route path='/login' element={<Login/>}/>

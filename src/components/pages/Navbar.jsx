@@ -26,40 +26,40 @@ export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Check user on mount and when localStorage changes
- useEffect(() => {
-  const checkUser = () => {
-    try {
-      const userData = localStorage.getItem("user");
-      if (userData) {
-        const parsedUser = JSON.parse(userData);
-        if (parsedUser && parsedUser.email) {
-          setUser(parsedUser);
-          setIsLoggedIn(true);
+  useEffect(() => {
+    const checkUser = () => {
+      try {
+        const userData = localStorage.getItem("user");
+        if (userData) {
+          const parsedUser = JSON.parse(userData);
+          if (parsedUser && parsedUser.email) {
+            setUser(parsedUser);
+            setIsLoggedIn(true);
+          } else {
+            setUser(null);
+            setIsLoggedIn(false);
+          }
         } else {
           setUser(null);
           setIsLoggedIn(false);
         }
-      } else {
+      } catch (error) {
+        console.error("Error parsing user data:", error);
         setUser(null);
         setIsLoggedIn(false);
       }
-    } catch (error) {
-      console.error("Error parsing user data:", error);
-      setUser(null);
-      setIsLoggedIn(false);
-    }
-  };
+    };
 
-  checkUser();
+    checkUser();
 
-  window.addEventListener("storage", checkUser);
-  window.addEventListener("userChanged", checkUser); // add this line
+    window.addEventListener("storage", checkUser);
+    window.addEventListener("userChanged", checkUser); // add this line
 
-  return () => {
-    window.removeEventListener("storage", checkUser);
-    window.removeEventListener("userChanged", checkUser); // add this line
-  };
-}, []);
+    return () => {
+      window.removeEventListener("storage", checkUser);
+      window.removeEventListener("userChanged", checkUser); // add this line
+    };
+  }, []);
 
   const toggleMobileDropdown = (label) => {
     setMobileDropdown(mobileDropdown === label ? null : label);
@@ -241,7 +241,7 @@ export default function Navbar() {
                       )}
                     </div>
 
-                    {/* Dashboard Link (Optional) */}
+                    {/* Dashboard Link */}
                     <NavLink
                       to="/"
                       className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
@@ -249,6 +249,44 @@ export default function Navbar() {
                     >
                       Home
                     </NavLink>
+
+                    {/* Role-specific tab */}
+                    {user.role === "publisher" && (
+                      <NavLink
+                        to="/publisher"
+                        className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                        onClick={() => setOpen(false)}
+                      >
+                        Publisher
+                      </NavLink>
+                    )}
+                    {user.role === "editor" && (
+                      <NavLink
+                        to="/editer"
+                        className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                        onClick={() => setOpen(false)}
+                      >
+                        Editer
+                      </NavLink>
+                    )}
+                    {user.role === "admin" && (
+                      <NavLink
+                        to="/admin"
+                        className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                        onClick={() => setOpen(false)}
+                      >
+                        Admin
+                      </NavLink>
+                    )}
+                    {user.role === "reviewer" && (
+                      <NavLink
+                        to="/review"
+                        className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                        onClick={() => setOpen(false)}
+                      >
+                        Review
+                      </NavLink>
+                    )}
 
                     {/* Logout Button */}
                     <button
@@ -274,34 +312,6 @@ export default function Navbar() {
                       onClick={() => setOpen(false)}
                     >
                       Register
-                    </NavLink>
-                    <NavLink
-                      to="/review"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
-                      Review
-                    </NavLink>
-                    <NavLink
-                      to="/editer"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
-                      Editer
-                    </NavLink>
-                    <NavLink
-                      to="/admin"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
-                      Admin
-                    </NavLink>
-                    <NavLink
-                      to="/publisher"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
-                      Publisher
                     </NavLink>
                   </>
                 )}
@@ -375,7 +385,6 @@ export default function Navbar() {
             <div className="border-t pt-3">
               {isLoggedIn && user ? (
                 <>
-                  {/* User Info in Mobile */}
                   <div className="px-4 py-2 mb-2">
                     <p className="text-sm font-semibold text-gray-800">
                       {user.fullName || user.email || "User"}
@@ -390,7 +399,6 @@ export default function Navbar() {
                     )}
                   </div>
 
-                  {/* Dashboard Link (Optional) */}
                   <NavLink
                     to="/"
                     onClick={closeMenu}
@@ -399,7 +407,43 @@ export default function Navbar() {
                     Home
                   </NavLink>
 
-                  {/* Logout Button */}
+                  {user.role === "publisher" && (
+                    <NavLink
+                      to="/publisher"
+                      onClick={closeMenu}
+                      className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                    >
+                      Publisher
+                    </NavLink>
+                  )}
+                  {user.role === "editor" && (
+                    <NavLink
+                      to="/editer"
+                      onClick={closeMenu}
+                      className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                    >
+                      Editer
+                    </NavLink>
+                  )}
+                  {user.role === "admin" && (
+                    <NavLink
+                      to="/admin"
+                      onClick={closeMenu}
+                      className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                    >
+                      Admin
+                    </NavLink>
+                  )}
+                  {user.role === "reviewer" && (
+                    <NavLink
+                      to="/review"
+                      onClick={closeMenu}
+                      className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                    >
+                      Review
+                    </NavLink>
+                  )}
+
                   <button
                     onClick={() => {
                       handleLogout();
@@ -427,34 +471,6 @@ export default function Navbar() {
                   >
                     Login
                   </NavLink>
-                  <NavLink
-                    to="/review"
-                    onClick={closeMenu}
-                    className="block px-4 py-2 font-semibold hover:text-indigo-700"
-                  >
-                    Review
-                  </NavLink>
-                  <NavLink
-                    to="/editer"
-                    className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                    onClick={() => setOpen(false)}
-                  >
-                    Editer
-                  </NavLink>
-                  <NavLink
-                    to="/admin"
-                    className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                    onClick={() => setOpen(false)}
-                  >
-                    Admin
-                  </NavLink>
-                  <NavLink
-                      to="/publisher"
-                      className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
-                      onClick={() => setOpen(false)}
-                    >
-                      Publisher
-                    </NavLink>
                 </>
               )}
             </div>

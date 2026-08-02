@@ -31,7 +31,21 @@ const SPECIALIZATIONS = [
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  mobileNo: "",
+  organization: "",
+  domain: "",
+  password: "",
+  confirmPassword: "",
+  role: "user"
+});
+  const [status, setStatus] = useState({ loading: false, error: null });
+  const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
+ useEffect(() => {
+  setFormData({
     fullName: "",
     email: "",
     mobileNo: "",
@@ -39,30 +53,18 @@ const Register = () => {
     domain: "",
     password: "",
     confirmPassword: "",
+    role: "user"   
   });
-  const [status, setStatus] = useState({ loading: false, error: null });
-  const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_URL;
-  useEffect(() => {
-    setFormData({
-      fullName: "",
-      email: "",
-     mobileNo: "",
-      organization: "",
-      domain: "",
-      password: "",
-      confirmPassword: "",
-    });
-    try {
-      const raw = localStorage.getItem("user");
-      if (raw) {
-        const u = JSON.parse(raw);
-        if (!u?.email) localStorage.removeItem("user");
-      }
-    } catch {
-      localStorage.removeItem("user");
+  try {
+    const raw = localStorage.getItem("user");
+    if (raw) {
+      const u = JSON.parse(raw);
+      if (!u?.email) localStorage.removeItem("user");
     }
-  }, []);
+  } catch {
+    localStorage.removeItem("user");
+  }
+}, []);
 
   //orcid id login
   const handleOrcID = (e) => {
@@ -333,6 +335,8 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
+                     
+                     
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">

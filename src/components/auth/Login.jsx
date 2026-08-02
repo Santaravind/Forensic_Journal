@@ -43,8 +43,8 @@ const ROLES = [
 ];
 
 export default function Login() {
-  const [selectedRole, setSelectedRole] = useState("");
-  const [formData, setFormData] = useState({ email: "", password: "",role:"user" });
+  const [selectedRole, setSelectedRole] = useState("user");
+  const [formData, setFormData] = useState({ email: "", password: "",role:"" });
   const [status, setStatus] = useState({
     loading: false,
     error: null,
@@ -67,7 +67,7 @@ const handleLogin = async (e) => {
   const role = selectedRole || "user";
 
   setStatus({ loading: true, error: null, success: false });
-  // console.log(formData, role);
+  console.log(formData, role);
   try {
     const response = await axios.post(`${apiUrl}/auth/login`, {
       email: formData.email,

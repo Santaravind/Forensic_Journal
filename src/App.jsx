@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
 import AboutUs from './components/pages/AboutUs';
@@ -33,8 +33,12 @@ import EditorDashboard from './components/pages/EditorDashboard';
 import AdminDashboard from './components/pages/AdminDashboard';
 import ScrollToTop from './components/pages/ScrollToTop';
 import Publisher from './components/publisharPage/Publisher';
-// import Research from './components/pages/Research.jsx'
+import ProtectetRoute from './components/route/ProtectetRoute';
+import {useDispatch} from 'react-redux'
+import PrivateRoute from './components/route/ProtectetRoute';
 function App() {
+  
+
   return (
     <>
     <Toaster/>
@@ -74,8 +78,18 @@ function App() {
 
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
-      <Route path='/reserchform' element={<ResearchPaperForm/>}/>
-      <Route path='/caseStudyForm' element={<CaseStudyPaperForm/>}/>
+      <Route path='/reserchform' element={
+        <PrivateRoute> 
+          <ResearchPaperForm/>
+        </PrivateRoute>
+       
+        }/>
+      <Route path='/caseStudyForm' element={
+        <PrivateRoute> 
+        <CaseStudyPaperForm/>
+        </PrivateRoute> 
+        
+        }/>
       </Routes>
       <Footer/>
 

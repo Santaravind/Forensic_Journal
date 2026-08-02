@@ -18,6 +18,10 @@ import {
 import logos from "../assets/logoss.png";
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode"; 
+import axios from "axios";
+import toast from "react-hot-toast";
+import { GiSouthAfrica } from "react-icons/gi";
 // author/ Reader , Editor, reviewer, publisher , Institute , Admin
 const ROLES = [
   { id: "author/reader", label: "Author/Reader", icon: User, color: "text-emerald-400" },
@@ -40,55 +44,75 @@ const ROLES = [
 
 export default function Login() {
   const [selectedRole, setSelectedRole] = useState("");
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "",role:"user" });
   const [status, setStatus] = useState({
     loading: false,
     error: null,
     success: false,
   });
   const navigate = useNavigate();
-
+const apiUrl = import.meta.env.VITE_API_URL;
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    if (status.error) setStatus({ ...status, error: null });
-  };
+    // setSelectedRole(role.id);
+  if (status.error) setStatus({ ...status, error: null });
 
- const handleLogin = async (e) => {
-  e.preventDefault();
-  if (!selectedRole) {
-    setStatus({ ...status, error: "Please select a professional role." });
-    return;
   }
-  setStatus({ loading: true, error: null, success: false });
 
-  // Simulate login
-  setTimeout(() => {
-    setStatus({ loading: false, error: null, success: true });
-    // Store user info in localStorage with proper structure
-    const userData = { 
+
+  //db login
+const handleLogin = async (e) => {
+  e.preventDefault();
+
+  const role = selectedRole || "user";
+
+  setStatus({ loading: true, error: null, success: false });
+  // console.log(formData, role);
+  try {
+    const response = await axios.post(`${apiUrl}/auth/login`, {
       email: formData.email,
-      fullName: formData.email.split('@')[0], // Generate name from email
-      role: selectedRole,
-      isGoogleUser: false 
-    };
-    localStorage.setItem('user', JSON.stringify(userData));
-    console.log('User stored in localStorage:', userData); // Debug log
+      password: formData.password,
+      role: role,          // <-- explicitly send the selected role
+    });
+     
+  // console.log(response);
+    if (response.data?.token) {
+      localStorage.setItem("token", response.data.token);
+    }
+    localStorage.setItem("user", JSON.stringify(response.data?.user ?? { email: formData.email, role }));
+    window.dispatchEvent(new Event("userChanged")); 
+    toast.success("Login successful !!");
+  
+    setStatus({ loading: false, error: null, success: true });
     navigate("/");
-  }, 1500);
+  } catch (error) {
+    setStatus({
+      loading: false,
+      error: error.response?.data?.message || "Invalid email or password. Please try again.",
+      success: false,
+    });
+  }
 };
 
+
+//google login
+
 const handleGoogleLogin = (credentialResponse) => {
-  console.log("Google Login Success:", credentialResponse);
-  // Store user info in localStorage
-  const userData = { 
-    email: credentialResponse.email || 'google-user@email.com',
-    fullName: credentialResponse.name || 'Google User',
-    isGoogleUser: true,
-    googleId: credentialResponse.sub
-  };
-  localStorage.setItem('user', JSON.stringify(userData));
-  console.log('Google user stored in localStorage:', userData); // Debug log
-  navigate("/");
+  try {
+    const decoded = jwtDecode(credentialResponse.credential);
+    const userData = {
+      email: decoded.email || "google-user@email.com",
+      fullName: decoded.name || "Google User",
+      isGoogleUser: true,
+      googleId: decoded.sub,
+      role: selectedRole || "user",
+    };
+    localStorage.setItem("user", JSON.stringify(userData));
+    window.dispatchEvent(new Event("userChanged"));
+    navigate("/");
+  } catch {
+    setStatus({ ...status, error: "Google login failed. Please try again." });
+  }
 };
 
 //orcid id login

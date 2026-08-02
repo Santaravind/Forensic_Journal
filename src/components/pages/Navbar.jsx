@@ -26,44 +26,40 @@ export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Check user on mount and when localStorage changes
-  useEffect(() => {
-    const checkUser = () => {
-      try {
-        const userData = localStorage.getItem("user");
-        console.log("Raw user data from localStorage:", userData); // Debug log
-
-        if (userData) {
-          const parsedUser = JSON.parse(userData);
-          console.log("Parsed user:", parsedUser); // Debug log
-
-          // Check if user has email or is valid
-          if (parsedUser && parsedUser.email) {
-            setUser(parsedUser);
-            setIsLoggedIn(true);
-          } else {
-            setUser(null);
-            setIsLoggedIn(false);
-          }
+ useEffect(() => {
+  const checkUser = () => {
+    try {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const parsedUser = JSON.parse(userData);
+        if (parsedUser && parsedUser.email) {
+          setUser(parsedUser);
+          setIsLoggedIn(true);
         } else {
           setUser(null);
           setIsLoggedIn(false);
         }
-      } catch (error) {
-        console.error("Error parsing user data:", error);
+      } else {
         setUser(null);
         setIsLoggedIn(false);
       }
-    };
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      setUser(null);
+      setIsLoggedIn(false);
+    }
+  };
 
-    checkUser();
+  checkUser();
 
-    // Listen for storage changes (in case user logs in/out in another tab)
-    window.addEventListener("storage", checkUser);
+  window.addEventListener("storage", checkUser);
+  window.addEventListener("userChanged", checkUser); // add this line
 
-    return () => {
-      window.removeEventListener("storage", checkUser);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("storage", checkUser);
+    window.removeEventListener("userChanged", checkUser); // add this line
+  };
+}, []);
 
   const toggleMobileDropdown = (label) => {
     setMobileDropdown(mobileDropdown === label ? null : label);
@@ -81,6 +77,7 @@ export default function Navbar() {
   const handleLogout = () => {
     // Clear user data from localStorage
     localStorage.removeItem("user");
+    window.dispatchEvent(new Event("userChanged"));
     // Update state
     setUser(null);
     setIsLoggedIn(false);

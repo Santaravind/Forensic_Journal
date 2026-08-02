@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { cache, useEffect, useState } from "react";
 import {
   FiUser,
   FiMail,
@@ -14,7 +14,8 @@ import logos from "../assets/logoss.png";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-
+import{toast} from 'react-hot-toast';
+import axios from 'axios'
 const SPECIALIZATIONS = [
   "Reader",
   "Digital Forensics",
@@ -33,22 +34,22 @@ const Register = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    phone: "",
+    mobileNo: "",
     organization: "",
-    specialization: "",
+    domain: "",
     password: "",
     confirmPassword: "",
   });
   const [status, setStatus] = useState({ loading: false, error: null });
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
     setFormData({
       fullName: "",
       email: "",
-      phone: "",
+     mobileNo: "",
       organization: "",
-      specialization: "",
+      domain: "",
       password: "",
       confirmPassword: "",
     });
@@ -71,26 +72,30 @@ const Register = () => {
   const handleChange = (e) =>
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setStatus({ loading: false, error: "Passwords do not match." });
-      return;
-    }
-    setStatus({ loading: true, error: null });
-    setTimeout(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email: formData.email,
-          fullName: formData.fullName,
-          isGoogleUser: false,
-        }),
-      );
-      navigate("/");
-    }, 1500);
-  };
+  // register throw method 
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (formData.password !== formData.confirmPassword) {
+    setStatus({ loading: false, error: "Passwords do not match." });
+    return;
+  }
 
+  setStatus({ loading: true, error: null });
+     console.log(formData);
+  try {
+    await axios.post(`${apiUrl}/auth/register`, formData); 
+    toast.success("Registration successful!");
+    navigate("/login");
+  } catch (error) {
+    console.log(error);
+    setStatus({ loading: false, error: "Something went wrong during registration. Please try again." });
+    toast.error("Something went wrong during registration. Try again!");
+  }
+};
+
+
+
+ //google register
   const handleGoogleRegister = (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
@@ -301,8 +306,8 @@ const Register = () => {
                       <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
                       <input
                         type="tel"
-                        name="phone"
-                        value={formData.phone}
+                        name="mobileNo"
+                        value={formData.mobileNo}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
                         required
@@ -336,8 +341,8 @@ const Register = () => {
                   <div className="relative group">
                     <GiMicroscope className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-600 transition-colors z-10" />
                     <select
-                      name="specialization"
-                      value={formData.specialization}
+                      name="domain"
+                      value={formData.domain}
                       onChange={handleChange}
                       required
                       className={`${inputClass} appearance-none bg-gray-50/50 cursor-pointer`}

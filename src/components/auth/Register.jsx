@@ -42,6 +42,7 @@ const Register = () => {
   role: "user"
 });
   const [status, setStatus] = useState({ loading: false, error: null });
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
  useEffect(() => {
@@ -75,7 +76,27 @@ const Register = () => {
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   // register throw method 
-  const handleSubmit = async (e) => {
+//   const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   if (formData.password !== formData.confirmPassword) {
+//     setStatus({ loading: false, error: "Passwords do not match." });
+//     return;
+//   }
+
+//   setStatus({ loading: true, error: null });
+//      console.log(formData);
+//   try {
+//     await axios.post(`${apiUrl}/auth/register`, formData); 
+//     toast.success("Registration successful!");
+//     navigate("/login");
+//   } catch (error) {
+//     console.log(error);
+//     setStatus({ loading: false, error: "Something went wrong during registration. Please try again." });
+//     toast.error("Something went wrong during registration. Try again!");
+//   }
+// };
+
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (formData.password !== formData.confirmPassword) {
     setStatus({ loading: false, error: "Passwords do not match." });
@@ -83,18 +104,17 @@ const Register = () => {
   }
 
   setStatus({ loading: true, error: null });
-     console.log(formData);
+  console.log(formData);
   try {
-    await axios.post(`${apiUrl}/auth/register`, formData); 
-    toast.success("Registration successful!");
-    navigate("/login");
+    await axios.post(`${apiUrl}/auth/register`, formData);
+    setStatus({ loading: false, error: null });
+    setShowSuccessModal(true); // show popup instead of navigating right away
   } catch (error) {
     console.log(error);
     setStatus({ loading: false, error: "Something went wrong during registration. Please try again." });
     toast.error("Something went wrong during registration. Try again!");
   }
 };
-
 
 
  //google register
@@ -540,7 +560,50 @@ const Register = () => {
           </div>
         </div>
       </div>
+
+      {showSuccessModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+    <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center animate-fade-in">
+      <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center">
+        <svg
+          className="w-7 h-7 text-emerald-600"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      </div>
+      <h3 className="text-lg font-bold text-slate-900 mb-2">
+        Registration Successful!
+      </h3>
+      <p className="text-sm text-slate-500 mb-6">
+        Your account has been created. Please log in as an{" "}
+        <span className="font-semibold text-slate-700">Author / Reader</span>{" "}
+        to access your dashboard.
+      </p>
+      <button
+        onClick={() => {
+          setShowSuccessModal(false);
+          navigate("/login");
+        }}
+        className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl shadow-md transition-all active:scale-[0.99]"
+      >
+        Continue to Login
+      </button>
+    </div>
+  </div>
+)}
+
     </>
+    
+    
+    
   );
 };
 

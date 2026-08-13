@@ -4,9 +4,6 @@ import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
 import AboutUs from './components/pages/AboutUs';
 import EditorialTeam from './components/pages/EditorialTeam';
-
-
-
 import Publication from './components/pages/Publication';
 
 import Login from './components/auth/Login';

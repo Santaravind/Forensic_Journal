@@ -24,7 +24,7 @@ import toast from "react-hot-toast";
 import { GiSouthAfrica } from "react-icons/gi";
 // author/ Reader , Editor, reviewer, publisher , Institute , Admin
 const ROLES = [
-  { id: "author/reader", label: "Author/Reader", icon: User, color: "text-emerald-400" },
+  { id: "user", label: "Author/Reader", icon: User, color: "text-emerald-400" },
   {
     id: "reviewer",
     label: "Reviewer",

@@ -107,11 +107,25 @@ import learning from "../../assets/Learn.jpeg";
 // import learn from "../../assets/Learnguid.jpeg";
 import learn from "../../assets/newimage.jpeg";
 import bio from "../../assets/bio.jpeg";
+import book from "../../assets/books.jpeg"
+import crime from "../../assets/crimeseen.jpeg"
 // Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
 // Nahi to generic tags bhi pro lagenge with this CSS.
 
 const data = {
   "Forensic Science": [
+    {
+      title: "Crime Seen",
+      img: crime,
+      desc: "crime seem management",
+      price: "₹379",
+    },
+    {
+      title: "Crime Scene Management: B.Sc. Forensic Science Semester & Entrance Examinations",
+      img: book,
+      desc: "crime seem management",
+      price: "₹379",
+    },
     {
       title: "Forensic Assignment",
       img: learn,
@@ -136,6 +150,7 @@ const data = {
       desc: "Pattern recognition in crimes.",
       price: "₹499",
     },
+    
   ],
   Serology: [
     {

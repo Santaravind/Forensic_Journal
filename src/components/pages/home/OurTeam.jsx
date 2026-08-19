@@ -13,7 +13,8 @@ function OurTeam() {
       image: vijay, 
       post: "Coordinator/Head",
       position: "Head of Department",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology "
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology ",
+      profile: " https://ums.bujhansi.ac.in/bujhansi/frmViewCampusFacultyProfile.aspx?FacultyID=39"
     },
      {
       id: 2,
@@ -21,7 +22,9 @@ function OurTeam() {
       image: logo, 
       post: "Founder and CEO - Forensic Patrika",
       position: "",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology"
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology",
+      profile: "https://www.happydigitalbharat.com/indresh"
+
     },
      {
       id: 3,
@@ -29,11 +32,19 @@ function OurTeam() {
       image: hrigvi, 
       post: "Co-Editor-in-Chief",
       position: "",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology"
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology",
+      profile: " "
     },
    
   ];
-  
+   
+   const handledProfile = (e, buttonUrl) => {
+    e.preventDefault();
+
+    if (buttonUrl && buttonUrl.trim() !== "") {
+      window.open(buttonUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <>
@@ -81,7 +92,7 @@ function OurTeam() {
 
                {/* Contact/Social Placeholder */}
                <div className="mt-6 pt-6 border-t border-gray-50">
-                 <button className="w-full py-2 bg-gray-50 text-blue-600 rounded-xl text-sm font-bold hover:bg-blue-600 hover:text-white transition-colors">
+                 <button onClick={(e) => handledProfile(e, member.profile)} className="w-full py-2 bg-gray-50 text-blue-600 rounded-xl text-sm font-bold hover:bg-blue-600 hover:text-white transition-colors">
                    View Profile
                  </button>
                </div>

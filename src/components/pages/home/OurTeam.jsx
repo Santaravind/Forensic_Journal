@@ -25,11 +25,11 @@ function OurTeam() {
     },
      {
       id: 3,
-      name: "Akash Kumar ",
+      name: "Dr. Akash Kumar ",
       image: hrigvi, 
-      post: "",
+      post: "Co-Editor-in-Chief",
       position: "",
-      college: ""
+      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology"
     },
    
   ];

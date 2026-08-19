@@ -33,7 +33,7 @@ function OurTeam() {
       post: "Co-Editor-in-Chief",
       position: "",
       college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology",
-      profile: " "
+      profile: "https://ums.bujhansi.ac.in/BUJhansi/frmViewCampusFacultyProfile.aspx?FacultyID=494"
     },
    
   ];

@@ -124,7 +124,7 @@ export default function Navbar() {
         { to: "/paper-status", label: "Paper Status" },
       ],
     },
-    { to: "/editorial", label: "Editorial Team" },
+    { to: "/editorial", label: "Editorial Board" },
     {
       label: "Guidelines",
       submenu: [

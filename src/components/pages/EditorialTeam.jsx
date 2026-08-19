@@ -156,12 +156,12 @@ const EditorialTeam = () => {
         position: "Associate Editor",
         initials: "PC",
       },
-      {
-        id: 7,
-        name: "Mr. Shantanu Singh",
-        position: "Section Editor",
-        initials: "SS",
-      },
+      // {
+      //   id: 7,
+      //   name: "Mr. Shantanu Singh",
+      //   position: "Section Editor",
+      //   initials: "SS",
+      // },
       {
         id: 11,
         name: "Hrigvi Singh Banafar",
@@ -170,18 +170,18 @@ const EditorialTeam = () => {
       },
     ],
     support: [
-      {
-        id: 9,
-        name: "Ms. Richa Jaiswal",
-        position: "Reviewer",
-        initials: "RJ",
-      },
-      {
-        id: 10,
-        name: "Ms. Ankita Sikoria",
-        position: "Communication Officer",
-        initials: "AS",
-      },
+    //   {
+    //     id: 9,
+    //     name: "Ms. Richa Jaiswal",
+    //     position: "Reviewer",
+    //     initials: "RJ",
+    //   },
+    //   {
+    //     id: 10,
+    //     name: "Ms. Ankita Sikoria",
+    //     position: "Communication Officer",
+    //     initials: "AS",
+    //   },
       {
         id: 12,
         name: "Aravind Sant Singh",

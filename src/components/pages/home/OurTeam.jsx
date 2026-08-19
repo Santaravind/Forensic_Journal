@@ -25,7 +25,7 @@ function OurTeam() {
     },
      {
       id: 3,
-      name: "Akash Kuma ",
+      name: "Akash Kumar ",
       image: hrigvi, 
       post: "",
       position: "",

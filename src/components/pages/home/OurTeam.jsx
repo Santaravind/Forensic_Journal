@@ -25,7 +25,7 @@ function OurTeam() {
     },
      {
       id: 3,
-      name: "Hrigvi Singh ",
+      name: "Akash Kumar ",
       image: hrigvi, 
       post: "",
       position: "",
@@ -55,11 +55,11 @@ function OurTeam() {
              {/* Profile Image */}
              <div className="relative mb-6 mx-auto">
                <div className="absolute inset-0 bg-blue-100 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform"></div>
-               <img 
+               {/* <img 
                  src={member.image} 
                  alt={member.name} 
                   className="relative w-32 h-32 object-cover rounded-2xl border-4 border-white shadow-md"
-               />
+               /> */}
              </div>
 
               {/* Content */}

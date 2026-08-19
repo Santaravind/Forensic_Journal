@@ -1,168 +1,35 @@
-// import React, { useState } from "react";
-// // ✅ Simple data (NO subcategory nesting)
-// const data = {
-//   "Forensic Science": [
-//     { title: "Forensic Assignment", img: "/navpic.jpg" },
-//     { title: "Biosensors Intro", img: "https://via.placeholder.com/150" },
-//     { title: "Arduino Coding", img: "https://via.placeholder.com/150" },
-//     { title: "Crime Analysis", img: "https://via.placeholder.com/150" }
-//   ],
-//   "Serology": [
-//     { title: "Blood Analysis", img: "https://via.placeholder.com/150" },
-//     { title: "DNA Basics", img: "https://via.placeholder.com/150" }
-//   ],
-//   "Toxicology": [
-//     { title: "Poison Study", img: "https://via.placeholder.com/150" }
-//   ],
-//   "Ballistics": [],
-//   "Fingerprint": [],
-//   "Biosensors": [],
-//   "Cyber Forensics": [],
-//   "Anthropology": [],
-//   "Genetics": [],
-//   "Case Study": [],
-//   "Crime Investigation": [],
-//   "Other": []
-// };
-
-// export default function Learning() {
-//      const categories = Object.keys(data);
-
-//   const [selected, setSelected] = useState("Forensic Science");
-//   const [open, setOpen] = useState(null);
-
-//   return (
-//     <div className="flex h-screen bg-gray-100">
-
-//       {/* 🔹 Sidebar */}
-//       <div className="w-1/4 bg-white p-4 shadow-md overflow-y-auto">
-//         <h2 className="text-lg font-bold mb-4">Product Categories</h2>
-
-//         {categories.map((cat) => (
-//           <div key={cat}>
-
-//             {/* ✅ Parent Category */}
-//             <div
-//               onClick={() => {
-//                 setSelected(cat);
-//                 setOpen(open === cat ? null : cat);
-//               }}
-//               className={`flex justify-between p-2 cursor-pointer rounded mb-2 ${
-//                 selected === cat
-//                   ? "bg-blue-500 text-white"
-//                   : "hover:bg-gray-200"
-//               }`}
-//             >
-//               <span>{cat}</span>
-//               <span>({data[cat].length})</span>
-//             </div>
-
-//             {/* ✅ Same-style dropdown (IMPORTANT) */}
-//             {open === cat &&
-//               data[cat].map((item, i) => (
-//                 <div
-//                   key={i}
-//                   className="flex justify-between p-2 ml-3 cursor-pointer rounded mb-2 hover:bg-gray-200 text-sm"
-//                 >
-//                   <span>{item.title}</span>
-//                 </div>
-//               ))}
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* 🔹 Content */}
-//       <div className="w-3/4 p-6">
-//         <h2 className="text-xl font-bold mb-4">{selected}</h2>
-
-//         <div className="grid grid-cols-3 gap-4">
-//           {(data[selected] || []).map((item, index) => (
-//             <div key={index} className="bg-white p-4 shadow rounded">
-
-//               {/* Image Fix */}
-//               <div className="w-full h-40 overflow-hidden rounded">
-//                 <img
-//                   src={item.img}
-//                   alt={item.title}
-//                   className="w-full h-full object-cover"
-//                 />
-//               </div>
-
-//               <h3 className="mt-2 font-semibold">{item.title}</h3>
-
-//               <button className="mt-2 bg-blue-500 text-white px-3 py-1 rounded">
-//                 View
-//               </button>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//     </div>
-//   );
-// }
-
 import React, { useState } from "react";
-import learning from "../../assets/Learn.jpeg";
-// import learn from "../../assets/Learnguid.jpeg";
-import learn from "../../assets/newimage.jpeg";
-import bio from "../../assets/bio.jpeg";
-import book from "../../assets/books.jpeg"
-import crime from "../../assets/crimeseen.jpeg"
-// Agar icons use karna chahte hain to 'lucide-react' install kar sakte hain
-// Nahi to generic tags bhi pro lagenge with this CSS.
-
+import crime from "../../assets/crimeseen.jpeg";
+import reserch from "../../assets/Research.jpeg"
 const data = {
   "Forensic Science": [
     {
-      title: "Crime Seen",
+      title: "Crime Scene Management",
       img: crime,
-      desc: "crime seem management",
+      desc: "Crime scene management and field procedures guide.",
       price: "₹379",
+      button: "https://rzp.io/rzp/Z7M7BS7E",
     },
     {
-      title: "Crime Scene Management: B.Sc. Forensic Science Semester & Entrance Examinations",
-      img: book,
-      desc: "crime seem management",
+      title: "Research Guide",
+      img: reserch,
+      desc: "Foundations of Research From Ideas to Publications FORENSIC PATRIKA : A Complete Handbook on Research Methodology, Data Analysis, and Academic Writing",
       price: "₹379",
+      button: "",
     },
-    {
-      title: "Forensic Assignment",
-      img: learn,
-      desc: "Detailed analysis of evidence.",
-      price: "₹499",
-    },
-    {
-      title: "Biosensors Intro",
-      img: bio,
-      desc: "Basics of biological sensors.",
-      price: "₹499",
-    },
-    {
-      title: "Arduino Coding",
-      img: learning,
-      desc: "Embedded systems for labs.",
-      price: "₹499",
-    },
-    {
-      title: "Crime Analysis",
-      img: learning,
-      desc: "Pattern recognition in crimes.",
-      price: "₹499",
-    },
-    
   ],
   Serology: [
     {
       title: "Blood Analysis",
       img: "https://via.placeholder.com/150",
-      desc: "Study of bodily fluids.",
+      desc: "Study of bodily fluids and serological testing.",
       price: "₹499",
+      button: "", // No link provided -> shows "Coming Soon"
     },
     {
       title: "DNA Basics",
       img: "https://via.placeholder.com/150",
-      desc: "Genetic identification.",
+      desc: "Genetic identification techniques.",
       price: "₹499",
     },
   ],
@@ -170,7 +37,7 @@ const data = {
     {
       title: "Poison Study",
       img: "https://via.placeholder.com/150",
-      desc: "Chemical substance effects.",
+      desc: "Chemical substance effects and detection.",
       price: "₹499",
     },
   ],
@@ -190,9 +57,20 @@ export default function LearningResources() {
   const [selected, setSelected] = useState("Forensic Science");
   const [open, setOpen] = useState("Forensic Science");
 
+  // Handles checkout link or fallback notice
+  const handledBuy = (e, buttonUrl) => {
+    e.preventDefault();
+
+    if (buttonUrl && buttonUrl.trim() !== "") {
+      window.open(buttonUrl, "_blank", "noopener,noreferrer");
+    } else {
+      alert("This resource is coming soon!");
+    }
+  };
+
   return (
     <div className="flex h-screen bg-slate-50 font-sans text-slate-900">
-      {/*  Sidebar: Sleek & Sticky */}
+      {/* Sidebar */}
       <div className="w-1/4 bg-white border-r border-slate-200 p-6 shadow-[4px_0_24px_rgba(0,0,0,0.02)] overflow-y-auto">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
@@ -206,7 +84,6 @@ export default function LearningResources() {
         <nav className="space-y-1">
           {categories.map((cat) => (
             <div key={cat} className="group">
-              {/* Parent Category */}
               <div
                 onClick={() => {
                   setSelected(cat);
@@ -219,18 +96,23 @@ export default function LearningResources() {
                 }`}
               >
                 <span
-                  className={`font-semibold text-[15px] ${selected === cat ? "scale-105" : ""}`}
+                  className={`font-semibold text-[15px] ${
+                    selected === cat ? "scale-105" : ""
+                  }`}
                 >
                   {cat}
                 </span>
                 <span
-                  className={`text-xs px-2 py-0.5 rounded-full ${selected === cat ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-400 group-hover:bg-slate-200"}`}
+                  className={`text-xs px-2 py-0.5 rounded-full ${
+                    selected === cat
+                      ? "bg-indigo-600 text-white"
+                      : "bg-slate-100 text-slate-400 group-hover:bg-slate-200"
+                  }`}
                 >
                   {data[cat].length}
                 </span>
               </div>
 
-              {/* Dropdown Items (Subtle dot indicator) */}
               {open === cat && (
                 <div className="mt-1 ml-4 border-l-2 border-slate-100 space-y-1 animate-in slide-in-from-top-2 duration-300">
                   {data[cat].map((item, i) => (
@@ -249,7 +131,7 @@ export default function LearningResources() {
         </nav>
       </div>
 
-      {/*  Content Area: Clean & Spacious */}
+      {/* Content Area */}
       <div className="w-3/4 p-10 overflow-y-auto">
         <header className="mb-10 flex justify-between items-end">
           <div>
@@ -265,79 +147,72 @@ export default function LearningResources() {
 
         {data[selected]?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {data[selected].map((item, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 transform hover:-translate-y-2"
-              >
-                {/* Image Container */}
-                <div className="relative h-56 overflow-hidden">
-                  {/* 🔹 Main Image (full visible) */}
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="relative w-full h-full object-contain "
-                  />
+            {data[selected].map((item, index) => {
+              const numericPrice = parseInt(item.price.replace(/[^\d]/g, ""), 10) || 0;
+              const originalPrice = numericPrice * 2;
 
-                  {/* <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">Explore Module</span>
-                  </div> */}
+              return (
+                <div
+                  key={index}
+                  className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 transform hover:-translate-y-2"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="relative w-full h-full object-contain"
+                    />
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-500 line-clamp-2">
+                      {item.desc}
+                    </p>
+
+                    <div className="mt-6 border-t pt-4">
+                      <div className="p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-2xl font-bold text-slate-900">
+                            {item.price}
+                          </span>
+
+                          {numericPrice > 0 && (
+                            <span className="text-sm text-slate-400 line-through">
+                              ₹{originalPrice}
+                            </span>
+                          )}
+
+                          <span className="ml-auto bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                            50% OFF
+                          </span>
+                        </div>
+
+                        <div className="h-px bg-slate-100 mb-4"></div>
+
+                        <div className="flex items-center justify-between">
+                          <button className="text-sm font-medium text-slate-500 hover:text-indigo-600 transition flex items-center gap-1">
+                            View Details
+                            <span className="transition-transform duration-200 group-hover:translate-x-1">
+                              →
+                            </span>
+                          </button>
+
+                          <button
+                            onClick={(e) => handledBuy(e, item.button)}
+                            className="relative px-5 py-2 text-sm font-semibold text-white rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200"
+                          >
+                            BUY NOW
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-500 line-clamp-2">
-                    This is a professional description for the {item.title}{" "}
-                    module.
-                  </p>
-
-                   
-                  <div className="mt-6 border-t pt-4">
-  {/* Price and Discount Section */}
-   <div className="p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
-
-  {/* Price Section */}
-  <div className="flex items-center gap-3 mb-3">
-    <span className="text-2xl font-bold text-slate-900">
-      {item.price}
-    </span>
-
-    {/* <span className="text-sm text-slate-400 line-through">
-      ₹{(item.price * 2).toFixed(0)}
-    </span> */}
-
-    <span className="ml-auto bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
-      50% OFF
-    </span>
-  </div>
-
-  {/* Divider */}
-  <div className="h-px bg-slate-100 mb-4"></div>
-
-  {/* Action Buttons */}
-  <div className="flex items-center justify-between">
-
-    {/* View Details */}
-    <button className="text-sm font-medium text-slate-500 hover:text-indigo-600 transition flex items-center gap-1">
-      View Details
-      <span className="transition-transform duration-200 group-hover:translate-x-1">
-        →
-      </span>
-    </button>
-
-    {/* Buy Now */}
-    <button className="relative px-5 py-2 text-sm font-semibold text-white rounded-xl bg-linear-to-r from-indigo-600 to-blue-600 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200">
-      BUY NOW
-    </button>
-
-  </div>
-</div>
-</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed border-slate-200 rounded-3xl">

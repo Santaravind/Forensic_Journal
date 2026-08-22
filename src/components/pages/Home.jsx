@@ -61,7 +61,9 @@ const tabs = [
           <div className="flex flex-col items-center gap-4">
             <h1 className="text-blue-900 font-bold text-2xl sm:text-3xl md:text-5xl tracking-tight font-serif uppercase leading-tight">
               {/* Dr. A. P. J. Abdul Kalam Institute of <br /> */}
-              <span className="text-blue-800">Forensic Science and Criminology</span>
+              <span className="text-blue-800">
+                {/* Forensic Science and Criminology */}
+                </span>
             </h1>
 
             <div className="flex items-center gap-4 w-full justify-center mt-2">

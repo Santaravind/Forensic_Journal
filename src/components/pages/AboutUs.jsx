@@ -10,7 +10,7 @@ const AboutUs = () => {
         <div className="text-center mb-16">
            {/* <img src={logo} alt="logo" className=' w-50 h-50' /> */}
           <h2 className="text-blue-900 text-sm font-bold tracking-[0.3em] uppercase mb-4">
-             Institutional Profile
+             {/* Institutional Profile */}
           </h2>
           <h1 className="text-4xl md:text-5xl font-bold border-y-2 border-blue-900 py-6 inline-block">
             About Forensic Patrika
@@ -23,25 +23,22 @@ const AboutUs = () => {
           {/* COLUMN 1: MISSION & VISION */}
           <div className="space-y-6">
             <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-blue-900 first-letter:mr-3 first-letter:float-left">
-              <strong>Forensic Patrika: A Journal of Forensic Science</strong> is an academic publication platform 
-              committed to supporting and showcasing student-led research across diverse disciplines. 
-              Founded on the principle that meaningful scholarship should not be constrained by experience 
-              or hierarchy, the platform seeks to foster inclusive academic participation.
+              <strong>Forensic Patrika: A Journal of Forensic Science </strong> 
+              Forensic Patrika: A Journal of Forensic Science is a peer-reviewed academic journal dedicated to advancing scholarly research, critical inquiry, and ethical publishing across forensic science and related interdisciplinary fields. Founded on the principle that meaningful scholarship is defined by quality rather than experience or hierarchy, the journal fosters inclusive academic participation. It supports emerging researchers in contributing meaningfully to the global scholarly community. 
             </p>
             <p>
-              Our mission is to make the process of research publication accessible, transparent, 
-              and supportive for undergraduate, postgraduate, and early-career scholars. The journal 
-              offers a structured space for the dissemination of original research, review articles, 
-              and interdisciplinary studies.
+              Our mission is to make scholarly publishing accessible, transparent, and academically rigorous for undergraduate, postgraduate, doctoral, and early-career researchers. Through a structured peer-review process, the journal provides a professional platform for publishing original research articles, review papers, and interdisciplinary studies while promoting ethical publishing practices and academic integrity
             </p>
-            <blockquote className="border-l-4 border-blue-900 pl-6 italic text-blue-900 font-medium my-8">
+            {/* <blockquote className="border-l-4 border-blue-900 pl-6 italic text-blue-900 font-medium my-8">
               “Curiosity is the first step for research, integrity is what takes it forward"
-            </blockquote>
+            </blockquote> */}
           </div>
 
           {/* COLUMN 2: ACADEMIC GUIDANCE */}
-          <div className="space-y-6 bg-stone-50 p-6 border border-stone-200 shadow-sm">
-            <h3 className="text-xl font-bold text-blue-900 border-b pb-2 mb-4">Academic Stewardship</h3>
+           {/* <div className="space-y-6 bg-stone-50 p-6 border border-stone-200 shadow-sm">
+            <h3 className="text-xl font-bold text-blue-900 border-b pb-2 mb-4">
+              Academic Stewardship
+              </h3>
             <p className="text-sm md:text-base">
               The journal is developed under the academic guidance of the <strong>Dr. APJ Abdul Kalam 
               Institute of Forensic Science and Criminology</strong>. The institute is dedicated to 
@@ -54,18 +51,18 @@ const AboutUs = () => {
               The university fosters an environment that values academic excellence and 
               interdisciplinary collaboration.
             </p>
-          </div>
-        </div>
+          </div> */}
+         </div> 
 
         {/* BOTTOM SECTION: PEER REVIEW COMMITMENT */}
-        <div className="mt-16 bg-blue-900 text-white p-8 md:p-12 rounded-sm shadow-xl">
+        {/* <div className="mt-16 bg-blue-900 text-white p-8 md:p-12 rounded-sm shadow-xl">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-6 tracking-wide uppercase">Our Scholarly Standards</h3>
             <p className="text-blue-100 leading-loose">
               Through a structured peer review process involving students and faculty members, the platform aims to uphold academic standards whie nurturing emerging researchers. FORENSIC SCIENCE : A JOURNAL OF FORENSIC SCIENCE stands as a representation of the department and university's dedication to responsible scholarship, critical engagement, and the dissemination of research that contributes to the advancement of forensic science and criminology at both national and global levels.
             </p>
           </div>
-        </div>
+        </div> */}
 
       </div>
     </div>

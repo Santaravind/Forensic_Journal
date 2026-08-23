@@ -33,6 +33,11 @@ import Publisher from './components/publisharPage/Publisher';
 import ProtectetRoute from './components/route/ProtectetRoute';
 import {useDispatch} from 'react-redux'
 import PrivateRoute from './components/route/ProtectetRoute';
+import ArtificialIntelligence from './components/pages/guidline/ArtificialIntelligence';
+import RightsPermissions from './components/pages/guidline/RightsPermissions';
+import AppealsComplaints from './components/pages/guidline/AppealsComplaints';
+import PreprintSharing from './components/pages/guidline/PreprintSharing';
+import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising ';
 function App() {
   
 
@@ -63,6 +68,11 @@ function App() {
       <Route path='/open' element={<Open/>}/>
       <Route path='/plag' element={<Plagiarism/>}/>
       <Route path='/privacy' element={<Privacy/>}/>
+      <Route path='/ai'  element={<ArtificialIntelligence/>}/>
+      <Route path='/right'  element={<RightsPermissions/>}/>
+      <Route path='/appeals'  element={<AppealsComplaints/>}/>
+      <Route path='/correct'  element={<CorrectionsRetractionsMattersArising/>}/>
+      <Route path='/preprint'  element={<PreprintSharing/>}/>
    
    {/* instructions  */}
    <Route path='/authorIn' element={<AuthorInsturctions/>}/>

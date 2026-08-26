@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './components/pages/Home';
-import Blog from './components/pages/Blog';
+import Blog from './components/pages/blog/Blog';
 import AboutUs from './components/pages/AboutUs';
 import EditorialTeam from './components/pages/EditorialTeam';
 import Publication from './components/pages/Publication';
@@ -38,6 +38,7 @@ import RightsPermissions from './components/pages/guidline/RightsPermissions';
 import AppealsComplaints from './components/pages/guidline/AppealsComplaints';
 import PreprintSharing from './components/pages/guidline/PreprintSharing';
 import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising ';
+import Blogpublish from './components/pages/blog/Blogpublish';
 function App() {
   
 
@@ -48,7 +49,6 @@ function App() {
       <ScrollToTop/>
         <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/blog' element={<Blog/>}/>
       <Route path='/about' element={<AboutUs/>}/>
       <Route path='/editorial' element={<EditorialTeam/>}/>
       {/* <Route path='/guideline' element={<Guidelines/>}/> */}
@@ -83,6 +83,11 @@ function App() {
         <Route path='/publisher' element={<Publisher/>}/>
               
 
+              {/* blog */}
+               <Route path='/blog' element={<Blog/>}/>
+                <Route path='/postb' element={<Blogpublish/>}/>
+        
+         
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/reserchform' element={

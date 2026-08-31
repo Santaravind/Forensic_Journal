@@ -39,6 +39,7 @@ import AppealsComplaints from './components/pages/guidline/AppealsComplaints';
 import PreprintSharing from './components/pages/guidline/PreprintSharing';
 import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising ';
 import Blogpublish from './components/pages/blog/Blogpublish';
+import Career from './components/pages/career/Career';
 function App() {
   
 
@@ -85,7 +86,10 @@ function App() {
 
               {/* blog */}
                <Route path='/blog' element={<Blog/>}/>
-                <Route path='/postb' element={<Blogpublish/>}/>
+                <Route path='/postb' element={
+                  <PrivateRoute> 
+                   <Blogpublish/>
+                  </PrivateRoute> }/>
         
          
       <Route path='/login' element={<Login/>}/>
@@ -99,9 +103,12 @@ function App() {
       <Route path='/caseStudyForm' element={
         <PrivateRoute> 
         <CaseStudyPaperForm/>
-        </PrivateRoute> 
-        
-        }/>
+        </PrivateRoute>   
+             }/>
+
+
+             {/* career  */}
+             <Route path='/career' element={<Career/>}/>
       </Routes>
       <Footer/>
 

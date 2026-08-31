@@ -18,10 +18,10 @@ const Footer = () => {
     {
       title: "About",
       links: [
-        { name: "About the Institute", icon: <FiArrowRight /> },
-        { name: "Careers", icon: <FiArrowRight /> },
-        { name: "Global Press Office", icon: <FiArrowRight /> },
-        { name: "Advertising & Reprints", icon: <FiArrowUpRight /> },
+        { name: "About the Institute",rout:"" , icon: <FiArrowRight /> },
+        { name: "Careers", rout:"/career",icon: <FiArrowRight /> },
+        { name: "Global Press Office", rout:"", icon: <FiArrowRight /> },
+        { name: "Advertising & Reprints", rout:"", icon: <FiArrowUpRight /> },
       ],
     },
     {
@@ -48,7 +48,7 @@ const Footer = () => {
                 {section.links.map((link, i) => (
                   <li key={i}>
                     <a
-                      href="#"
+                      href={link.rout}
                       className="group flex items-center gap-2 text-[15px] hover:text-blue-900 transition-colors duration-200"
                     >
                       <span className="border-b border-transparent group-hover:border-blue-900">

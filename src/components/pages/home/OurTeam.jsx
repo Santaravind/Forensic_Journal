@@ -11,7 +11,7 @@ function OurTeam() {
       id: 1,
       name: "DR. VIJAY KUMAR YADAV",
       image: vijay, 
-      post: "editor-in-chie",
+      post: "editor-in-chief",
       position: " ",
       college: "Forensic Patrika",
       profile: " https://ums.bujhansi.ac.in/bujhansi/frmViewCampusFacultyProfile.aspx?FacultyID=39"

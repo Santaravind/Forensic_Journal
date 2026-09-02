@@ -22,7 +22,7 @@ function OurTeam() {
       image: logo, 
       post: "Founder and CEO - Forensic Patrika",
       position: "",
-      college: "Forensic Pratrika ",
+      college: "Forensic Patrika ",
       profile: "https://www.happydigitalbharat.com/indresh"
 
     },

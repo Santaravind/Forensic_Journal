@@ -7,7 +7,7 @@ const Peer = () => {
   const steps = [
     {
       title: "Initial Editorial Screening",
-      desc: "A Journal of Forensic Journey follows a structured and transarent peer - review process toensure academic quality, fairness, and rigorous yet constructive evaluation. All submitted manuscripts firstundergo an initial editorial screening to assess their relevance, originality, and compliance with submission guidelines",
+      desc: "Forensic Patrika: A Journal of Forensic Science follows a structured and transparent peer-review process to ensure academic quality, fairness, and rigorous yet constructive evaluation. All submitted manuscripts first undergo an initial editorial screening to assess their relevance, originality, and compliance with submission guidelines.",
       icon: <FileSearch className="w-6 h-6 text-indigo-600" />,
     },
     {
@@ -17,11 +17,12 @@ const Peer = () => {
     },
     {
       title: "Constructive Feedback",
-      desc: "Reviewers evaluate methodological rigor and ethical standards, providing feedback designed to strengthen the manuscript.Emphasis is placed on constructive feedback aimed at strenthening the manuscript rather than discouraging authors. Reviewers are required to uphold confidentiality, objectivity, and academic integrity throughout the evaluation process.",      icon: <Edit3 className="w-6 h-6 text-indigo-600" />,
+      desc: "Reviewers evaluate methodological rigor and ethical standards, providing feedback designed to strengthen the manuscript. Emphasis is placed on constructive feedback aimed at strengthening the manuscript rather than discouraging authors. Reviewers are required to uphold confidentiality, objectivity, and academic integrity throughout the evaluation process.",
+      icon: <Edit3 className="w-6 h-6 text-indigo-600" />,
     },
     {
       title: "Final Decision",
-      desc: "Authors may be requested to revise their manuscripts in response to reviewer feedback, and final publication decisions made by the editorial team after thorough consideration of all evaluations.Our platform remains committed to maintaining a supportive yet rigourous peer-review envirnment that upholdsscholarly standards while actively encouraging student-led research",
+      desc: "Authors may be requested to revise their manuscripts in response to reviewer feedback, and final publication decisions are made by the editorial team after thorough consideration of all evaluations. Our platform remains committed to maintaining a supportive yet rigorous peer-review environment that upholds scholarly standards while actively encouraging student-led research.",
       icon: <CheckCircle className="w-6 h-6 text-indigo-600" />,
     }
   ];
@@ -43,7 +44,7 @@ const Peer = () => {
             Peer-Review Process
           </h2>
           <p className="mt-3 text-indigo-700 font-semibold tracking-wide uppercase text-sm">
-            Forensic Patrika : A Journal of Forensic Journey
+            Forensic Patrika : A Journal of Forensic Science
           </p>
         </div>
 

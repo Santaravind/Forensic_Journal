@@ -23,6 +23,7 @@ import Open from './components/pages/guidline/Open';
 import Plagiarism from './components/pages/guidline/Plagiarism';
 import Privacy from './components/pages/guidline/Privacy';
 import Register from './components/auth/Register';
+import VerifyOtp from './components/auth/VerifyOtp';
 import CaseStudyPaperForm from './components/pages/CaseStudyPaperForm';
 import AuthorInsturctions from './components/pages/guidline/AuthorInsturctions';
 import Review from './components/pages/Review';
@@ -94,6 +95,7 @@ function App() {
          
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/verify-otp' element={<VerifyOtp/>}/>
       <Route path='/reserchform' element={
         <PrivateRoute> 
           <ResearchPaperForm/>

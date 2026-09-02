@@ -90,9 +90,9 @@ const tabs = [
           <div className="prose prose-blue max-w-none space-y-6">
             <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl first-letter:text-5xl md:first-letter:text-6xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-blue-900">
               <strong className="text-blue-900 uppercase tracking-wide">
-                Welcome to Forensic Patrika: A Journal of Forensic Science 
+                Welcome to Forensic Patrika: A Journal of Forensic Science
               </strong>
-              , , an academic publication platform committed to advancing scholarly research, critical inquiry, and ethical academic writing. Focused on Forensic Science, Criminology, and related interdisciplinary fields, the journal provides a structured, peer-reviewed platform for students and researchers to publish original research articles, review papers, and analytical studies that advance contemporary scholarship.
+              , an academic publication platform committed to advancing scholarly research, critical inquiry, and ethical academic writing. Focused on Forensic Science, Criminology, and related interdisciplinary fields, the journal provides a structured, peer-reviewed platform for students and researchers to publish original research articles, review papers, and analytical studies that advance contemporary scholarship.
             </p>
 
             <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 italic bg-blue-50/40 py-2">

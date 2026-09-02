@@ -1,23 +1,22 @@
+import React from "react";
 import { Navigate } from "react-router-dom";
+import { authService } from "../../services/authService";
 
 export default function PrivateRoute({ children, allowedRoles }) {
-  let user = null;
-  try {
-    user = JSON.parse(localStorage.getItem("user"));
-  } catch {
-    user = null;
-  }
+  const isAuth = authService.isAuthenticated();
+  const user = authService.getCurrentUser();
 
-  const isLoggedIn = !!(user && user.email);
-
-
-  if (!isLoggedIn) {
+  if (!isAuth || !user) {
     return <Navigate to="/login" replace />;
   }
 
-  
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
-    return <Navigate to="/" replace />;
+  if (allowedRoles && allowedRoles.length > 0) {
+    const userRole = (user.role || "").toUpperCase();
+    const normalizedAllowed = allowedRoles.map((r) => r.toUpperCase());
+
+    if (!normalizedAllowed.includes(userRole)) {
+      return <Navigate to="/" replace />;
+    }
   }
 
   return children;

@@ -23,11 +23,10 @@ const AboutUs = () => {
           {/* COLUMN 1: MISSION & VISION */}
           <div className="space-y-6">
             <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-blue-900 first-letter:mr-3 first-letter:float-left">
-              <strong>Forensic Patrika: A Journal of Forensic Science </strong> 
-              Forensic Patrika: A Journal of Forensic Science is a peer-reviewed academic journal dedicated to advancing scholarly research, critical inquiry, and ethical publishing across forensic science and related interdisciplinary fields. Founded on the principle that meaningful scholarship is defined by quality rather than experience or hierarchy, the journal fosters inclusive academic participation. It supports emerging researchers in contributing meaningfully to the global scholarly community. 
+              <strong>Forensic Patrika: A Journal of Forensic Science</strong> is a peer-reviewed academic journal dedicated to advancing scholarly research, critical inquiry, and ethical publishing across forensic science and related interdisciplinary fields. Founded on the principle that meaningful scholarship is defined by quality rather than experience or hierarchy, the journal fosters inclusive academic participation. It supports emerging researchers in contributing meaningfully to the global scholarly community.
             </p>
             <p>
-              Our mission is to make scholarly publishing accessible, transparent, and academically rigorous for undergraduate, postgraduate, doctoral, and early-career researchers. Through a structured peer-review process, the journal provides a professional platform for publishing original research articles, review papers, and interdisciplinary studies while promoting ethical publishing practices and academic integrity
+              Our mission is to make scholarly publishing accessible, transparent, and academically rigorous for undergraduate, postgraduate, doctoral, and early-career researchers. Through a structured peer-review process, the journal provides a professional platform for publishing original research articles, review papers, and interdisciplinary studies while promoting ethical publishing practices and academic integrity.
             </p>
             {/* <blockquote className="border-l-4 border-blue-900 pl-6 italic text-blue-900 font-medium my-8">
               “Curiosity is the first step for research, integrity is what takes it forward"

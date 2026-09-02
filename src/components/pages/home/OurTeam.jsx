@@ -11,9 +11,9 @@ function OurTeam() {
       id: 1,
       name: "DR. VIJAY KUMAR YADAV",
       image: vijay, 
-      post: "Coordinator/Head",
-      position: "Head of Department",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology ",
+      post: "editor-in-chie",
+      position: " ",
+      college: "Forensic Patrika",
       profile: " https://ums.bujhansi.ac.in/bujhansi/frmViewCampusFacultyProfile.aspx?FacultyID=39"
     },
      {
@@ -22,7 +22,7 @@ function OurTeam() {
       image: logo, 
       post: "Founder and CEO - Forensic Patrika",
       position: "",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology",
+      college: "Forensic Pratrika ",
       profile: "https://www.happydigitalbharat.com/indresh"
 
     },
@@ -32,7 +32,7 @@ function OurTeam() {
       image: hrigvi, 
       post: "Co-Editor-in-Chief",
       position: "",
-      college: "Dr. A.P.J Abdul Kalam Institute of Forensic Science and Criminology",
+      college: "Forensic Patrika",
       profile: "https://ums.bujhansi.ac.in/BUJhansi/frmViewCampusFacultyProfile.aspx?FacultyID=494"
     },
    

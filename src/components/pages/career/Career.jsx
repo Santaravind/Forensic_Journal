@@ -753,7 +753,7 @@ export default function Career() {
                     className={inputClass}
                     value={form.phone}
                     onChange={update("phone")}
-                    placeholder="+9156XXXXX679"
+                    placeholder="+9156XXXXX67"
                   />
                   {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
                 </Field>

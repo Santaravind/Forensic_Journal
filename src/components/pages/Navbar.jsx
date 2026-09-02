@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import logo from "../assets/logoss.png";
 import { MdMarkEmailRead } from "react-icons/md";
+import { authService } from "../../services/authService";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,9 +76,8 @@ export default function Navbar() {
 
   // Logout function
   const handleLogout = () => {
-    // Clear user data from localStorage
-    localStorage.removeItem("user");
-    window.dispatchEvent(new Event("userChanged"));
+    // Clear user data and tokens via authService
+    authService.logout();
     // Update state
     setUser(null);
     setIsLoggedIn(false);
@@ -130,22 +130,22 @@ export default function Navbar() {
       submenu: [
         { to: "/peer", label: "Peer Review Policy" },
         { to: "/open", label: "Open Access Policy" },
-        { to: "/author", label: "Author guidelines" },
+        { to: "/author", label: "Author Guidelines" },
         { to: "/plag", label: "Plagiarism Policy" },
-        { to: "/ethics", label: "Ethics and malpractice Policy" },
-        { to: "/privacy", label: "Privacy statement" },
-        { to: "/informed", label: "Informed consent" },
-        { to: "/ai", label: "Artifical Intelligence" },
-        { to: "/right", label: "Right Premissions" },
-        { to: "/appeals", label: "Appeals Complaints" },
-        { to: "/correct", label: "Crrection Retractions" },
+        { to: "/ethics", label: "Ethics and Malpractice Policy" },
+        { to: "/privacy", label: "Privacy Statement" },
+        { to: "/informed", label: "Informed Consent" },
+        { to: "/ai", label: "Artificial Intelligence" },
+        { to: "/right", label: "Rights & Permissions" },
+        { to: "/appeals", label: "Appeals & Complaints" },
+        { to: "/correct", label: "Corrections & Retractions" },
         { to: "/preprint", label: "Preprint Sharing" },
       ],
     },
     { to: "/publication", label: "Publication Procedure" },
     {
-      label: "Instuction",
-      submenu: [{ to: "/authorIn", label: "Author" }],
+      label: "Instructions",
+      submenu: [{ to: "/authorIn", label: "Author Instructions" }],
     },
     { to: "/blog", label: "Blog" },
   ];

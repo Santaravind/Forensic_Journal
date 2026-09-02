@@ -59,7 +59,7 @@ const PaperStatus = () => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50g px-4 py-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 px-4 py-8">
   <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 text-center">
     Check Status
   </h1>
@@ -68,7 +68,7 @@ const PaperStatus = () => {
   <div className="relative w-full max-w-md mb-4 text-center">
     <input
       type="text"
-      placeholder="Enter Submission I'd"
+      placeholder="Enter Submission ID"
       className="
         w-full
         bg-white/60

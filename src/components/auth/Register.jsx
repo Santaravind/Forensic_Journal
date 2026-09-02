@@ -1,5 +1,4 @@
-
-import { cache, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FiUser,
   FiMail,
@@ -8,14 +7,16 @@ import {
   FiLock,
   FiEye,
   FiEyeOff,
+  FiArrowRight,
 } from "react-icons/fi";
 import { GiFingerPrint, GiMicroscope, GiScales } from "react-icons/gi";
 import logos from "../assets/logoss.png";
 import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import{toast} from 'react-hot-toast';
-import axios from 'axios'
+import toast from "react-hot-toast";
+import { authService } from "../../services/authService";
+
 const SPECIALIZATIONS = [
   "Reader",
   "Digital Forensics",
@@ -31,22 +32,7 @@ const SPECIALIZATIONS = [
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
- const [formData, setFormData] = useState({
-  fullName: "",
-  email: "",
-  mobileNo: "",
-  organization: "",
-  domain: "",
-  password: "",
-  confirmPassword: "",
-  role: "user"
-});
-  const [status, setStatus] = useState({ loading: false, error: null });
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_URL;
- useEffect(() => {
-  setFormData({
+  const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     mobileNo: "",
@@ -54,100 +40,113 @@ const Register = () => {
     domain: "",
     password: "",
     confirmPassword: "",
-    role: "user"   
+    role: "USER",
   });
-  try {
-    const raw = localStorage.getItem("user");
-    if (raw) {
-      const u = JSON.parse(raw);
-      if (!u?.email) localStorage.removeItem("user");
-    }
-  } catch {
-    localStorage.removeItem("user");
-  }
-}, []);
+  const [status, setStatus] = useState({ loading: false, error: null });
+  const navigate = useNavigate();
 
-  //orcid id login
+  useEffect(() => {
+    setFormData({
+      fullName: "",
+      email: "",
+      mobileNo: "",
+      organization: "",
+      domain: "",
+      password: "",
+      confirmPassword: "",
+      role: "USER",
+    });
+  }, []);
+
+  // ORCID ID integration
   const handleOrcID = (e) => {
     e.preventDefault();
     window.open("https://orcid.org/signin", "_blank");
   };
-  const handleChange = (e) =>
+
+  const handleChange = (e) => {
     setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
+    if (status.error) setStatus((s) => ({ ...s, error: null }));
+  };
 
-  // register throw method 
-//   const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   if (formData.password !== formData.confirmPassword) {
-//     setStatus({ loading: false, error: "Passwords do not match." });
-//     return;
-//   }
+  // Submit registration to backend
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//   setStatus({ loading: true, error: null });
-//      console.log(formData);
-//   try {
-//     await axios.post(`${apiUrl}/auth/register`, formData); 
-//     toast.success("Registration successful!");
-//     navigate("/login");
-//   } catch (error) {
-//     console.log(error);
-//     setStatus({ loading: false, error: "Something went wrong during registration. Please try again." });
-//     toast.error("Something went wrong during registration. Try again!");
-//   }
-// };
+    if (formData.password !== formData.confirmPassword) {
+      setStatus({ loading: false, error: "Passwords do not match." });
+      return;
+    }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (formData.password !== formData.confirmPassword) {
-    setStatus({ loading: false, error: "Passwords do not match." });
-    return;
-  }
+    if (formData.password.length < 6) {
+      setStatus({ loading: false, error: "Password must be at least 6 characters long." });
+      return;
+    }
 
-  setStatus({ loading: true, error: null });
-  console.log(formData);
-  try {
-    await axios.post(`${apiUrl}/auth/register`, formData);
-    setStatus({ loading: false, error: null });
-    setShowSuccessModal(true); // show popup instead of navigating right away
-  } catch (error) {
-    console.log(error);
-    setStatus({ loading: false, error: "Something went wrong during registration. Please try again." });
-    toast.error("Something went wrong during registration. Try again!");
-  }
-};
+    setStatus({ loading: true, error: null });
 
+    try {
+      const response = await authService.register({
+        fullName: formData.fullName,
+        organization: formData.organization,
+        domain: formData.domain,
+        password: formData.password,
+        mobileNo: formData.mobileNo,
+        email: formData.email,
+        role: formData.role || "USER",
+      });
 
- //google register
+      toast.success(
+        response?.message || "OTP sent to your email. Please verify to complete registration."
+      );
+
+      // Store pending verification email in session storage
+      sessionStorage.setItem("pending_verification_email", formData.email);
+
+      // Navigate to OTP verification page
+      navigate("/verify-otp", { state: { email: formData.email } });
+    } catch (error) {
+      const errorMsg =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Registration failed. Please check your details and try again.";
+      setStatus({ loading: false, error: errorMsg });
+      toast.error(errorMsg);
+    }
+  };
+
+  // Google Registration / OAuth
   const handleGoogleRegister = (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email: decoded.email || "google-user@email.com",
-          fullName: decoded.name || "Google User",
-          isGoogleUser: true,
-          googleId: decoded.sub,
-          picture: decoded.picture || null,
-          emailVerified: decoded.email_verified || false,
-        }),
-      );
+      const userData = {
+        email: decoded.email || "google-user@email.com",
+        fullName: decoded.name || "Google User",
+        isGoogleUser: true,
+        googleId: decoded.sub,
+        picture: decoded.picture || null,
+        role: "USER",
+      };
+      localStorage.setItem("user", JSON.stringify(userData));
+      window.dispatchEvent(new Event("userChanged"));
+      toast.success("Signed in with Google successfully!");
       navigate("/");
     } catch {
       setStatus({
         loading: false,
         error: "Failed to process Google registration. Please try again.",
       });
+      toast.error("Google registration failed.");
     }
   };
 
-  const handleGoogleError = () =>
+  const handleGoogleError = () => {
     setStatus({
       loading: false,
       error: "Google registration failed. Please try again.",
     });
+  };
 
-  // Modern input focus states with micro-shadow offsets
   const inputClass =
     "w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all duration-200 text-gray-800 bg-gray-50/50 focus:bg-white placeholder-gray-400";
 
@@ -174,9 +173,9 @@ const handleSubmit = async (e) => {
         </div>
 
         {/* Card Frame */}
-        <div className="relative w-full max-w-6xl bg-linear-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl shadow-2xl border border-gray-100 overflow-hidden max-h-screen flex flex-col md:flex-row transition-all duration-300">
+        <div className="relative w-full max-w-6xl bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl shadow-2xl border border-gray-800 overflow-hidden max-h-screen flex flex-col md:flex-row transition-all duration-300">
           {/* Accent Line */}
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to-br from-gray-900 via-blue-900 to-purple-900 z-10" />
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 z-10" />
 
           {/* Left Panel: Brand Showcase */}
           <div className="hidden md:flex md:w-5/12 flex-col justify-between p-8 bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 relative overflow-hidden">
@@ -203,16 +202,13 @@ const handleSubmit = async (e) => {
 
             <div className="relative z-10 my-auto py-8">
               <h2 className="text-3xl font-bold text-white mb-3 tracking-tight leading-snug">
-                Welcome 
-                <br />
-                <span className="text-transparent text-2xl bg-clip-text bg-linear-to-r from-blue-400 via-indigo-300 to-purple-400">  
-              Promoting Scientific Excellence and Innovation in Forensic Research  
+                Welcome <br />
+                <span className="text-transparent text-2xl bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">
+                  Promoting Scientific Excellence & Research Innovation
                 </span>
               </h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-                Access verified peer-reviewed publications, advanced
-                methodologies, and coordinate alongside elite industry
-                researchers.
+                Access verified peer-reviewed publications, advanced methodologies, and collaborate alongside premier industry researchers.
               </p>
             </div>
 
@@ -258,7 +254,7 @@ const handleSubmit = async (e) => {
                 ].map(({ Icon, color, bg }, i) => (
                   <div
                     key={i}
-                    className={`p-2 ${bg} rounded-xl border border-white/5 shadow-inner hover:scale-110 transition-transform cursor-help`}
+                    className={`p-2 ${bg} rounded-xl border border-white/5 shadow-inner hover:scale-110 transition-transform`}
                   >
                     <Icon className={`w-4 h-4 ${color}`} />
                   </div>
@@ -272,19 +268,19 @@ const handleSubmit = async (e) => {
             <div className="max-w-md w-full mx-auto">
               {/* Header Context */}
               <div className="mb-6">
-                <h3 className="text-4xl text-center font-bold mt-8 text-slate-900 tracking-tight">
+                <h3 className="text-3xl text-center font-bold text-slate-900 tracking-tight font-serif">
                   Create Account
                 </h3>
-                <p className="text-slate-500 text-sm mt-3">
-                  {/* Get configured within the global investigator registry. */}
+                <p className="text-slate-500 text-xs text-center mt-1">
+                  Join our academic community. A verification code will be sent to your email.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Form Input Blocks */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-3.5">
+                {/* Full Name & Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                       Full Name
                     </label>
                     <div className="relative group">
@@ -301,7 +297,7 @@ const handleSubmit = async (e) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                       Email Address
                     </label>
                     <div className="relative group">
@@ -319,10 +315,11 @@ const handleSubmit = async (e) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Mobile No & Organization */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                      Phone Number
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                      Mobile Number
                     </label>
                     <div className="relative group">
                       <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
@@ -331,14 +328,14 @@ const handleSubmit = async (e) => {
                         name="mobileNo"
                         value={formData.mobileNo}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="9876543210"
                         required
                         className={inputClass}
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                       Organization
                     </label>
                     <div className="relative group">
@@ -355,11 +352,10 @@ const handleSubmit = async (e) => {
                     </div>
                   </div>
                 </div>
-                     
-                     
 
+                {/* Domain / Specialization */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                     Specialization / Domain
                   </label>
                   <div className="relative group">
@@ -380,7 +376,7 @@ const handleSubmit = async (e) => {
                         </option>
                       ))}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
                       <svg
                         className="fill-current h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
@@ -392,9 +388,10 @@ const handleSubmit = async (e) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Password & Confirm Password */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                       Password
                     </label>
                     <div className="relative group">
@@ -423,8 +420,8 @@ const handleSubmit = async (e) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                      Confirm Identity
+                    <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                      Confirm Password
                     </label>
                     <div className="relative group">
                       <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
@@ -442,7 +439,7 @@ const handleSubmit = async (e) => {
                 </div>
 
                 {/* Consent Checkbox */}
-                <div className="flex items-start gap-2.5 pt-1">
+                <div className="flex items-start gap-2 pt-1">
                   <input
                     type="checkbox"
                     id="terms"
@@ -451,38 +448,38 @@ const handleSubmit = async (e) => {
                   />
                   <label
                     htmlFor="terms"
-                    className="text-xs text-slate-500 leading-normal select-none cursor-pointer"
+                    className="text-[11px] text-slate-500 leading-tight select-none cursor-pointer"
                   >
-                    I verify my compliance credentials and agree to the{" "}
-                    <a
-                      href="#"
-                      className="text-blue-600 font-medium hover:underline hover:text-blue-700 transition-colors"
+                    I agree to the{" "}
+                    <Link
+                      to="/terms"
+                      className="text-blue-600 font-medium hover:underline"
                     >
                       Terms of Service
-                    </a>{" "}
+                    </Link>{" "}
                     &{" "}
-                    <a
-                      href="#"
-                      className="text-blue-600 font-medium hover:underline hover:text-blue-700 transition-colors"
+                    <Link
+                      to="/privacy"
+                      className="text-blue-600 font-medium hover:underline"
                     >
                       Privacy Framework
-                    </a>
+                    </Link>
                     .
                   </label>
                 </div>
 
-                {/* State-driven Notice Box */}
+                {/* Error Notice */}
                 {status.error && (
-                  <div className="p-3 rounded-xl bg-rose-50 border border-rose-100 text-rose-700 text-xs font-medium animate-pulse">
+                  <div className="p-3 rounded-xl bg-rose-50 border border-rose-100 text-rose-700 text-xs font-medium">
                     {status.error}
                   </div>
                 )}
 
-                {/* Core Action Button */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={status.loading}
-                  className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.99] disabled:opacity-70 disabled:pointer-events-none mt-2"
+                  className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.99] disabled:opacity-70 flex items-center justify-center gap-2 mt-1"
                 >
                   {status.loading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -505,105 +502,67 @@ const handleSubmit = async (e) => {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      Authorizing...
+                      Creating Account & Sending OTP...
                     </span>
                   ) : (
-                    "Register for Forensic Patrika"
+                    <>
+                      <span>Register & Verify Email</span>
+                      <FiArrowRight size={16} />
+                    </>
                   )}
                 </button>
 
-                {/* Visual Intersect Divider */}
+                {/* Divider */}
                 <div className="relative flex py-1 items-center">
                   <div className="flex-grow border-t border-slate-100" />
-                  <span className="flex-shrink mx-3 text-slate-400 text-[11px] font-medium uppercase tracking-wider">
-                    Third Party Verification
+                  <span className="flex-shrink mx-3 text-slate-400 text-[10px] font-medium uppercase tracking-wider">
+                    Or Register With
                   </span>
                   <div className="flex-grow border-t border-slate-100" />
                 </div>
 
-                {/* Google Single Sign-on Container */}
-                <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
+                {/* Google Sign-in */}
+                <div className="flex justify-center w-full">
                   <GoogleLogin
                     onSuccess={handleGoogleRegister}
                     onError={handleGoogleError}
                     theme="outline"
                     size="large"
                     shape="pill"
-                    width="340"
+                    width="320"
                     text="signup_with"
                   />
                 </div>
 
-                <div className="flex justify-center w-full transform transition-transform hover:scale-[1.01] active:scale-[0.99]">
+                {/* ORCID */}
+                <div className="flex justify-center w-full">
                   <button
+                    type="button"
                     onClick={handleOrcID}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-[#A6CE39] hover:bg-[#95ba32] text-white font-medium rounded-md shadow-sm transition-colors duration-200 text-sm tracking-wide"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#A6CE39] hover:bg-[#95ba32] text-white font-medium rounded-full shadow-sm transition-colors text-xs tracking-wide"
                   >
-                    {/* Optional: Add ORCID Icon SVG here */}
                     <span className="w-4 h-4 bg-white text-[#A6CE39] rounded-full inline-flex items-center justify-center text-[10px] font-bold font-sans">
                       iD
                     </span>
-                    Continue with ORCID iD -
+                    Continue with ORCID iD
                   </button>
                 </div>
-                <p className="text-center text-slate-500 text-xs pt-2">
-                  Already mapped in our system?{" "}
-                  <a
-                    href="/login"
+
+                <p className="text-center text-slate-500 text-xs pt-1">
+                  Already registered?{" "}
+                  <Link
+                    to="/login"
                     className="text-blue-600 font-semibold hover:underline hover:text-blue-700 transition-colors"
                   >
                     Sign in here
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
           </div>
         </div>
       </div>
-
-      {showSuccessModal && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-    <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center animate-fade-in">
-      <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center">
-        <svg
-          className="w-7 h-7 text-emerald-600"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
-      </div>
-      <h3 className="text-lg font-bold text-slate-900 mb-2">
-        Registration Successful!
-      </h3>
-      <p className="text-sm text-slate-500 mb-6">
-        Your account has been created. Please log in as an{" "}
-        <span className="font-semibold text-slate-700">Author / Reader</span>{" "}
-        to access your dashboard.
-      </p>
-      <button
-        onClick={() => {
-          setShowSuccessModal(false);
-          navigate("/login");
-        }}
-        className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl shadow-md transition-all active:scale-[0.99]"
-      >
-        Continue to Login
-      </button>
-    </div>
-  </div>
-)}
-
     </>
-    
-    
-    
   );
 };
 

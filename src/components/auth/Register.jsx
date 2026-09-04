@@ -115,7 +115,7 @@ const Register = () => {
     }
   };
 
-  // Google Registration / OAuth
+  // Google Registration / OAuth - Strictly Author / Reader (USER) Role Only
   const handleGoogleRegister = (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
@@ -125,11 +125,12 @@ const Register = () => {
         isGoogleUser: true,
         googleId: decoded.sub,
         picture: decoded.picture || null,
-        role: "USER",
+        role: "USER", // Strictly restricted to Author / Reader role only
+        roleLabel: "Author / Reader",
       };
       localStorage.setItem("user", JSON.stringify(userData));
       window.dispatchEvent(new Event("userChanged"));
-      toast.success("Signed in with Google successfully!");
+      toast.success("Welcome! Signed in as Author / Reader with Google.");
       navigate("/");
     } catch {
       setStatus({
@@ -522,7 +523,7 @@ const Register = () => {
                 </div>
 
                 {/* Google Sign-in */}
-                <div className="flex justify-center w-full">
+                <div className="flex flex-col items-center gap-1.5 w-full">
                   <GoogleLogin
                     onSuccess={handleGoogleRegister}
                     onError={handleGoogleError}
@@ -532,6 +533,9 @@ const Register = () => {
                     width="320"
                     text="signup_with"
                   />
+                  <span className="text-[10px] text-slate-500 font-medium">
+                    (Author / Reader Access)
+                  </span>
                 </div>
 
                 {/* ORCID */}

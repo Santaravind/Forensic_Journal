@@ -1,192 +1,191 @@
 import React from "react";
 import {
   LayoutDashboard,
+  FileText,
   Users,
   ShieldCheck,
-  UserCog,
-  UserCheck,
-  Building2,
   BookOpen,
   FileStack,
-  FileText,
   ClipboardList,
-  Gavel,
   Bell,
   Megaphone,
-  Mail,
   Award,
   GraduationCap,
-  FolderKanban,
-  Trophy,
-  Medal,
   BarChart3,
-  FileBarChart,
   Settings,
-  DatabaseBackup,
-  History,
-  LifeBuoy,
+  LogOut,
   Headphones,
   ChevronRight,
+  X,
 } from "lucide-react";
+import logo from "../assets/logoss.png";
+import { authService } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
-const mainNav = [{ icon: LayoutDashboard, label: "Dashboard", active: true }];
+export default function Sidebar({
+  activeTab = "Dashboard",
+  setActiveTab = () => {},
+  isMobileOpen = false,
+  setIsMobileOpen = () => {},
+}) {
+  const navigate = useNavigate();
 
-const managementNav = [
-  { icon: Users, label: "Users Management" },
-  { icon: ShieldCheck, label: "Roles & Permissions" },
-  { icon: UserCog, label: "Editors Management" },
-  { icon: UserCheck, label: "Reviewers Management" },
-  { icon: Building2, label: "Publishers Management" },
-  { icon: BookOpen, label: "Journals Management" },
-  { icon: FileStack, label: "Issues & Publications", expandable: true },
-  { icon: FileText, label: "Manuscripts" },
-  { icon: ClipboardList, label: "Peer Review", expandable: true },
-  { icon: Gavel, label: "Editorial Decisions", expandable: true },
-];
+  const handleLogout = () => {
+    authService.logout();
+    navigate("/login");
+  };
 
-const communicationNav = [
-  { icon: Bell, label: "Notifications", badge: 12 },
-  { icon: Megaphone, label: "Announcements" },
-  { icon: Mail, label: "Email Templates" },
-  { icon: Award, label: "Certificates", tag: "New" },
-];
+  const navItems = [
+    {
+      section: "CORE",
+      items: [
+        { id: "Dashboard", label: "Dashboard Overview", icon: LayoutDashboard },
+        {
+          id: "Blog",
+          label: "Blog & Editorial",
+          icon: FileText,
+          badge: "Live",
+          badgeColor: "bg-emerald-500",
+        },
+      ],
+    },
+    {
+      section: "ACADEMIC MANAGEMENT",
+      items: [
+        { id: "Manuscripts", label: "Manuscripts & Papers", icon: FileStack },
+        { id: "Journals", label: "Journals & Issues", icon: BookOpen },
+        { id: "PeerReview", label: "Peer Review Queue", icon: ClipboardList },
+        { id: "Users", label: "Users & Roles", icon: Users },
+      ],
+    },
+    {
+      section: "COMMUNICATION & SYSTEM",
+      items: [
+        { id: "Notifications", label: "Notifications & Alerts", icon: Bell, badge: "12" },
+        { id: "Announcements", label: "Announcements", icon: Megaphone },
+        { id: "Certificates", label: "Certificates Issued", icon: Award },
+        { id: "Analytics", label: "Reports & Analytics", icon: BarChart3 },
+        { id: "Settings", label: "System & Audit Logs", icon: Settings },
+      ],
+    },
+  ];
 
-const learningNav = [
-  { icon: GraduationCap, label: "Learning Resources" },
-  { icon: FolderKanban, label: "Resource Categories" },
-];
-
-const achievementsNav = [
-  { icon: Trophy, label: "Achievements" },
-  { icon: Medal, label: "Badges" },
-];
-
-const reportsNav = [
-  { icon: BarChart3, label: "Analytics Dashboard" },
-  { icon: FileBarChart, label: "Reports", expandable: true },
-];
-
-const systemNav = [
-  { icon: Settings, label: "System Settings" },
-  { icon: DatabaseBackup, label: "Backup & Restore" },
-  { icon: History, label: "Audit Logs" },
-  { icon: LifeBuoy, label: "Support & Help" },
-];
-
-function NavItem({ item }) {
-  const Icon = item.icon;
   return (
-    <button
-      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[13px] transition-colors ${
-        item.active
-          ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold shadow-md shadow-indigo-900/30"
-          : "text-slate-300 hover:bg-white/5 hover:text-white"
-      }`}
-    >
-      <span className="flex items-center gap-3">
-        <Icon size={16} />
-        {item.label}
-      </span>
-      <span className="flex items-center gap-1.5">
-        {item.tag && (
-          <span className="bg-emerald-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
-            {item.tag}
-          </span>
-        )}
-        {item.badge && (
-          <span className="bg-red-500 text-white text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center">
-            {item.badge}
-          </span>
-        )}
-        {item.expandable && <ChevronRight size={14} className="text-slate-500" />}
-      </span>
-    </button>
-  );
-}
+    <>
+      {/* Mobile Backdrop */}
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 lg:hidden"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
 
-function SectionLabel({ children }) {
-  return (
-    <p className="text-[10px] font-bold tracking-widest text-slate-500 px-3 mt-5 mb-2">
-      {children}
-    </p>
-  );
-}
-
-export default function Sidebar() {
-  return (
-    <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-[#140b33] text-white h-screen sticky top-0 overflow-y-auto">
-      <div className="flex items-center gap-3 px-4 py-5">
-        <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden ring-2 ring-amber-400/40">
-          <span className="text-xs font-serif italic text-indigo-700">P</span>
-        </div>
+      {/* Sidebar Container */}
+      <aside
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#0F1026] text-slate-300 flex flex-col justify-between transform transition-transform duration-300 ease-in-out shrink-0 h-screen overflow-y-auto ${
+          isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
         <div>
-          <p className="text-sm font-bold leading-tight">FORENSIC</p>
-          <p className="text-sm font-bold leading-tight">PATRIKA</p>
-          <p className="text-[10px] text-slate-400">Official Portal</p>
-        </div>
-      </div>
+          {/* Brand Header */}
+          <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-0.5 shadow-md">
+                <div className="bg-slate-900 w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    className="w-8 h-8 object-contain filter brightness-110"
+                  />
+                </div>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white tracking-wide leading-tight font-serif">
+                  Forensic Patrika
+                </p>
+                <p className="text-[10px] text-indigo-400 font-semibold uppercase tracking-wider">
+                  Super Admin Panel
+                </p>
+              </div>
+            </div>
 
-      <div className="px-3">
-        <div className="space-y-1">
-          {mainNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>MANAGEMENT</SectionLabel>
-        <div className="space-y-1">
-          {managementNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>COMMUNICATION</SectionLabel>
-        <div className="space-y-1">
-          {communicationNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>LEARNING & RESOURCES</SectionLabel>
-        <div className="space-y-1">
-          {learningNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>ACHIEVEMENTS</SectionLabel>
-        <div className="space-y-1">
-          {achievementsNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>REPORTS & ANALYTICS</SectionLabel>
-        <div className="space-y-1">
-          {reportsNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-
-        <SectionLabel>SYSTEM</SectionLabel>
-        <div className="space-y-1 pb-4">
-          {systemNav.map((item) => (
-            <NavItem key={item.label} item={item} />
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-auto p-3">
-        <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3">
-          <div className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <Headphones size={16} />
+            <button
+              onClick={() => setIsMobileOpen(false)}
+              className="lg:hidden text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/5"
+            >
+              <X size={18} />
+            </button>
           </div>
-          <div>
-            <p className="text-xs font-semibold">Need Help?</p>
-            <p className="text-[11px] text-slate-400">Contact Admin Support</p>
+
+          {/* Navigation Groups */}
+          <div className="p-3 space-y-5">
+            {navItems.map((group) => (
+              <div key={group.section} className="space-y-1">
+                <p className="text-[10px] font-bold tracking-widest text-slate-500 px-3 uppercase mb-1.5">
+                  {group.section}
+                </p>
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setActiveTab(item.id);
+                        setIsMobileOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
+                        isActive
+                          ? "bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-950/40"
+                          : "text-slate-400 hover:bg-white/5 hover:text-white"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon
+                          size={16}
+                          className={isActive ? "text-white" : "text-slate-400"}
+                        />
+                        <span>{item.label}</span>
+                      </div>
+
+                      {item.badge && (
+                        <span
+                          className={`px-1.5 py-0.5 rounded-full text-[9px] font-bold text-white ${
+                            item.badgeColor || "bg-rose-500"
+                          }`}
+                        >
+                          {item.badge}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </aside>
+
+        {/* Footer info & Logout */}
+        <div className="p-3 border-t border-slate-800/80 space-y-2">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-500/10 hover:text-rose-300 transition-colors cursor-pointer"
+          >
+            <LogOut size={16} />
+            <span>Sign Out from Admin</span>
+          </button>
+
+          <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3">
+            <div className="h-8 w-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+              <Headphones size={15} />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-white truncate">Admin Support</p>
+              <p className="text-[10px] text-slate-400">admin@forensicpatrika.com</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }

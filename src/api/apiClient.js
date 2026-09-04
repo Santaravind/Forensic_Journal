@@ -4,6 +4,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BA
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -21,7 +22,7 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Global response interceptor for 401 handling
+// Global response interceptor for 401 and 403 handling
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -32,11 +33,13 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('user');
       window.dispatchEvent(new Event('userChanged'));
       
-      // Redirect to login only if not already on login/register/verify routes
+      // Redirect to login only if not already on public routes
       const publicRoutes = ['/login', '/register', '/verify-otp'];
       if (!publicRoutes.includes(window.location.pathname)) {
         window.location.href = '/login';
       }
+    } else if (error.response?.status === 403) {
+      console.warn('Access denied (403): You do not have permission for this resource.');
     }
     return Promise.reject(error);
   }

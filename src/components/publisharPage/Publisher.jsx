@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import logo from '../assets/logoss.png' 
+import BlogManagement from '../AdminDashboard/BlogManagement';
 
 
 export default function Publisher() {
@@ -337,13 +338,16 @@ export default function Publisher() {
 
         {/* Dashboard Main Content */}
         <main className="p-4 lg:p-6 space-y-6">
-          
-          {/* Top Date Filter Row */}
-          <div className="flex justify-end items-center">
-  <div className="inline-flex items-center space-x-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 shadow-sm">
-    <span>{new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
-  </div>
-</div>
+          {activeTab === 'Blog Publish' ? (
+            <BlogManagement />
+          ) : (
+            <>
+              {/* Top Date Filter Row */}
+              <div className="flex justify-end items-center">
+                <div className="inline-flex items-center space-x-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 shadow-sm">
+                  <span>{new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
+                </div>
+              </div>
 
           {/* Stats Cards Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -577,6 +581,8 @@ export default function Publisher() {
             </div>
 
           </div>
+            </>
+          )}
 
         </main>
       </div>

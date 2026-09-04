@@ -79,34 +79,71 @@ function App() {
    {/* instructions  */}
    <Route path='/authorIn' element={<AuthorInsturctions/>}/>
 
-        <Route path='/review' element={<Review/>}/>
-        <Route path='/editer' element={<EditorDashboard/>}/>
-        <Route path='/admin' element={<AdminDashboard/>}/>
-        <Route path='/publisher' element={<Publisher/>}/>
-              
+        {/* Role Protected Dashboard Routes */}
+        <Route
+          path="/review"
+          element={
+            <PrivateRoute allowedRoles={["REVIEWER"]}>
+              <Review />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/editer"
+          element={
+            <PrivateRoute allowedRoles={["EDITOR"]}>
+              <EditorDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute allowedRoles={["ADMIN"]}>
+              <AdminDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/publisher"
+          element={
+            <PrivateRoute allowedRoles={["PUBLISHER"]}>
+              <Publisher />
+            </PrivateRoute>
+          }
+        />
 
-              {/* blog */}
-               <Route path='/blog' element={<Blog/>}/>
-                <Route path='/postb' element={
-                  <PrivateRoute> 
-                   <Blogpublish/>
-                  </PrivateRoute> }/>
-        
-         
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
-      <Route path='/verify-otp' element={<VerifyOtp/>}/>
-      <Route path='/reserchform' element={
-        <PrivateRoute> 
-          <ResearchPaperForm/>
-        </PrivateRoute>
-       
-        }/>
-      <Route path='/caseStudyForm' element={
-        <PrivateRoute> 
-        <CaseStudyPaperForm/>
-        </PrivateRoute>   
-             }/>
+        {/* Blog */}
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:idOrSlug" element={<Blog />} />
+        <Route
+          path="/postb"
+          element={
+            <PrivateRoute allowedRoles={["PUBLISHER", "ADMIN", "EDITOR", "USER", "AUTHOR", "READER"]}>
+              <Blogpublish />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/verify-otp" element={<VerifyOtp />} />
+        <Route
+          path="/reserchform"
+          element={
+            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER"]}>
+              <ResearchPaperForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/caseStudyForm"
+          element={
+            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER"]}>
+              <CaseStudyPaperForm />
+            </PrivateRoute>
+          }
+        />
 
 
              {/* career  */}

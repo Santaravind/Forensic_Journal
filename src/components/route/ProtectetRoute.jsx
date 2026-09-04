@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { authService } from "../../services/authService";
 
 export default function PrivateRoute({ children, allowedRoles }) {
@@ -11,10 +12,17 @@ export default function PrivateRoute({ children, allowedRoles }) {
   }
 
   if (allowedRoles && allowedRoles.length > 0) {
-    const userRole = (user.role || "").toUpperCase();
-    const normalizedAllowed = allowedRoles.map((r) => r.toUpperCase());
+    const rawRole = (user.role || "USER").toUpperCase();
+    const normalizedRole =
+      rawRole === "AUTHOR" || rawRole === "READER" ? "USER" : rawRole;
 
-    if (!normalizedAllowed.includes(userRole)) {
+    const normalizedAllowed = allowedRoles.map((r) => {
+      const u = r.toUpperCase();
+      return u === "AUTHOR" || u === "READER" ? "USER" : u;
+    });
+
+    if (!normalizedAllowed.includes(normalizedRole)) {
+      toast.error("Access restricted to authorized roles only.");
       return <Navigate to="/" replace />;
     }
   }

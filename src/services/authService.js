@@ -114,6 +114,22 @@ export const authService = {
     const user = authService.getCurrentUser();
     return Boolean(token || (user && user.isGoogleUser));
   },
+
+  /**
+   * Get normalized uppercase role of the current user
+   */
+  getUserRole: () => {
+    const user = authService.getCurrentUser();
+    return (user?.role || '').toUpperCase();
+  },
+
+  /**
+   * Check if current user logged in with Google OAuth
+   */
+  isGoogleUser: () => {
+    const user = authService.getCurrentUser();
+    return Boolean(user?.isGoogleUser);
+  },
 };
 
 export default authService;

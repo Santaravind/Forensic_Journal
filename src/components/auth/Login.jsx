@@ -96,7 +96,7 @@ export default function Login() {
     }
   };
 
-  // Google OAuth Login
+  // Google OAuth Login - Strictly Author / Reader (USER) Role Only
   const handleGoogleLogin = (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
@@ -106,11 +106,12 @@ export default function Login() {
         isGoogleUser: true,
         googleId: decoded.sub,
         picture: decoded.picture || null,
-        role: selectedRole || "USER",
+        role: "USER", // Strictly restricted to Author / Reader role only
+        roleLabel: "Author / Reader",
       };
       localStorage.setItem("user", JSON.stringify(userData));
       window.dispatchEvent(new Event("userChanged"));
-      toast.success("Logged in with Google successfully!");
+      toast.success("Welcome! Logged in as Author / Reader with Google.");
       navigate("/");
     } catch {
       setStatus({ ...status, error: "Google login failed. Please try again." });
@@ -343,7 +344,7 @@ export default function Login() {
                 </div>
 
                 {/* Google Sign-in */}
-                <div className="flex justify-center w-full">
+                <div className="flex flex-col items-center gap-1.5 w-full">
                   <GoogleLogin
                     onSuccess={handleGoogleLogin}
                     onError={handleGoogleError}
@@ -353,6 +354,9 @@ export default function Login() {
                     width="320"
                     text="signin_with"
                   />
+                  <span className="text-[10px] text-gray-500 font-medium">
+                    (Author / Reader Access)
+                  </span>
                 </div>
 
                 {/* ORCID ID */}

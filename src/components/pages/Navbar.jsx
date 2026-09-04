@@ -239,11 +239,18 @@ export default function Navbar() {
                       <p className="text-xs text-gray-500 truncate">
                         {user.email || "No email"}
                       </p>
-                      {user.isGoogleUser && (
-                        <span className="inline-block mt-1 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
-                          Google
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {user.isGoogleUser && (
+                          <span className="inline-block text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+                            Google
+                          </span>
+                        )}
+                        <span className="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">
+                          {(user.role || "").toUpperCase() === "USER"
+                            ? "Author / Reader"
+                            : user.role}
                         </span>
-                      )}
+                      </div>
                     </div>
 
                     {/* Dashboard Link */}
@@ -255,8 +262,29 @@ export default function Navbar() {
                       Home
                     </NavLink>
 
-                    {/* Role-specific tab */}
-                    {user.role === "publisher" && (
+                    {/* Author / Reader actions */}
+                    {((user.role || "").toUpperCase() === "USER" ||
+                      user.isGoogleUser) && (
+                      <>
+                        <NavLink
+                          to="/reserchform"
+                          className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                          onClick={() => setOpen(false)}
+                        >
+                          Submit Paper
+                        </NavLink>
+                        <NavLink
+                          to="/caseStudyForm"
+                          className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
+                          onClick={() => setOpen(false)}
+                        >
+                          Submit Case Study
+                        </NavLink>
+                      </>
+                    )}
+
+                    {/* Elevated Role-specific tabs (Hidden for Google/Standard Users) */}
+                    {(user.role || "").toUpperCase() === "PUBLISHER" && (
                       <NavLink
                         to="/publisher"
                         className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
@@ -265,31 +293,31 @@ export default function Navbar() {
                         Publisher
                       </NavLink>
                     )}
-                    {user.role === "editor" && (
+                    {(user.role || "").toUpperCase() === "EDITOR" && (
                       <NavLink
                         to="/editer"
                         className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                         onClick={() => setOpen(false)}
                       >
-                        Editer
+                        Editor Dashboard
                       </NavLink>
                     )}
-                    {user.role === "admin" && (
+                    {(user.role || "").toUpperCase() === "ADMIN" && (
                       <NavLink
                         to="/admin"
                         className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                         onClick={() => setOpen(false)}
                       >
-                        Admin
+                        Admin Dashboard
                       </NavLink>
                     )}
-                    {user.role === "reviewer" && (
+                    {(user.role || "").toUpperCase() === "REVIEWER" && (
                       <NavLink
                         to="/review"
                         className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                         onClick={() => setOpen(false)}
                       >
-                        Review
+                        Reviewer Dashboard
                       </NavLink>
                     )}
 
@@ -397,11 +425,18 @@ export default function Navbar() {
                     <p className="text-xs text-gray-500 truncate">
                       {user.email || "No email"}
                     </p>
-                    {user.isGoogleUser && (
-                      <span className="inline-block mt-1 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
-                        Google
+                    <div className="flex flex-wrap gap-1 mt-1.5">
+                      {user.isGoogleUser && (
+                        <span className="inline-block text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+                          Google
+                        </span>
+                      )}
+                      <span className="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">
+                        {(user.role || "").toUpperCase() === "USER"
+                          ? "Author / Reader"
+                          : user.role}
                       </span>
-                    )}
+                    </div>
                   </div>
 
                   <NavLink
@@ -412,7 +447,29 @@ export default function Navbar() {
                     Home
                   </NavLink>
 
-                  {user.role === "publisher" && (
+                  {/* Author / Reader actions */}
+                  {((user.role || "").toUpperCase() === "USER" ||
+                    user.isGoogleUser) && (
+                    <>
+                      <NavLink
+                        to="/reserchform"
+                        onClick={closeMenu}
+                        className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                      >
+                        Submit Paper
+                      </NavLink>
+                      <NavLink
+                        to="/caseStudyForm"
+                        onClick={closeMenu}
+                        className="block px-4 py-2 font-semibold hover:text-indigo-700"
+                      >
+                        Submit Case Study
+                      </NavLink>
+                    </>
+                  )}
+
+                  {/* Elevated Role Tabs (Hidden for Google/Standard Users) */}
+                  {(user.role || "").toUpperCase() === "PUBLISHER" && (
                     <NavLink
                       to="/publisher"
                       onClick={closeMenu}
@@ -421,31 +478,31 @@ export default function Navbar() {
                       Publisher
                     </NavLink>
                   )}
-                  {user.role === "editor" && (
+                  {(user.role || "").toUpperCase() === "EDITOR" && (
                     <NavLink
                       to="/editer"
                       onClick={closeMenu}
                       className="block px-4 py-2 font-semibold hover:text-indigo-700"
                     >
-                      Editer
+                      Editor Dashboard
                     </NavLink>
                   )}
-                  {user.role === "admin" && (
+                  {(user.role || "").toUpperCase() === "ADMIN" && (
                     <NavLink
                       to="/admin"
                       onClick={closeMenu}
                       className="block px-4 py-2 font-semibold hover:text-indigo-700"
                     >
-                      Admin
+                      Admin Dashboard
                     </NavLink>
                   )}
-                  {user.role === "reviewer" && (
+                  {(user.role || "").toUpperCase() === "REVIEWER" && (
                     <NavLink
                       to="/review"
                       onClick={closeMenu}
                       className="block px-4 py-2 font-semibold hover:text-indigo-700"
                     >
-                      Review
+                      Reviewer Dashboard
                     </NavLink>
                   )}
 

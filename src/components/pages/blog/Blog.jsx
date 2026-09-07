@@ -207,21 +207,21 @@ export default function Blog() {
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-semibold cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-600 hover:text-slate-600 text-2xs font-semibold cursor-pointer"
                 >
                   Clear
                 </button>
               )}
             </div>
 
-            <button
+            {/* <button
               onClick={handlePublishClick}
               className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs sm:text-sm rounded-xl transition-all shadow-md active:scale-98 shrink-0 flex items-center gap-2 cursor-pointer"
             >
               <FiEdit3 size={15} />
               <span className="hidden sm:inline">Write Article</span>
               <span className="sm:hidden">Write</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

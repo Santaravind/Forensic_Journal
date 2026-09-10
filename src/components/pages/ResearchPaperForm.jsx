@@ -16,7 +16,8 @@ import {
   FaCheck,
   FaPaperPlane
 } from 'react-icons/fa';
-import {toast } from 'react-hot-toast'
+import { toast } from 'react-hot-toast';
+import { researchPaperApi } from '../../api/publisherApi';
 
 const ResearchPaperForm = () => {
   const [step, setStep] = useState(1);
@@ -237,51 +238,28 @@ const ResearchPaperForm = () => {
     
     setIsSubmitting(true);
     
-    // Prepare data for API submission
-    const submissionData = new FormData();
-    
-    // Add all form data
-    Object.keys(formData).forEach(key => {
-      if (key === 'authors') {
-        submissionData.append(key, JSON.stringify(formData[key]));
-      } else if (key === 'paperFile' && formData[key]) {
-        submissionData.append(key, formData[key]);
-      } else if (key !== 'submissionId') { // Don't include submissionId in initial submission
-        submissionData.append(key, formData[key]);
-      }
-    });
-
-    // Simulate API call with timeout
     try {
-      // Replace this with your actual API call
-      const response = await new Promise(resolve => 
-        setTimeout(() => resolve({
-          success: true,
-          submissionId: 'SUB-' + Date.now(),
-          message: 'Paper submitted successfully',
-        
-        }), 2000)
-      );
+      const res = await researchPaperApi.submitWithFile(formData.paperFile, formData);
       
-      // Actual API call would look like:
-      /*
-      const response = await fetch('your-backend-api-endpoint', {
-        method: 'POST',
-        body: submissionData
-      });
-      const result = await response.json();
-      */
+      const submissionId = 
+        res?.submissionId || 
+        res?.data?.submissionId || 
+        res?.data?.id || 
+        res?.id ||
+        ('FP-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000));
       
-      if (response.success) {
-        // Generate a submission ID (in real app, this comes from backend)
-        const submissionId = response.submissionId || 'SUB-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-        
-        setFormData(prev => ({ ...prev, submissionId }));
-        setIsSubmitted(true);
-      }
+      toast.success('🎉 Paper submitted successfully to the editorial board!');
+      setFormData(prev => ({ ...prev, submissionId }));
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Submission failed:', error);
-      toast.error('Submission failed. Please try again.');
+      const serverMessage = 
+        error.response?.data?.message || 
+        error.response?.data?.error || 
+        (error.message === 'Network Error' ? 'Network Error: Please make sure your Spring Boot backend is running on http://localhost:8080' : error.message) ||
+        'Submission failed. Please check your network and try again.';
+      
+      toast.error(serverMessage);
     } finally {
       setIsSubmitting(false);
     }

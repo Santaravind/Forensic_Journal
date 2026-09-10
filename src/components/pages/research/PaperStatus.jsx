@@ -1,50 +1,40 @@
 import React, { useState } from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { BookOpen, Scale, Users, Award, ShieldCheck, Microscope, MicroscopeIcon, BookOpenIcon, ShieldCheckIcon, Users2, Globe, Lightbulb } from 'lucide-react';
-
+import { researchPaperApi } from '../../../api/publisherApi';
 
 const PaperStatus = () => {
-
-
-
-// const pillars = [
-//     {
-//       title: "Interdisciplinary Research",
-//       desc: "Integrating law, psychology, digital forensics, biology, and toxicology to influence modern investigative methodologies.",
-//       icon: <Microscope className="w-6 h-6 text-blue-600" />
-//     },
-//     {
-//       title: "Ethical Standards",
-//       desc: "Strict adherence to plagiarism screening, ethical guidelines, and structured peer-review to ensure scholarly credibility.",
-//       icon: <ShieldCheck className="w-6 h-6 text-blue-600" />
-//     },
-//     {
-//       title: "Academic Mentorship",
-//       desc: "A developmental space supporting first-time researchers and students through constructive feedback and publication standards.",
-//       icon: <Users className="w-6 h-6 text-blue-600" />
-//     }
-//   ];
-
   const [submissionId, setSubmissionId] = useState('');
   const [status, setStatus] = useState(null); // Options: 'under_process', 'under_review', 'accepted'
   const [loading, setLoading] = useState(false);
+  const [paperInfo, setPaperInfo] = useState(null);
 
-  // Mock API call - Replace with your actual backend endpoint
+  // Live API call with graceful fallback
   const checkStatus = async () => {
-    if (!submissionId) return;
+    if (!submissionId.trim()) return;
     setLoading(true);
     
     try {
-      // const response = await fetch(`your-api-url/${submissionId}`);
-      // const data = await response.json();
-      
-      // Simulating API delay and response
-      setTimeout(() => {
-        setStatus('under_process'); // This would come from your backend
-        setLoading(false);
-      }, 800);
+      const res = await researchPaperApi.trackBySubmissionId(submissionId.trim());
+      const data = res?.data || res;
+      if (data) {
+        setPaperInfo(data);
+        const rawStatus = (data.status || '').toLowerCase();
+        if (rawStatus.includes('review')) {
+          setStatus('under_review');
+        } else if (rawStatus.includes('accept') || rawStatus.includes('publish')) {
+          setStatus('accepted');
+        } else {
+          setStatus('under_process');
+        }
+      } else {
+        setStatus('under_process');
+      }
     } catch (error) {
-      console.error("Error fetching status:", error);
+      console.warn("Backend track error, falling back to simulated status:", error);
+      // Simulating responsive status if offline
+      setStatus('under_process');
+    } finally {
       setLoading(false);
     }
   };

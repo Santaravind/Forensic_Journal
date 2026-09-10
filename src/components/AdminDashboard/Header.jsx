@@ -1,12 +1,11 @@
 import React from "react";
 import {
   Menu,
-  Search,
-  Bell,
   Calendar,
-  User,
   ShieldCheck,
   ExternalLink,
+  Sparkles,
+  Database,
 } from "lucide-react";
 import { authService } from "../../services/authService";
 import { Link } from "react-router-dom";
@@ -22,6 +21,40 @@ export default function Header({
     year: "numeric",
   });
 
+  const getPageTitle = () => {
+    switch (activeTab) {
+      case "Blog":
+        return "Blog & Editorial Moderation";
+      case "Manuscripts":
+        return "Manuscripts & Academic Papers";
+      case "Journals":
+        return "Journals & Issue Releases";
+      case "Announcements":
+        return "Broadcasts & Public Notices";
+      case "Settings":
+        return "System Health & Audit Logs";
+      default:
+        return "Super Admin Dashboard";
+    }
+  };
+
+  const getPageSubtitle = () => {
+    switch (activeTab) {
+      case "Blog":
+        return "Review, approve, or restrict submitted research articles and news";
+      case "Manuscripts":
+        return "Full oversight of peer-review queue, decisions, and DOI publication";
+      case "Journals":
+        return "Configure official journals, volumes, issues, and ISSN registration";
+      case "Announcements":
+        return "Broadcast public notices and calls for papers";
+      case "Settings":
+        return "Live database connectivity, CDN storage, and editorial activity logs";
+      default:
+        return "Executive Operations Pulse • Forensic Patrika Journal Administration";
+    }
+  };
+
   return (
     <header className="bg-white border-b border-slate-200/90 sticky top-0 z-30 shadow-xs">
       <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-3.5">
@@ -36,16 +69,10 @@ export default function Header({
           </button>
           <div>
             <h1 className="text-lg font-bold font-serif text-slate-900 leading-tight">
-              {activeTab === "Blog"
-                ? "Blog & Editorial Moderation"
-                : activeTab === "Manuscripts"
-                ? "Manuscripts & Academic Papers"
-                : activeTab === "Users"
-                ? "Users & Role Permissions"
-                : "Super Admin Dashboard"}
+              {getPageTitle()}
             </h1>
             <p className="text-xs text-slate-500 hidden sm:block">
-              Forensic Patrika Journal & Article Administration
+              {getPageSubtitle()}
             </p>
           </div>
         </div>
@@ -68,20 +95,9 @@ export default function Header({
             <span>{todayFormatted}</span>
           </div>
 
-          {/* Notifications */}
-          <button
-            title="System Alerts"
-            className="relative p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
-          >
-            <Bell size={18} />
-            <span className="absolute top-1.5 right-1.5 bg-rose-500 text-white text-[9px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">
-              3
-            </span>
-          </button>
-
           {/* Admin User Badge */}
           <div className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-slate-200">
-            <div className="h-8 w-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+            <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
               {currentUser.fullName ? currentUser.fullName[0].toUpperCase() : "A"}
             </div>
             <div className="hidden sm:block text-left">

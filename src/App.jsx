@@ -41,6 +41,7 @@ import PreprintSharing from './components/pages/guidline/PreprintSharing';
 import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising ';
 import Blogpublish from './components/pages/blog/Blogpublish';
 import Career from './components/pages/career/Career';
+import VerifyCertificate from './components/pages/VerifyCertificate';
 function App() {
   
 
@@ -148,6 +149,10 @@ function App() {
 
              {/* career  */}
              <Route path='/career' element={<Career/>}/>
+
+             {/* Certificate Verification */}
+             <Route path='/verify-certificate/:qrCode' element={<VerifyCertificate />} />
+             <Route path='/verify/:qrCode' element={<VerifyCertificate />} />
       </Routes>
       <Footer/>
 

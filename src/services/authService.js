@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 export const authService = {
   /**
    * Register a new user
-   * Payload: { fullName, organization, domain, password, mobileNo, email, role }
+   * Payload: { fullName, organization, domain, password, mobileNo, email, role? }
    */
   register: async (data) => {
     const payload = {
@@ -17,18 +17,25 @@ export const authService = {
 
   /**
    * Verify email via 6-digit OTP
-   * Payload: { email, otp }
+   * Accepts (payload: { email, otp }) or (email, otp)
    */
-  verifyOtp: async (email, otp) => {
-    const res = await apiClient.post('/auth/verify-otp', { email, otp });
+  verifyOtp: async (emailOrPayload, maybeOtp) => {
+    let payload;
+    if (typeof emailOrPayload === 'object' && emailOrPayload !== null) {
+      payload = emailOrPayload;
+    } else {
+      payload = { email: emailOrPayload, otp: maybeOtp };
+    }
+    const res = await apiClient.post('/auth/verify-otp', payload);
     return res.data;
   },
 
   /**
    * Request resending a fresh 6-digit OTP
-   * Payload: { email }
+   * Accepts (email) or ({ email })
    */
-  resendOtp: async (email) => {
+  resendOtp: async (emailOrPayload) => {
+    const email = typeof emailOrPayload === 'object' ? emailOrPayload.email : emailOrPayload;
     const res = await apiClient.post('/auth/resend-otp', { email });
     return res.data;
   },
@@ -57,9 +64,12 @@ export const authService = {
         console.warn('Could not decode JWT:', err);
       }
 
+      const role = decodedUser.role || payload.role;
+      localStorage.setItem('user_role', role);
+
       const userData = res.data?.user || {
         email: decodedUser.sub || decodedUser.email || credentials.email,
-        role: decodedUser.role || payload.role,
+        role: role,
         fullName: decodedUser.name || decodedUser.fullName || credentials.email.split('@')[0],
       };
 
@@ -70,11 +80,27 @@ export const authService = {
   },
 
   /**
-   * Reset user password
-   * Payload: { email, newPassword }
+   * Step 1: Request password reset OTP (Forgot Password)
+   * Accepts (email) or ({ email })
    */
-  resetPassword: async (email, newPassword) => {
-    const res = await apiClient.post('/auth/reset-password', { email, newPassword });
+  forgotPassword: async (emailOrPayload) => {
+    const email = typeof emailOrPayload === 'object' ? emailOrPayload.email : emailOrPayload;
+    const res = await apiClient.post('/auth/forgot-password', { email });
+    return res.data;
+  },
+
+  /**
+   * Step 2: Confirm password reset with 6-digit OTP
+   * Accepts (payload: { email, otp, newPassword }) or (email, otp, newPassword)
+   */
+  resetPassword: async (payloadOrEmail, maybeOtp, maybeNewPassword) => {
+    let payload;
+    if (typeof payloadOrEmail === 'object' && payloadOrEmail !== null) {
+      payload = payloadOrEmail;
+    } else {
+      payload = { email: payloadOrEmail, otp: maybeOtp, newPassword: maybeNewPassword };
+    }
+    const res = await apiClient.post('/auth/reset-password', payload);
     return res.data;
   },
 
@@ -84,8 +110,10 @@ export const authService = {
   logout: () => {
     localStorage.removeItem('jwt_token');
     localStorage.removeItem('token');
+    localStorage.removeItem('user_role');
     localStorage.removeItem('user');
     sessionStorage.removeItem('pending_verification_email');
+    sessionStorage.removeItem('reset_email');
     window.dispatchEvent(new Event('userChanged'));
   },
 
@@ -93,6 +121,21 @@ export const authService = {
    * Get current stored token
    */
   getToken: () => localStorage.getItem('jwt_token') || localStorage.getItem('token'),
+
+  /**
+   * Get role of current user
+   */
+  getRole: () => {
+    const storedRole = localStorage.getItem('user_role');
+    if (storedRole) return storedRole.toUpperCase();
+    const user = authService.getCurrentUser();
+    return (user?.role || '').toUpperCase();
+  },
+
+  /**
+   * Get normalized uppercase role of the current user
+   */
+  getUserRole: () => authService.getRole(),
 
   /**
    * Get parsed user from localStorage
@@ -116,14 +159,6 @@ export const authService = {
   },
 
   /**
-   * Get normalized uppercase role of the current user
-   */
-  getUserRole: () => {
-    const user = authService.getCurrentUser();
-    return (user?.role || '').toUpperCase();
-  },
-
-  /**
    * Check if current user logged in with Google OAuth
    */
   isGoogleUser: () => {
@@ -133,3 +168,4 @@ export const authService = {
 };
 
 export default authService;
+

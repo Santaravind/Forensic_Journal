@@ -267,6 +267,13 @@ export default function Navbar() {
                       user.isGoogleUser) && (
                       <>
                         <NavLink
+                          to="/my-submissions"
+                          className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50 text-indigo-700"
+                          onClick={() => setOpen(false)}
+                        >
+                          My Submissions
+                        </NavLink>
+                        <NavLink
                           to="/reserchform"
                           className="block px-4 py-2 text-sm font-semibold hover:bg-indigo-50"
                           onClick={() => setOpen(false)}
@@ -451,6 +458,13 @@ export default function Navbar() {
                   {((user.role || "").toUpperCase() === "USER" ||
                     user.isGoogleUser) && (
                     <>
+                      <NavLink
+                        to="/my-submissions"
+                        onClick={closeMenu}
+                        className="block px-4 py-2 font-semibold text-indigo-700 hover:text-indigo-800"
+                      >
+                        My Submissions
+                      </NavLink>
                       <NavLink
                         to="/reserchform"
                         onClick={closeMenu}

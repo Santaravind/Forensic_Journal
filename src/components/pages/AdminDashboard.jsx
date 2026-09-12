@@ -28,34 +28,33 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadAllPapers();
+
+    const handleUpdate = () => {
+      loadAllPapers();
+    };
+
+    window.addEventListener("paperStatusUpdated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    return () => {
+      window.removeEventListener("paperStatusUpdated", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
   }, []);
 
   const loadAllPapers = async () => {
     try {
       setLoading(true);
-      const res = await publisherApi.getQueue(1, 100);
-      const rawList = extractPaperList(res);
-
-      if (rawList && rawList.length > 0) {
-        setPapers(rawList.map(normalizePaper));
+      const allPapers = await researchPaperApi.getAllPapers();
+      if (allPapers && allPapers.length > 0) {
+        setPapers(allPapers.map(normalizePaper));
       } else {
-        const altRes = await researchPaperApi.getAllPapers();
-        const altList = extractPaperList(altRes);
-        if (altList && altList.length > 0) {
-          setPapers(altList.map(normalizePaper));
-        } else {
-          setPapers([]);
-        }
+        const res = await publisherApi.getQueue(1, 100);
+        const rawList = extractPaperList(res);
+        setPapers(rawList.map(normalizePaper));
       }
     } catch (err) {
-      console.warn("Could not fetch papers from queue endpoint:", err);
-      try {
-        const pubRes = await publisherApi.getPublishedPapers(1, 50);
-        const pubList = extractPaperList(pubRes);
-        setPapers(pubList.map(normalizePaper));
-      } catch {
-        setPapers([]);
-      }
+      console.warn("Could not fetch papers:", err);
+      setPapers([]);
     } finally {
       setLoading(false);
     }

@@ -42,6 +42,7 @@ import CorrectionsRetractionsMattersArising from './components/pages/guidline/Co
 import Blogpublish from './components/pages/blog/Blogpublish';
 import Career from './components/pages/career/Career';
 import VerifyCertificate from './components/pages/VerifyCertificate';
+import MySubmissions from './components/pages/MySubmissions';
 function App() {
   
 
@@ -142,6 +143,14 @@ function App() {
           element={
             <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER"]}>
               <CaseStudyPaperForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/my-submissions"
+          element={
+            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER", "ADMIN", "PUBLISHER", "EDITOR"]}>
+              <MySubmissions />
             </PrivateRoute>
           }
         />

@@ -1,13 +1,8 @@
-import React from 'react'
-import ReviewerDashboards from './ReviewerDashboards'
-
+import React from 'react';
+import ReviewerDashboards from './ReviewerDashboards';
 
 function Review() {
-  return (
-    <div className='mt-2'>
-      <ReviewerDashboards/>
-    </div>
-  )
+  return <ReviewerDashboards />;
 }
 
-export default Review
+export default Review;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   User,
   BookOpen,
@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import logos from "../assets/logoss.png";
 import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 import { authService } from "../../services/authService";
@@ -42,6 +42,17 @@ export default function Login() {
   });
   const [isResetModalOpen, setIsResetModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Notify if redirected due to expired session
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("expired") === "true") {
+      toast.error("Your session has expired. Please log in again to continue.", {
+        id: "session-expired",
+      });
+    }
+  }, [location.search]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -392,6 +403,7 @@ export default function Login() {
       <ResetPasswordModal
         isOpen={isResetModalOpen}
         onClose={() => setIsResetModalOpen(false)}
+        onComplete={() => setIsResetModalOpen(false)}
         defaultEmail={formData.email}
       />
     </div>

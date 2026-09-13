@@ -40,42 +40,33 @@ export default function AdminManuscriptTable() {
 
   useEffect(() => {
     loadPapers();
+
+    const handleUpdate = () => {
+      loadPapers();
+    };
+
+    window.addEventListener("paperStatusUpdated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    return () => {
+      window.removeEventListener("paperStatusUpdated", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
   }, []);
 
   const loadPapers = async () => {
     try {
       setLoading(true);
-      // Fetch queue from GET /api/publisher/queue
-      const res = await publisherApi.getQueue(1, 100);
-      const rawList = extractPaperList(res);
-       console.log(res);
-      if (rawList && rawList.length > 0) {
-        const normalized = rawList.map(normalizePaper);
-        setPapers(normalized);
+      const allPapers = await researchPaperApi.getAllPapers();
+      if (allPapers && allPapers.length > 0) {
+        setPapers(allPapers.map(normalizePaper));
       } else {
-        // Fallback to getAllPapers
-        const altRes = await researchPaperApi.getAllPapers();
-        const altList = extractPaperList(altRes);
-        if (altList && altList.length > 0) {
-          setPapers(altList.map(normalizePaper));
-        } else {
-          setPapers([]);
-        }
+        const res = await publisherApi.getQueue(1, 100);
+        const rawList = extractPaperList(res);
+        setPapers(rawList.map(normalizePaper));
       }
     } catch (err) {
-      console.warn("Could not fetch live papers from backend queue:", err);
-      // Try fallback to public published or empty
-      try {
-        const pubRes = await publisherApi.getPublishedPapers(1, 50);
-        const pubList = extractPaperList(pubRes);
-        if (pubList && pubList.length > 0) {
-          setPapers(pubList.map(normalizePaper));
-        } else {
-          setPapers([]);
-        }
-      } catch {
-        setPapers([]);
-      }
+      console.warn("Could not fetch live papers for admin manuscript table:", err);
+      setPapers([]);
     } finally {
       setLoading(false);
     }

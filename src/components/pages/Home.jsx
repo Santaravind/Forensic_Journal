@@ -86,40 +86,30 @@ const tabs = [
               className="w-full sm:w-52 h-auto object-contain"
             />
           </div>
+<div className="prose prose-blue max-w-none space-y-6">
+  <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl first-letter:text-5xl md:first-letter:text-6xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-blue-900">
+    <strong className="text-blue-900">
+      Welcome to Forensic Patrika: A Journal of Forensic Science
+    </strong>
+    , an academic publication platform committed to advancing scholarly research, critical inquiry, and ethical academic writing. Focused on Forensic Science, Criminology, and related interdisciplinary fields, the journal provides a structured, peer-reviewed platform for students and researchers to publish original research articles, review papers, and analytical studies that advance contemporary scholarship.
+  </p>
 
-          <div className="prose prose-blue max-w-none space-y-6">
-            <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl first-letter:text-5xl md:first-letter:text-6xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-blue-900">
-              <strong className="text-blue-900 uppercase tracking-wide">
-                Welcome to Forensic Patrika: A Journal of Forensic Science
-              </strong>
-              , an academic publication platform committed to advancing scholarly research, critical inquiry, and ethical academic writing. Focused on Forensic Science, Criminology, and related interdisciplinary fields, the journal provides a structured, peer-reviewed platform for students and researchers to publish original research articles, review papers, and analytical studies that advance contemporary scholarship.
-            </p>
+  <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl">
+    The journal welcomes submissions from undergraduate, postgraduate, and doctoral scholars. Forensic Patrika strengthens emerging scholarly voices by fostering a rigorous academic environment and promoting the responsible dissemination of knowledge across the global research community.
+  </p>
 
-            <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 italic bg-blue-50/40 py-2">
-              The journal welcomes submissions from undergraduate, postgraduate, and doctoral scholars.
-              Forensic Patrika strengthens emerging scholarly voices by fostering a rigorous academic environment and promoting the responsible dissemination of knowledge across the global research community.{" "}
-              <strong className="font-bold text-blue-900">
-                FORENSIC PATRIKA :
-              </strong>{" "}
-             The journal promotes interdisciplinary research that integrates law, psychology, digital forensics, forensic biology, toxicology, cybercrime studies, criminal justice, and emerging technological innovations shaping modern investigative methodologies. Through this inclusive framework, the journal cultivates holistic, analytical, and solution-oriented research perspectives.
-                        </p>
+  <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl">
+    <strong className="text-blue-900">Forensic Patrika</strong> promotes interdisciplinary research that integrates law, psychology, digital forensics, forensic biology, toxicology, cybercrime studies, criminal justice, and emerging technological innovations shaping modern investigative methodologies. Through this inclusive framework, the journal cultivates holistic, analytical, and solution-oriented research perspectives.
+  </p>
 
-            <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 italic bg-blue-50/40 py-2">
-              Forensic Patrika upholds transparency, academic integrity, and ethical publishing standards through a rigorous peer-review process that ensures research quality, originality, and scholarly credibility. The journal adheres to plagiarism-screening protocols, ethical research guidelines, and responsible authorship practices to maintain the trust of the global academic and professional community.
-            </p>
+  <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 bg-blue-50/40 py-2">
+    Forensic Patrika upholds transparency, academic integrity, and ethical publishing standards through a rigorous peer-review process that ensures research quality, originality, and scholarly credibility. The journal adheres to plagiarism-screening protocols, ethical research guidelines, and responsible authorship practices to maintain the trust of the global academic and professional community.
+  </p>
 
-            <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 italic bg-blue-50/40 py-2">
-              The platform also functions as a developmental academic space, supporting first-time researchers and student scholars by promoting constructive peer-review feedback, mentorship opportunities, and exposure to structured scholarly publication standards.
-            </p>
-
-            {/* <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl border-l-4 border-blue-900 pl-6 italic bg-blue-50/40 py-2">
-              The platform also functions as a developmental academic space,
-              supporting first-time researchers and student scholars by promoting
-              constructive peer-review feedback, mentorship opportunities, and
-              exposure to structured scholarly publication standards.
-            </p> */}
-          </div>
-        </div>
+  <p className="text-gray-800 text-justify font-serif leading-relaxed text-lg md:text-xl">
+    The platform also functions as a developmental academic space, supporting first-time researchers and student scholars by promoting constructive peer-review feedback, mentorship opportunities, and exposure to structured scholarly publication standards.
+  </p>
+</div>        </div>
 
       </div>
     </div>

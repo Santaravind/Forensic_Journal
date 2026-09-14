@@ -23,7 +23,7 @@ function Header() {
       <div className="flex flex-col sm:flex-row items-center lg:gap-2 md:gap-0.5 text-white">
         <p className="flex items-center gap-2 text-lg md:text-[16px]">
           <FaPhoneAlt  className="text-yellow-300" />
-          <span>+91-8957445211</span>
+          <span>+91-XXXXXXX</span>
         </p>
   
         <p className="flex items-center gap-2 text-lg md:text-[16px]">

@@ -64,7 +64,7 @@ function Hero() {
     navigate("/reserchform");
   };
   return (
-    <section className="relative h-screen w-full overflow-hidden mt-12 ">
+    <section className="relative h-screen w-full overflow-hidden mt-8 ">
       {/* Background Images with fade effect */}
       <div className="absolute inset-0">
         {images.map((image, index) => (

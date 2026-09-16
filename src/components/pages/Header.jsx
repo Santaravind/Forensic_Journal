@@ -1,65 +1,87 @@
-import React from 'react'
-
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdMarkEmailRead } from "react-icons/md";
 import Navbar from './Navbar';
 import Hero from './Hero';
+
 function Header() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <div>
-         <div className="bg-blue-400 px-3 py-2 rounded fixed top-0 z-50 w-full md:p-2">
-              {/* top header  */}
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between lg:gap-4 md:gap-0.5">
-      
-      {/* Left Content */}
-      <h2 className="text-[16px] md:text-2xl  font-serif md:m-1 text-white text-center md:text-left">
-        We'd appreciate your feedback.{" "}
-        <span className="text-yellow-300 font-bold">
-          Tell us what you think!
-        </span>
-      </h2>
-  
-      {/* Contact Info */}
-      <div className="flex flex-col sm:flex-row items-center lg:gap-2 md:gap-0.5 text-white">
-        <p className="flex items-center gap-2 text-lg md:text-[16px]">
-          {/* <FaPhoneAlt  className="text-yellow-300" /> */}
-          {/* <span>+91-XXXXXXX</span> */}
-        </p>
-  
-        <p className="flex items-center gap-2 text-lg md:text-[16px]">
-          {/* <MdMarkEmailRead className="text-yellow-300" /> */}
-          {/* <span>f.patrika.india@gmail.com</span> */}
-        </p>
-      </div>
-  
-    </div>
-  </div>
-    <div className=''>
-        <Navbar/>
-    </div>
+      {/* Fixed Unified Header Container */}
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        {/* Top Info Bar */}
+        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-3 py-1.5 shadow-xs text-xs sm:text-sm">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4">
+            
+            {/* Left Feedback notice */}
+            <h2 className="font-medium text-center sm:text-left text-xs sm:text-sm">
+              We'd appreciate your feedback.{" "}
+              <span className="text-yellow-300 font-bold ml-1">
+                Tell us what you think!
+              </span>
+            </h2>
 
-     {/* this is hero section bg-image  */}
-      <Hero/>
-       
-       {/* this is crollebel bar  */}
-      <div className="bg-[oklch(62.3%_0.214_259.815)] font-serif font-semibold text-white flex items-center overflow-hidden header-notice text-2xl">
-        <span className="bg-[oklch(45.5%_0.188_100.697)] text-white px-3 py-2 mr-2 text-2xl header-notice-label rounded-r-full">CURRENT </span>
-        <div className="overflow-hidden relative w-full">
-          <div className="animate-marquee whitespace-nowrap py-2 ">
-          welcome to Forensic Patrika  (A Journal of Forensic Science )
-            <span className="text-yellow-400 ml-2 cursor-pointer " 
-           
-            >• न्यायिक अनुसंधानम् </span> 
-             • Explore more   
-              • Stay Safe 
+            {/* Contact Info */}
+            <div className="flex items-center gap-3 sm:gap-5 text-xs text-slate-100">
+              <a 
+                href="tel:+91XXXXXXXXXX" 
+                className="flex items-center gap-1.5 hover:text-yellow-200 transition-colors"
+              >
+                <FaPhoneAlt className="text-yellow-300 text-[11px]" />
+                <span>+91-XXXXXXXXXX</span>
+              </a>
+
+              <a 
+                href="mailto:f.patrika.india@gmail.com" 
+                className="flex items-center gap-1.5 hover:text-yellow-200 transition-colors"
+              >
+                <MdMarkEmailRead className="text-yellow-300 text-sm" />
+                <span>f.patrika.india@gmail.com</span>
+              </a>
+            </div>
+
           </div>
         </div>
-      </div>
+
+        {/* Floating Navbar Container */}
+        <div className="pt-1.5 sm:pt-2">
+          <Navbar />
+        </div>
+      </header>
+
+      {/* Spacer for non-homepage routes so page content is never hidden behind fixed header */}
+      {!isHomePage && (
+        <div className="h-28 sm:h-32 md:h-36" aria-hidden="true" />
+      )}
+
+      {/* Hero Section (Home page only) */}
+      {isHomePage && <Hero />}
+
+      {/* Current Notices Marquee (Home page only) */}
+      {isHomePage && (
+        <div className="bg-slate-900 font-serif font-semibold text-white flex items-center overflow-hidden border-y border-slate-800 text-sm sm:text-base shadow-inner">
+          <span className="bg-amber-500 text-slate-950 font-bold px-4 py-2 mr-2 shrink-0 rounded-r-full flex items-center gap-1 text-xs sm:text-sm uppercase tracking-wider">
+            CURRENT
+          </span>
+          <div className="overflow-hidden relative w-full py-2">
+            <div className="animate-marquee whitespace-nowrap text-slate-200">
+              Welcome to Forensic Patrika (A Journal of Forensic Science)
+              <span className="text-yellow-400 font-bold mx-3">• न्यायिक अनुसंधानम् •</span>
+              Peer-Reviewed Open Access Scholarly Journal
+              <span className="text-yellow-400 font-bold mx-3">•</span>
+              Call for Papers: Volume 10 Issue 2 Now Accepting Submissions
+              <span className="text-yellow-400 font-bold mx-3">• Explore More •</span>
+              Stay Safe & Publish Responsibly
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-
-
-
-export default Header
+export default Header;

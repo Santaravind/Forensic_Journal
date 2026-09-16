@@ -156,7 +156,7 @@ const tabs = [
     <div className="mt-6 ml-5 border-white shadow px-2 py-2 mr-3">
         {showCaseStudy && <Case/>}
       </div>
-               <OurTeam/>
+               {/* <OurTeam/> */}
     </>
   );
 }

@@ -105,107 +105,140 @@
 
 import React from "react";
 import logo from "../assets/logos.png";
-// import React from 'react'
+import { Users, Mail, Sparkles } from 'lucide-react';
 
-function EditorialTeam() {
+export default function EditorialTeam() {
   return (
-    <>
-   
-    <div>
-         <div className="text-3xl">
-          Comming soon ....
-         </div>
+    <div className="min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 px-4 py-12 text-center">
+      {/* Visual Accent Badge */}
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-6 border border-indigo-100 dark:border-indigo-900/50 shadow-sm">
+        <Sparkles size={16} />
+        <span>Under Construction</span>
+      </div>
+
+      {/* Main Title & Subtitle */}
+      <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight max-w-xl">
+        Meet Our Editorial Team
+      </h1>
+      <p className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-md leading-relaxed">
+        We're currently assembling a passionate crew of writers, editors, and creators. Check back soon for launch updates!
+      </p>
+
+      {/* Visual Graphic Element */}
+      <div className="my-10 relative flex items-center justify-center">
+        <div className="absolute inset-0 bg-indigo-500/20 dark:bg-indigo-500/10 blur-2xl rounded-full"></div>
+        <div className="relative p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
+          <Users className="w-16 h-16 text-indigo-600 dark:text-indigo-400 animate-pulse" />
+        </div>
+      </div>
+
+      {/* Optional Email Waitlist / CTA */}
+      {/* <div className="w-full max-w-sm flex flex-col sm:flex-row gap-2 mt-2">
+        <div className="relative flex-1">
+          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+          />
+        </div>
+        <button
+          type="button"
+          className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-lg transition-colors shadow-sm active:scale-[0.98]"
+        >
+          Notify Me
+        </button>
+      </div> */}
     </div>
-     </>
-  )
+  );
 }
 
-export default EditorialTeam
+// export default EditorialTeam
 
-  // const editorialTeam = {
-  //   leadership: [
-  //     {
-  //       id: 1,
-  //       name: "Dr. Vijay Kumar Yadav",
-  //       post: "Founder",
-  //       position: "Editor-in-Chief",
-  //       initials: "VK",
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Indresh Kumar",
-  //       post: "Co-Founder",
-  //       position: "Publisher",
-  //       initials: "IK",
-  //     },
-  //   ],
-  //   seniorEditors: [
-  //     {
-  //       id: 3,
-  //       name: "Dr. Murali Manohar Yadav",
-  //       position: "Co-Editor-in-Chief",
-  //       initials: "MM",
-  //     },
-  //     {
-  //       id: 4,
-  //       name: "Dr. Akash Kumar",
-  //       position: "Co-Editor-in-Chief",
-  //       initials: "AK",
-  //     },
-  //     {
-  //       id: 8,
-  //       name: "Nawab John Dar",
-  //       position: "Intl. Editorial Head",
-  //       initials: "NJ",
-  //     },
-  //   ],
-  //   editorialStaff: [
-  //     {
-  //       id: 5,
-  //       name: "Dr. Abhimanyu Harshey",
-  //       position: "Managing Editor",
-  //       initials: "AH",
-  //     },
-  //     {
-  //       id: 6,
-  //       name: "Dr. Prakash Chandra",
-  //       position: "Associate Editor",
-  //       initials: "PC",
-  //     },
-  //     // {
-  //     //   id: 7,
-  //     //   name: "Mr. Shantanu Singh",
-  //     //   position: "Section Editor",
-  //     //   initials: "SS",
-  //     // },
-  //     {
-  //       id: 11,
-  //       name: "Hrigvi Singh Banafar",
-  //       position: "Publication Manager",
-  //       initials: "HS",
-  //     },
-  //   ],
-  //   support: [
-  //   //   {
-  //   //     id: 9,
-  //   //     name: "Ms. Richa Jaiswal",
-  //   //     position: "Reviewer",
-  //   //     initials: "RJ",
-  //   //   },
-  //   //   {
-  //   //     id: 10,
-  //   //     name: "Ms. Ankita Sikoria",
-  //   //     position: "Communication Officer",
-  //   //     initials: "AS",
-  //   //   },
-  //     {
-  //       id: 12,
-  //       name: "Aravind Sant Singh",
-  //       position: "Technical Head",
-  //       initials: "AS",
-  //     },
-  //   ],
-  // };
+//   const editorialTeam = {
+//     leadership: [
+//       {
+//         id: 1,
+//         name: "Dr. Vijay Kumar Yadav",
+//         post: "Founder",
+//         position: "Editor-in-Chief",
+//         initials: "VK",
+//       },
+//       {
+//         id: 2,
+//         name: "Indresh Kumar",
+//         post: "Co-Founder",
+//         position: "Publisher",
+//         initials: "IK",
+//       },
+//     ],
+//     seniorEditors: [
+//       {
+//         id: 3,
+//         name: "Dr. Murali Manohar Yadav",
+//         position: "Co-Editor-in-Chief",
+//         initials: "MM",
+//       },
+//       {
+//         id: 4,
+//         name: "Dr. Akash Kumar",
+//         position: "Co-Editor-in-Chief",
+//         initials: "AK",
+//       },
+//       {
+//         id: 8,
+//         name: "Nawab John Dar",
+//         position: "Intl. Editorial Head",
+//         initials: "NJ",
+//       },
+//     ],
+//     editorialStaff: [
+//       {
+//         id: 5,
+//         name: "Dr. Abhimanyu Harshey",
+//         position: "Managing Editor",
+//         initials: "AH",
+//       },
+//       {
+//         id: 6,
+//         name: "Dr. Prakash Chandra",
+//         position: "Associate Editor",
+//         initials: "PC",
+//       },
+//       // {
+//       //   id: 7,
+//       //   name: "Mr. Shantanu Singh",
+//       //   position: "Section Editor",
+//       //   initials: "SS",
+//       // },
+//       {
+//         id: 11,
+//         name: "Hrigvi Singh Banafar",
+//         position: "Publication Manager",
+//         initials: "HS",
+//       },
+//     ],
+//     support: [
+//     //   {
+//     //     id: 9,
+//     //     name: "Ms. Richa Jaiswal",
+//     //     position: "Reviewer",
+//     //     initials: "RJ",
+//     //   },
+//     //   {
+//     //     id: 10,
+//     //     name: "Ms. Ankita Sikoria",
+//     //     position: "Communication Officer",
+//     //     initials: "AS",
+//     //   },
+//       {
+//         id: 12,
+//         name: "Aravind Sant Singh",
+//         position: "Technical Head",
+//         initials: "AS",
+//       },
+//     ],
+//   };
 
 //   const Card = ({ member, featured = false }) => (
 //     <div
@@ -324,6 +357,6 @@ export default EditorialTeam
 //       </div>
 //     </div>
 //   );
-// };
 
+// };
 // export default EditorialTeam;

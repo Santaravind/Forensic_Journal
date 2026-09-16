@@ -190,10 +190,11 @@ export default function PublishPaperModal({ paper, isOpen, onClose, onSuccess })
               <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1">
                 Target Journal *
               </label>
+              {/* in this me changes the required */}
               <select
                 value={formData.journalId}
                 onChange={(e) => handleJournalChange(e.target.value)}
-                required
+            
                 className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="">{loadingJournals ? 'Loading journals...' : 'Select Journal'}</option>

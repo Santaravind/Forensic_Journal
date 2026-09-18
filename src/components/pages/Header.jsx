@@ -27,13 +27,13 @@ function Header() {
 
             {/* Contact Info */}
             <div className="flex items-center gap-3 sm:gap-5 text-xs text-slate-100">
-              <a 
+              {/* <a 
                 href="tel:+91XXXXXXXXXX" 
                 className="flex items-center gap-1.5 hover:text-yellow-200 transition-colors"
               >
                 <FaPhoneAlt className="text-yellow-300 text-[11px]" />
                 <span>+91-XXXXXXXXXX</span>
-              </a>
+              </a> */}
 
               <a 
                 href="mailto:f.patrika.india@gmail.com" 

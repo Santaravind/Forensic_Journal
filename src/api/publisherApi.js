@@ -317,15 +317,30 @@ export const publisherApi = {
   },
 
   /**
-   * 8. Direct Admin-to-Author Emailing (via Resend)
+   * 8. Direct Admin-to-Author Emailing (via Custom Email API & Resend)
    */
   sendAuthorEmail: async (emailPayload) => {
     try {
-      const res = await apiClient.post('/api/publisher/mail-author', emailPayload);
+      const res = await apiClient.post('/api/admin/send-custom-email', {
+        to: emailPayload.to || emailPayload.recipientEmail,
+        recipientName: emailPayload.recipientName,
+        subject: emailPayload.subject,
+        message: emailPayload.message || emailPayload.messageContent || emailPayload.body,
+        senderName: emailPayload.senderName,
+        senderTitle: emailPayload.senderTitle,
+        buttonText: emailPayload.buttonText,
+        buttonUrl: emailPayload.buttonUrl,
+        cc: emailPayload.cc,
+      });
       return res.data;
     } catch {
-      const res = await apiClient.post('/api/admin/mail-author', emailPayload);
-      return res.data;
+      try {
+        const res = await apiClient.post('/api/publisher/mail-author', emailPayload);
+        return res.data;
+      } catch {
+        const res = await apiClient.post('/api/admin/mail-author', emailPayload);
+        return res.data;
+      }
     }
   },
 
@@ -611,6 +626,30 @@ export const researchPaperApi = {
   // 7. Public QR code certificate verification
   verifyCertificate: async (qrCode) => {
     const res = await apiClient.get(`/api/public/certificates/verify/${qrCode}`);
+    return res.data;
+  },
+};
+
+/**
+ * Dedicated Admin Custom Email API (POST /api/admin/send-custom-email)
+ */
+export const adminEmailApi = {
+  /**
+   * Send custom email to any recipient
+   */
+  sendCustomEmail: async (emailData) => {
+    const payload = {
+      to: emailData.to || emailData.recipientEmail,
+      recipientName: emailData.recipientName,
+      subject: emailData.subject,
+      message: emailData.message || emailData.body || emailData.content,
+      senderName: emailData.senderName,
+      senderTitle: emailData.senderTitle,
+      buttonText: emailData.buttonText,
+      buttonUrl: emailData.buttonUrl,
+      cc: emailData.cc,
+    };
+    const res = await apiClient.post('/api/admin/send-custom-email', payload);
     return res.data;
   },
 };

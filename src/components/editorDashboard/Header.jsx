@@ -6,6 +6,7 @@ import {
   ExternalLink,
   Sparkles,
   Database,
+  CheckCircle2,
 } from "lucide-react";
 import { authService } from "../../services/authService";
 import { Link } from "react-router-dom";
@@ -24,38 +25,38 @@ export default function Header({
   const getPageTitle = () => {
     switch (activeTab) {
       case "Blog":
-        return "Blog & Editorial Moderation";
+        return "Editorial Blog Moderation";
       case "Manuscripts":
         return "Manuscripts & Academic Papers";
+      case "Decisions":
+        return "Peer Review & Editorial Decisions";
       case "Journals":
         return "Journals & Issue Releases";
       case "Announcements":
-        return "Broadcasts & Public Notices";
-      case "Email":
-        return "Executive Email Dispatcher";
-      case "Settings":
-        return "System Health & Audit Logs";
+        return "Author Notices & Broadcasts";
+      case "Guidelines":
+        return "Editorial Guidelines & Standards";
       default:
-        return "Super Admin Dashboard";
+        return "Editor-in-Chief Dashboard";
     }
   };
 
   const getPageSubtitle = () => {
     switch (activeTab) {
       case "Blog":
-        return "Review, approve, or restrict submitted research articles and news";
+        return "Oversight, review, and publication of research articles & news";
       case "Manuscripts":
-        return "Full oversight of peer-review queue, decisions, and DOI publication";
+        return "Full oversight of peer-review queue, decisions, and publishing pipeline";
+      case "Decisions":
+        return "Track reviewer assessments, revisions, and finalize editorial judgments";
       case "Journals":
-        return "Configure official journals, volumes, issues, and ISSN registration";
+        return "Review journal issues, volume assignments, and archival records";
       case "Announcements":
-        return "Broadcast public notices and calls for papers";
-      case "Email":
-        return "Dispatch authenticated custom emails to authors, reviewers, and institutions";
-      case "Settings":
-        return "Live database connectivity, CDN storage, and editorial activity logs";
+        return "Broadcast public notices, call for papers, and submission deadlines";
+      case "Guidelines":
+        return "COPE standards, peer review SOP, and plagiarism screening criteria";
       default:
-        return "Executive Operations Pulse • Forensic Patrika Journal Administration";
+        return "Editorial Operations Pulse • Forensic Patrika Journal Management";
     }
   };
 
@@ -99,17 +100,17 @@ export default function Header({
             <span>{todayFormatted}</span>
           </div>
 
-          {/* Admin User Badge */}
+          {/* Editor User Badge */}
           <div className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-slate-200">
             <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
-              {currentUser.fullName ? currentUser.fullName[0].toUpperCase() : "A"}
+              {currentUser.fullName ? currentUser.fullName[0].toUpperCase() : "E"}
             </div>
             <div className="hidden sm:block text-left">
               <p className="text-xs font-bold text-slate-800 leading-tight truncate max-w-[130px]">
-                {currentUser.fullName || currentUser.name || "Administrator"}
+                {currentUser.fullName || currentUser.name || "Editor-in-Chief"}
               </p>
               <span className="inline-flex items-center gap-1 text-[10px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.2 rounded-md">
-                <ShieldCheck size={10} /> ADMIN
+                <ShieldCheck size={10} /> EDITOR
               </span>
             </div>
           </div>

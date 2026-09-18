@@ -9,12 +9,14 @@ import OverviewBreakdown from "../AdminDashboard/OverviewBreakdown";
 import JournalManagement from "../AdminDashboard/JournalManagement";
 import AnnouncementsManager from "../AdminDashboard/AnnouncementsManager";
 import AuditLogsView from "../AdminDashboard/AuditLogsView";
+import AdminEmailDispatcher from "../AdminDashboard/AdminEmailDispatcher";
 import {
   LayoutDashboard,
   FileText,
   FileStack,
   BookOpen,
   Megaphone,
+  Mail,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -155,6 +157,21 @@ export default function AdminDashboard() {
               </button>
 
               <button
+                onClick={() => setActiveTab("Email")}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+                  activeTab === "Email"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                }`}
+              >
+                <Mail size={14} />
+                <span>Email Dispatcher</span>
+                <span className="bg-indigo-100 text-indigo-700 text-[9px] font-extrabold px-1.5 py-0.5 rounded-full">
+                  API
+                </span>
+              </button>
+
+              <button
                 onClick={() => setActiveTab("Settings")}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "Settings"
@@ -243,7 +260,14 @@ export default function AdminDashboard() {
             </div>
           )}
 
-          {/* TAB 6: SYSTEM & AUDIT LOGS */}
+          {/* TAB 6: DEDICATED ADMIN EMAIL DISPATCHER */}
+          {activeTab === "Email" && (
+            <div className="animate-in fade-in duration-200">
+              <AdminEmailDispatcher />
+            </div>
+          )}
+
+          {/* TAB 7: SYSTEM & AUDIT LOGS */}
           {activeTab === "Settings" && (
             <div className="animate-in fade-in duration-200">
               <AuditLogsView papers={papers} />

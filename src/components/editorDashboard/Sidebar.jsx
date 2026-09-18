@@ -1,182 +1,365 @@
+import React from "react";
 import {
-  FaHome,
-  FaFileAlt,
-  FaUsers,
-  FaGavel,
-  FaBookOpen,
-  FaChartBar,
-  FaEnvelope,
-  FaCog,
-  FaSignOutAlt,
-  FaChevronDown,
-  FaHeadset,
-  FaShieldAlt,
-} from "react-icons/fa";
-import logo from "../assets/logoss.png"
-export default function Sidebar() {
+  LayoutDashboard,
+  FileText,
+  FileStack,
+  BookOpen,
+  Megaphone,
+  ShieldCheck,
+  LogOut,
+  ChevronRight,
+  X,
+  ExternalLink,
+  Sparkles,
+  Database,
+  Activity,
+  CheckCircle2,
+  Clock,
+  BookMarked,
+  ScrollText,
+} from "lucide-react";
+import logo from "../assets/logoss.png";
+import { authService } from "../../services/authService";
+import { useNavigate, Link } from "react-router-dom";
+
+export default function Sidebar({
+  activeTab = "Dashboard",
+  setActiveTab = () => {},
+  isMobileOpen = false,
+  setIsMobileOpen = () => {},
+  manuscriptCount = 0,
+}) {
+  const navigate = useNavigate();
+  const currentUser = authService.getCurrentUser() || {
+    fullName: "Editorial Board",
+    email: "editor@forensicpatrika.com",
+    role: "EDITOR",
+  };
+
+  const handleLogout = () => {
+    authService.logout();
+    navigate("/login");
+  };
+
+  const navSections = [
+    {
+      title: "Core Editorial",
+      items: [
+        {
+          id: "Dashboard",
+          label: "Dashboard Overview",
+          icon: LayoutDashboard,
+          hint: "Editorial Pulse & Metrics",
+        },
+        {
+          id: "Manuscripts",
+          label: "Manuscripts Queue",
+          icon: FileStack,
+          badge: manuscriptCount > 0 ? `${manuscriptCount}` : null,
+          badgeType: "primary",
+          hint: "Submissions & Peer Review",
+        },
+        {
+          id: "Decisions",
+          label: "Peer Review & Decisions",
+          icon: Clock,
+          badge: "Active",
+          badgeType: "warning",
+          hint: "Reviewer Assign & Judgments",
+        },
+      ],
+    },
+    {
+      title: "Publishing & Content",
+      items: [
+        {
+          id: "Blog",
+          label: "Editorial Blog Moderation",
+          icon: FileText,
+          badge: "Live",
+          badgeType: "live",
+          hint: "Articles & News Oversight",
+        },
+        {
+          id: "Journals",
+          label: "Journals & Issue Releases",
+          icon: BookOpen,
+          hint: "Volumes, Issues & Archives",
+        },
+      ],
+    },
+    {
+      title: "Communications & Governance",
+      items: [
+        {
+          id: "Announcements",
+          label: "Author Notices & Broadcasts",
+          icon: Megaphone,
+          hint: "Call for Papers & Deadlines",
+        },
+        {
+          id: "Guidelines",
+          label: "Editorial Guidelines & Ethics",
+          icon: ScrollText,
+          hint: "COPE Standards & Review SOP",
+        },
+      ],
+    },
+  ];
+
+  const getBadgeClass = (type) => {
+    switch (type) {
+      case "live":
+        return "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+      case "primary":
+        return "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30";
+      case "warning":
+        return "bg-amber-500/20 text-amber-300 border border-amber-500/30";
+      default:
+        return "bg-slate-700/50 text-slate-300 border border-slate-600/30";
+    }
+  };
+
   return (
-    <div className="w-[285px] min-h-screen bg-gradient-to-b from-[#1b237e] via-[#261c88] to-[#45108a] text-white flex flex-col border-r border-white/10 overflow-auto">
-
-      {/* Logo Section */}
-      <div className="pt-6 pb-4 flex flex-col items-center">
-        <img
-          src={logo}
-          alt="logo"
-          className="w-24 h-24 object-contain"
+    <>
+      {/* Mobile Backdrop */}
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-40 lg:hidden transition-opacity duration-300"
+          onClick={() => setIsMobileOpen(false)}
         />
+      )}
 
-        <h2 className="text-[16px] font-bold mt-3 tracking-wide">
-          FORENSIC PATRIKA
-        </h2>
+      {/* Sidebar Container */}
+      <aside
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-[#090B1E] via-[#0D122E] to-[#070918] text-slate-300 flex flex-col justify-between transform transition-all duration-300 ease-in-out shrink-0 h-screen border-r border-slate-800/80 shadow-2xl select-none ${
+          isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
+        {/* TOP SECTION */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+          
+          {/* Brand Header */}
+          <div className="p-4 pb-3 border-b border-white/[0.08] relative overflow-hidden">
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-600/15 rounded-full blur-2xl pointer-events-none" />
 
-        <p className="text-gray-300 text-sm mt-1">
-          Official Portal
-        </p>
-      </div>
+            <div className="flex items-center justify-between relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="relative group">
+                  <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 p-[2px] shadow-lg shadow-indigo-600/25">
+                    <div className="bg-[#090B1E] w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
+                      <img
+                        src={logo}
+                        alt="Forensic Patrika Logo"
+                        className="w-8 h-8 object-contain filter brightness-110"
+                      />
+                    </div>
+                  </div>
+                  <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-[#090B1E]"></span>
+                  </span>
+                </div>
 
-      {/* Portal Card */}
-      <div className="mx-4 bg-white/10 border border-white/10 rounded-2xl p-4 flex items-center gap-3 mb-5">
-        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-          <FaShieldAlt size={22} />
-        </div>
+                <div>
+                  <h2 className="text-sm font-extrabold text-white tracking-wide leading-tight font-serif uppercase">
+                    Forensic Patrika
+                  </h2>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    <p className="text-[10px] text-emerald-300/90 font-bold uppercase tracking-widest">
+                      Editor Portal
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-        <div>
-          <h3 className="font-semibold text-lg">
-            EDITOR PORTAL
-          </h3>
-        </div>
-      </div>
-
-      {/* Menu */}
-      <div className="px-4 flex-1">
-
-        <MenuItem
-          active
-          icon={<FaHome />}
-          title="Dashboard"
-        />
-
-        <MenuItem
-          icon={<FaFileAlt />}
-          title="Submissions"
-          dropdown
-        />
-
-        <MenuItem
-          icon={<FaFileAlt />}
-          title="Manuscripts"
-          dropdown
-        />
-
-        <MenuItem
-          icon={<FaUsers />}
-          title="Peer Review"
-          dropdown
-        />
-
-        <MenuItem
-          icon={<FaGavel />}
-          title="Editorial Decisions"
-        />
-
-        <MenuItem
-          icon={<FaBookOpen />}
-          title="Issues & Publishing"
-        />
-
-        <MenuItem
-          icon={<FaUsers />}
-          title="Users & Roles"
-        />
-
-        <MenuItem
-          icon={<FaChartBar />}
-          title="Analytics & Reports"
-        />
-
-        <MenuItem
-          icon={<FaEnvelope />}
-          title="Messages"
-          badge="6"
-        />
-
-        <MenuItem
-          icon={<FaCog />}
-          title="Journal Settings"
-        />
-      </div>
-
-      {/* Logout */}
-      <div className="px-4 border-t border-white/10 pt-3">
-        <button className="flex items-center gap-3 w-full p-4 rounded-xl hover:bg-white/10 transition">
-          <FaSignOutAlt />
-          <span>Logout</span>
-        </button>
-      </div>
-
-      {/* Help Card */}
-      <div className="p-4">
-        <div className="bg-white/10 border border-white/10 rounded-2xl p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-              <FaHeadset size={20} />
+              {/* Close button for mobile */}
+              <button
+                onClick={() => setIsMobileOpen(false)}
+                className="lg:hidden text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-white/[0.08] transition-colors cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X size={18} />
+              </button>
             </div>
 
-            <div>
-              <h3 className="font-semibold">
-                Need Help?
-              </h3>
-
-              <p className="text-xs text-gray-300 mt-1">
-                Contact Editorial Office
-              </p>
-
-              <p className="text-sm mt-2">
-                editor@forensicpatrika.com
-              </p>
+            {/* Quick Status Pill */}
+            <div className="mt-3.5 bg-white/[0.04] border border-white/[0.06] rounded-xl px-3 py-1.5 flex items-center justify-between text-[11px] text-slate-400">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span className="font-semibold text-slate-300">Neon DB & Cloudinary</span>
+              </div>
+              <span className="text-[10px] font-mono text-indigo-300 bg-indigo-950/60 px-2 py-0.5 rounded-md border border-indigo-800/40">
+                Online
+              </span>
             </div>
           </div>
+
+          {/* Editor Profile Mini Card */}
+          <div className="px-3 pt-3">
+            <div className="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-900/40 border border-white/[0.06] rounded-2xl p-2.5 flex items-center justify-between gap-3 shadow-inner">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-extrabold text-xs shadow-md shadow-indigo-900/50 shrink-0">
+                  {currentUser.fullName ? currentUser.fullName[0].toUpperCase() : "E"}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold text-white truncate leading-tight">
+                    {currentUser.fullName || "Editor-in-Chief"}
+                  </p>
+                  <p className="text-[10px] text-indigo-300/80 truncate font-medium">
+                    {currentUser.email || "editor@forensicpatrika.com"}
+                  </p>
+                </div>
+              </div>
+
+              <span className="px-2 py-0.5 rounded-lg text-[9px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 shrink-0 flex items-center gap-1">
+                <ShieldCheck size={11} className="text-indigo-400" />
+                EDITOR
+              </span>
+            </div>
+          </div>
+
+          {/* Navigation Items */}
+          <div className="p-3 space-y-4">
+            {navSections.map((section, sIdx) => (
+              <div key={section.title || sIdx} className="space-y-1">
+                <div className="px-3 py-1 flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase font-mono">
+                    {section.title}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  {section.items.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = activeTab === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setActiveTab(item.id);
+                          setIsMobileOpen(false);
+                        }}
+                        className={`w-full group relative flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer overflow-hidden ${
+                          isActive
+                            ? "bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30 font-bold"
+                            : "text-slate-400 hover:text-slate-100 hover:bg-white/[0.06]"
+                        }`}
+                      >
+                        {isActive && (
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-white rounded-r-full shadow-xs" />
+                        )}
+
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div
+                            className={`p-1.5 rounded-lg transition-all duration-200 shrink-0 ${
+                              isActive
+                                ? "bg-white/15 text-white"
+                                : "bg-white/[0.03] text-slate-400 group-hover:text-indigo-300 group-hover:bg-indigo-500/10 group-hover:scale-110"
+                            }`}
+                          >
+                            <Icon size={15} />
+                          </div>
+                          <div className="text-left min-w-0">
+                            <span className="truncate block leading-tight">
+                              {item.label}
+                            </span>
+                            {item.hint && (
+                              <span
+                                className={`text-[10px] block leading-tight font-normal truncate mt-0.5 ${
+                                  isActive
+                                    ? "text-indigo-100/80"
+                                    : "text-slate-500 group-hover:text-slate-400"
+                                }`}
+                              >
+                                {item.hint}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                          {item.badge && (
+                            <span
+                              className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold transition-all flex items-center gap-1 ${
+                                item.badgeType === "live" ? "animate-pulse" : ""
+                              } ${getBadgeClass(item.badgeType)}`}
+                            >
+                              {item.badgeType === "live" && (
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                              )}
+                              {item.badge}
+                            </span>
+                          )}
+
+                          <ChevronRight
+                            size={13}
+                            className={`transition-transform duration-200 ${
+                              isActive
+                                ? "text-white/90 translate-x-0.5"
+                                : "text-slate-600 opacity-0 group-hover:opacity-100 group-hover:text-slate-300 group-hover:translate-x-0.5"
+                            }`}
+                          />
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
-      </div>
-    </div>
-  );
-}
 
-function MenuItem({
-  icon,
-  title,
-  active = false,
-  dropdown = false,
-  badge,
-}) {
-  return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 rounded-xl cursor-pointer mb-2 transition-all
-      ${
-        active
-          ? "bg-gradient-to-r from-[#3B82F6] to-[#9333EA] shadow-lg"
-          : "hover:bg-white/10"
-      }`}
-    >
-      <div className="flex items-center gap-3">
-        <span className="text-lg">{icon}</span>
+        {/* BOTTOM SECTION */}
+        <div className="p-3 border-t border-white/[0.08] bg-[#070918]/80 space-y-2.5 shrink-0">
+          <div className="bg-gradient-to-br from-indigo-950/40 to-slate-900/60 border border-white/[0.06] rounded-2xl p-2.5 space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-300">
+                <Database size={13} className="text-indigo-400" />
+                <span>Neon PostgreSQL</span>
+              </div>
+              <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Connected
+              </span>
+            </div>
 
-        <span className="font-medium text-[15px]">
-          {title}
-        </span>
-      </div>
+            <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1.5 border-t border-white/[0.05]">
+              <Link
+                to="/"
+                target="_blank"
+                className="hover:text-indigo-300 flex items-center gap-1 transition-colors"
+              >
+                <ExternalLink size={11} />
+                <span>Public Website</span>
+              </Link>
+              <button
+                onClick={() => setActiveTab("Guidelines")}
+                className="hover:text-indigo-300 flex items-center gap-1 transition-colors cursor-pointer"
+              >
+                <ScrollText size={11} />
+                <span>COPE Ethics</span>
+              </button>
+            </div>
+          </div>
 
-      <div className="flex items-center gap-2">
-        {badge && (
-          <span className="bg-red-500 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
-            {badge}
-          </span>
-        )}
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/30 transition-all duration-200 cursor-pointer group"
+          >
+            <div className="flex items-center gap-2.5">
+              <LogOut size={15} className="group-hover:-translate-x-0.5 transition-transform" />
+              <span>Sign Out Editor</span>
+            </div>
+            <span className="text-[10px] text-rose-400/70 group-hover:text-rose-300 font-mono font-medium">
+              Esc
+            </span>
+          </button>
+        </div>
 
-        {dropdown && (
-          <FaChevronDown className="text-xs" />
-        )}
-      </div>
-    </div>
+      </aside>
+    </>
   );
 }

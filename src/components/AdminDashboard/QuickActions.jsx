@@ -62,6 +62,15 @@ export default function QuickActions({ onNavigateTab = () => {}, onRefreshData =
       onClick: () => onNavigateTab("Announcements"),
     },
     {
+      icon: Mail,
+      label: "Send Custom Email",
+      desc: "Direct author & reviewer mailer",
+      color: "text-blue-600",
+      bg: "bg-blue-50 hover:bg-blue-100",
+      border: "border-blue-100",
+      onClick: () => onNavigateTab("Email"),
+    },
+    {
       icon: Database,
       label: "Seed Sample Manuscripts",
       desc: "Populate test papers with DOC/PDF",

@@ -176,6 +176,20 @@ export default function Publisher() {
 
   useEffect(() => {
     loadDashboardData();
+
+    const handleSync = () => {
+      loadDashboardData();
+    };
+
+    window.addEventListener('paperPublished', handleSync);
+    window.addEventListener('paperStatusUpdated', handleSync);
+    window.addEventListener('certificatesUpdated', handleSync);
+
+    return () => {
+      window.removeEventListener('paperPublished', handleSync);
+      window.removeEventListener('paperStatusUpdated', handleSync);
+      window.removeEventListener('certificatesUpdated', handleSync);
+    };
   }, []);
 
   const loadDashboardData = async () => {
@@ -207,25 +221,41 @@ export default function Publisher() {
         }
       }
 
-      // If queue is empty from dedicated queue endpoint, query research-papers
-      if (fetchedQueue.length === 0) {
-        try {
-          const allRes = await researchPaperApi.getAllPapers();
-          const allList = extractPaperList(allRes).map(normalizePaper);
-          if (allList.length > 0) {
-            const acceptedOrPending = allList.filter(
-              (p) => p.status === 'Accepted' || p.status === 'New Submission' || p.status === 'Under Review'
-            );
-            fetchedQueue = acceptedOrPending.length > 0 ? acceptedOrPending : allList;
+      // Query researchPaperApi.getAllPapers() to merge live database + local papers
+      let allPapers = [];
+      try {
+        const allRes = await researchPaperApi.getAllPapers();
+        allPapers = extractPaperList(allRes).map(normalizePaper);
+        if (allPapers.length > 0) {
+          const acceptedOrPending = allPapers.filter(
+            (p) => p.status === 'Accepted' || p.status === 'New Submission' || p.status === 'Under Review'
+          );
+          if (acceptedOrPending.length > 0) {
+            fetchedQueue = acceptedOrPending;
           }
-        } catch (e) {
-          console.warn('Queue sync fallback query notice:', e);
         }
+      } catch (e) {
+        console.warn('Queue sync fallback query notice:', e);
       }
 
-      if (fetchedQueue.length > 0) {
-        setQueue(fetchedQueue);
+      // Filter out any papers that have been published
+      const publishedIds = new Set(
+        allPapers
+          .filter((p) => p.status === 'Published')
+          .map((p) => String(p.id || p.submissionId))
+      );
+
+      if (fetchedQueue.length === 0) {
+        fetchedQueue = DEFAULT_QUEUE.filter(
+          (p) => !publishedIds.has(String(p.id)) && !publishedIds.has(String(p.submissionId))
+        );
+      } else {
+        fetchedQueue = fetchedQueue.filter(
+          (p) => !publishedIds.has(String(p.id)) && !publishedIds.has(String(p.submissionId))
+        );
       }
+
+      setQueue(fetchedQueue);
 
       // 2. Published Papers
       let fetchedPublished = [];
@@ -236,22 +266,12 @@ export default function Publisher() {
         }
       }
 
-      if (fetchedPublished.length === 0) {
-        try {
-          const allRes = await researchPaperApi.getAllPapers();
-          const allList = extractPaperList(allRes).map(normalizePaper);
-          if (allList.length > 0) {
-            const publishedOnly = allList.filter((p) => p.status === 'Published');
-            fetchedPublished = publishedOnly.length > 0 ? publishedOnly : allList;
-          }
-        } catch (e) {
-          console.warn('Published papers sync fallback notice:', e);
-        }
-      }
-
-      if (fetchedPublished.length > 0) {
-        setPublishedPapers(fetchedPublished);
-      }
+      const publishedOnly = allPapers.filter((p) => p.status === 'Published');
+      const mergedPublishedMap = new Map();
+      DEFAULT_PUBLISHED_PAPERS.forEach((p) => mergedPublishedMap.set(String(p.submissionId || p.id), p));
+      fetchedPublished.forEach((p) => mergedPublishedMap.set(String(p.submissionId || p.id), p));
+      publishedOnly.forEach((p) => mergedPublishedMap.set(String(p.submissionId || p.id), p));
+      setPublishedPapers(Array.from(mergedPublishedMap.values()));
 
       // 3. Journals
       if (journalsRes.status === 'fulfilled') {
@@ -341,7 +361,7 @@ export default function Publisher() {
       desc: 'Assign DOI and publish paper', 
       icon: FileText, 
       action: () => {
-        setSelectedPaperForPublish(queue[0] || null);
+        setSelectedPaperForPublish(null);
         setIsPublishModalOpen(true);
       } 
     },
@@ -1231,6 +1251,7 @@ export default function Publisher() {
       <PublishPaperModal
         isOpen={isPublishModalOpen}
         paper={selectedPaperForPublish}
+        queue={queue}
         onClose={() => setIsPublishModalOpen(false)}
         onSuccess={loadDashboardData}
       />

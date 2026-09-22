@@ -291,7 +291,7 @@ const Register = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
-                        placeholder="Dr. John Doe"
+                        placeholder="Enter Name"
                         required
                         className={inputClass}
                       />
@@ -308,7 +308,7 @@ const Register = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@forensic.com"
+                        placeholder="email@forensic.com"
                         required
                         className={inputClass}
                       />
@@ -329,7 +329,7 @@ const Register = () => {
                         name="mobileNo"
                         value={formData.mobileNo}
                         onChange={handleChange}
-                        placeholder="9876543210"
+                        placeholder="98XXXXXX80"
                         required
                         className={inputClass}
                       />

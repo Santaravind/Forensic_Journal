@@ -266,7 +266,7 @@ export default function Login() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full pl-9 pr-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all text-gray-900 bg-gray-50/50 focus:bg-white"
-                      placeholder="john@forensic.com"
+                      placeholder="email@forensic.com"
                       required
                     />
                   </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom'
 import Home from './components/pages/Home';
 import Blog from './components/pages/blog/Blog';
 import AboutUs from './components/pages/AboutUs';
@@ -8,7 +8,7 @@ import Publication from './components/pages/Publication';
 
 import Login from './components/auth/Login';
 
-import {Toaster} from 'react-hot-toast' 
+import { Toaster } from 'react-hot-toast' 
 import Header from './components/pages/Header';
 import Footer from './components/pages/Footer';
 import ResearchPaperForm from './components/pages/ResearchPaperForm';
@@ -31,142 +31,156 @@ import EditorDashboard from './components/pages/EditorDashboard';
 import AdminDashboard from './components/pages/AdminDashboard';
 import ScrollToTop from './components/pages/ScrollToTop';
 import Publisher from './components/publisharPage/Publisher';
-import ProtectetRoute from './components/route/ProtectetRoute';
-import {useDispatch} from 'react-redux'
 import PrivateRoute from './components/route/ProtectetRoute';
 import ArtificialIntelligence from './components/pages/guidline/ArtificialIntelligence';
 import RightsPermissions from './components/pages/guidline/RightsPermissions';
 import AppealsComplaints from './components/pages/guidline/AppealsComplaints';
 import PreprintSharing from './components/pages/guidline/PreprintSharing';
-import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising ';
+import CorrectionsRetractionsMattersArising from './components/pages/guidline/CorrectionsRetractionsMattersArising';
 import Blogpublish from './components/pages/blog/Blogpublish';
 import Career from './components/pages/career/Career';
 import VerifyCertificate from './components/pages/VerifyCertificate';
 import MySubmissions from './components/pages/MySubmissions';
+
 function App() {
-  
+  const location = useLocation();
+
+  // Hide public floating header and footer only on standalone backend dashboard portals
+  const isStandalonePage = [
+    '/admin',
+    '/editer',
+    '/publisher',
+    '/review'
+  ].some(path => location.pathname.startsWith(path));
 
   return (
-    <>
-    <Toaster/>
-       <Header/>
-      {/* <ScrollToTop/> */}
+    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 selection:bg-indigo-600 selection:text-white">
+      <Toaster position="top-right" />
+      <ScrollToTop />
+      
+      {!isStandalonePage && <Header />}
+
+      <div className="flex-1">
         <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/about' element={<AboutUs/>}/>
-      <Route path='/editorial' element={<EditorialTeam/>}/>
-      {/* <Route path='/guideline' element={<Guidelines/>}/> */}
-     
-      <Route path='/publication' element={<Publication/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<AboutUs />} />
+          <Route path='/editorial' element={<EditorialTeam />} />
+          <Route path='/publication' element={<Publication />} />
 
-      {/* <Route path='/research' element={<Research/>}/> */}
-      <Route path='/paper-status' element={<PaperStatus/>}/>
-      <Route path='/case-study' element={<CaseStudy/>}/>
-      <Route path='/article' element={<Articals/>}/>
+          {/* Research & Articles */}
+          <Route path='/article' element={<Articals />} />
+          <Route path='/research' element={<Navigate to="/article" replace />} />
+          <Route path='/case-study' element={<CaseStudy />} />
+          <Route path='/paper-status' element={<PaperStatus />} />
 
-      {/* This route for guideline */}
-      <Route path='/peer' element={<Peer/>}/>
-      <Route path='/author' element={<Author/>}/>
-      <Route path='/ethics' element={<Ethics/>}/>
-      <Route path='/informed' element={<Informed/>}/>
-      <Route path='/open' element={<Open/>}/>
-      <Route path='/plag' element={<Plagiarism/>}/>
-      <Route path='/privacy' element={<Privacy/>}/>
-      <Route path='/ai'  element={<ArtificialIntelligence/>}/>
-      <Route path='/right'  element={<RightsPermissions/>}/>
-      <Route path='/appeals'  element={<AppealsComplaints/>}/>
-      <Route path='/correct'  element={<CorrectionsRetractionsMattersArising/>}/>
-      <Route path='/preprint'  element={<PreprintSharing/>}/>
-   
-   {/* instructions  */}
-   <Route path='/authorIn' element={<AuthorInsturctions/>}/>
+          {/* Guidelines & Policies */}
+          <Route path='/peer' element={<Peer />} />
+          <Route path='/author' element={<Author />} />
+          <Route path='/ethics' element={<Ethics />} />
+          <Route path='/informed' element={<Informed />} />
+          <Route path='/open' element={<Open />} />
+          <Route path='/plag' element={<Plagiarism />} />
+          <Route path='/privacy' element={<Privacy />} />
+          <Route path='/ai' element={<ArtificialIntelligence />} />
+          <Route path='/right' element={<RightsPermissions />} />
+          <Route path='/appeals' element={<AppealsComplaints />} />
+          <Route path='/correct' element={<CorrectionsRetractionsMattersArising />} />
+          <Route path='/preprint' element={<PreprintSharing />} />
+          <Route path='/authorIn' element={<AuthorInsturctions />} />
+          <Route path='/guidelines' element={<Navigate to="/peer" replace />} />
 
-        {/* Role Protected Dashboard Routes */}
-        <Route
-          path="/review"
-          element={
-            <PrivateRoute allowedRoles={["REVIEWER"]}>
-              <Review />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/editer"
-          element={
-            <PrivateRoute allowedRoles={["EDITOR"]}>
-              <EditorDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute allowedRoles={["ADMIN"]}>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/publisher"
-          element={
-            <PrivateRoute allowedRoles={["PUBLISHER"]}>
-              <Publisher />
-            </PrivateRoute>
-          }
-        />
+          {/* Role Protected Dashboard Routes */}
+          <Route
+            path="/review"
+            element={
+              <PrivateRoute allowedRoles={["REVIEWER"]}>
+                <Review />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editer"
+            element={
+              <PrivateRoute allowedRoles={["EDITOR"]}>
+                <EditorDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute allowedRoles={["ADMIN"]}>
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/publisher"
+            element={
+              <PrivateRoute allowedRoles={["PUBLISHER"]}>
+                <Publisher />
+              </PrivateRoute>
+            }
+          />
 
-        {/* Blog */}
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:idOrSlug" element={<Blog />} />
-        <Route
-          path="/postb"
-          element={
-            <PrivateRoute allowedRoles={["PUBLISHER", "ADMIN", "EDITOR", "USER", "AUTHOR", "READER"]}>
-              <Blogpublish />
-            </PrivateRoute>
-          }
-        />
+          {/* Blog */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:idOrSlug" element={<Blog />} />
+          <Route
+            path="/postb"
+            element={
+              <PrivateRoute allowedRoles={["PUBLISHER", "ADMIN", "EDITOR", "USER", "AUTHOR", "READER"]}>
+                <Blogpublish />
+              </PrivateRoute>
+            }
+          />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verify-otp" element={<VerifyOtp />} />
-        <Route
-          path="/reserchform"
-          element={
-            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER"]}>
-              <ResearchPaperForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/caseStudyForm"
-          element={
-            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER"]}>
-              <CaseStudyPaperForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/my-submissions"
-          element={
-            <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER", "ADMIN", "PUBLISHER", "EDITOR"]}>
-              <MySubmissions />
-            </PrivateRoute>
-          }
-        />
+          {/* Auth */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
 
+          {/* Submission Forms */}
+          <Route
+            path="/reserchform"
+            element={
+              <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER", "ADMIN", "PUBLISHER", "EDITOR"]}>
+                <ResearchPaperForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/caseStudyForm"
+            element={
+              <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER", "ADMIN", "PUBLISHER", "EDITOR"]}>
+                <CaseStudyPaperForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-submissions"
+            element={
+              <PrivateRoute allowedRoles={["USER", "AUTHOR", "READER", "ADMIN", "PUBLISHER", "EDITOR"]}>
+                <MySubmissions />
+              </PrivateRoute>
+            }
+          />
 
-             {/* career  */}
-             <Route path='/career' element={<Career/>}/>
+          {/* Career */}
+          <Route path='/career' element={<Career />} />
 
-             {/* Certificate Verification */}
-             <Route path='/verify-certificate/:qrCode' element={<VerifyCertificate />} />
-             <Route path='/verify/:qrCode' element={<VerifyCertificate />} />
-      </Routes>
-      <Footer/>
+          {/* Certificate Verification */}
+          <Route path='/verify-certificate/:qrCode' element={<VerifyCertificate />} />
+          <Route path='/verify/:qrCode' element={<VerifyCertificate />} />
 
-    </>
-  )
+          {/* 404 Catch-all */}
+          <Route path='*' element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+
+      {!isStandalonePage && <Footer />}
+    </div>
+  );
 }
 
-export default App
+export default App;

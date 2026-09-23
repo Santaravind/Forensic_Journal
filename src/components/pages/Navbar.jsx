@@ -183,27 +183,27 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-14 sm:h-16">
             
             {/* Brand Logo & Title */}
-            <NavLink
+             <NavLink 
               to="/"
               className="flex items-center gap-2 sm:gap-3 group shrink-0"
               onClick={() => setIsMenuOpen(false)}
             >
-              {/* <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-50 border border-slate-200 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+              {/* <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-50 border border-slate-200/80 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden">
                 <img
                   src={logo}
                   alt="Forensic Patrika Logo"
                   className="w-full h-full object-contain"
                 />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-sm sm:text-base lg:text-lg text-slate-900 tracking-tight leading-tight group-hover:text-blue-700 transition-colors">
-                  Forensic Patrika
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-medium text-blue-600 leading-none hidden xs:inline-block">
-                  A Journal of Forensic Science
-                </span>
               </div> */}
-            </NavLink>
+              {/* // <div className="flex flex-col">
+              //   <span className="font-extrabold text-sm sm:text-base text-slate-900 tracking-tight leading-tight group-hover:text-blue-700 transition-colors font-serif">
+              //     Forensic Patrika
+              //   </span>
+              //   <span className="text-[9px] sm:text-[10px] font-semibold text-blue-600 leading-none hidden xs:inline-block tracking-wider uppercase">
+              //     A Journal of Forensic Science
+              //   </span>
+               </div> */}
+            </NavLink> 
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-1 xl:gap-2">

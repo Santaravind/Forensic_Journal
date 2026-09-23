@@ -165,7 +165,7 @@ const Register = () => {
         .animation-delay-4000 { animation-delay: 4s; }
       `}</style>
 
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-2 relative overflow-hidden font-sans">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center py-12 px-4 sm:px-6 relative overflow-hidden font-sans">
         {/* Dynamic Abstract Mesh Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[80px] opacity-25 animate-blob" />
@@ -174,7 +174,7 @@ const Register = () => {
         </div>
 
         {/* Card Frame */}
-        <div className="relative w-full max-w-6xl bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl shadow-2xl border border-gray-800 overflow-hidden max-h-screen flex flex-col md:flex-row transition-all duration-300">
+        <div className="relative w-full max-w-6xl bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-3xl shadow-2xl border border-gray-800 overflow-hidden flex flex-col md:flex-row transition-all duration-300">
           {/* Accent Line */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 z-10" />
 
@@ -265,7 +265,7 @@ const Register = () => {
           </div>
 
           {/* Right Panel: Interactive Form */}
-          <div className="w-full md:w-7/12 p-6 md:p-10 overflow-y-auto max-h-[110vh] bg-white flex flex-col justify-center">
+          <div className="w-full md:w-7/12 p-6 md:p-10 bg-white flex flex-col justify-center">
             <div className="max-w-md w-full mx-auto">
               {/* Header Context */}
               <div className="mb-6">

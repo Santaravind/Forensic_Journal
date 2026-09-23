@@ -1,3 +1,401 @@
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import { 
+//   Award, 
+//   ShieldCheck, 
+//   BookOpen, 
+//   UserCheck, 
+//   GraduationCap, 
+//   Globe, 
+//   Mail, 
+//   ExternalLink,
+//   Sparkles,
+//   Layers,
+//   FileCheck
+// } from "lucide-react";
+// import logo from "../assets/logoss.png";
+// import vijay from "../assets/VIJAY.jpeg";
+// import indresh from "../assets/indresh.jpeg";
+// import hrigvi from "../assets/hrigvi.jpeg";
+// import mukesh from "../assets/Mukesh.jpeg";
+// import { FcUndo } from "react-icons/fc";
+
+// export default function EditorialTeam() {
+//   const patron = {
+//     name: "Prof. (Dr.) Mukesh Pandey",
+//     role: "Chief Patron & Academic Visionary",
+//     position: "Hon'ble Vice Chancellor",
+//     institution: "Bundelkhand University, Jhansi (U.P.), India",
+//     image: mukesh,
+//     initials: "MP",
+//     desc: "Guiding institutional excellence, interdisciplinary research cultivation, and academic governance."
+//   };
+
+//   const leadership = [
+//     {
+//       name: "Dr. Vijay Kumar Yadav",
+//       post: "Founder",
+//       role: "Editor-in-Chief",
+//       institution: "Coordinator & Head, Institute of Forensic Science & Criminology",
+//       image: vijay,
+//       initials: "VY",
+//       profileUrl: "https://ums.bujhansi.ac.in/bujhansi/frmViewCampusFacultyProfile.aspx?FacultyID=39",
+//       expertise: "Forensic DNA, Molecular Biology, Medico-Legal Jurisprudence"
+//     },
+//     {
+//       name: "Indresh Kumar",
+//       post: "Co-Founder",
+//       role: "Publisher & Managing Director",
+//       institution: "Forensic Patrika Publishing Bureau",
+//       image: indresh,
+//       initials: "IK",
+//       profileUrl: "https://www.happydigitalbharat.com/indresh",
+//       expertise: "Academic Publishing, Research Dissemination, Digital Systems"
+//     }
+//   ];
+
+//   const seniorEditors = [
+//     {
+//       name: "Dr. Murali Manohar Yadav",
+//       role: "Co-Editor-in-Chief",
+//       institution: "Institute of Forensic Science & Criminology",
+//       initials: "MY",
+//       expertise: "Forensic Toxicology, Chemical Profiling"
+//     },
+//     {
+//       name: "Dr. Akash Kumar",
+//       role: "Co-Editor-in-Chief",
+//       institution: "Department of Forensic Sciences",
+//       initials: "AK",
+//       profileUrl: "https://ums.bujhansi.ac.in/BUJhansi/frmViewCampusFacultyProfile.aspx?FacultyID=494",
+//       expertise: "Digital Evidence, Crime Scene Reconstruction"
+//     },
+//     {
+//       name: "Nawab John Dar",
+//       role: "International Editorial Head",
+//       institution: "Global Forensic Research Network",
+//       initials: "NJ",
+//       expertise: "International Medico-Legal Standards"
+//     }
+//   ];
+
+//   const editorialStaff = [
+//     {
+//       name: "Dr. Abhimanyu Harshey",
+//       role: "Managing Editor",
+//       institution: "Forensic Science Research Laboratory",
+//       initials: "AH",
+//       expertise: "Questioned Documents, Fingerprint Analytics"
+//     },
+//     {
+//       name: "Dr. Prakash Chandra",
+//       role: "Associate Editor",
+//       institution: "Forensic Serology & Toxicology Unit",
+//       initials: "PC",
+//       expertise: "Biochemical Forensics, LC-MS Protocols"
+//     },
+//     {
+//       name: "Hrigvi Singh Banafar",
+//       role: "Publication Manager",
+//       institution: "Forensic Patrika Operations",
+//       image: hrigvi,
+//       initials: "HS",
+//       expertise: "Editorial Screening, Quality Assurance"
+//     }
+//   ];
+
+//   const supportTeam = [
+//     {
+//       name: "Aravind Sant Singh",
+//       role: "Technical Head & Systems Architect",
+//       institution: "Forensic Patrika Digital Systems",
+//       initials: "AS"
+//     },
+//     {
+//       name: "Ms. Ankita Sikoria",
+//       role: "Author Communications Officer",
+//       institution: "Forensic Patrika Editorial Office",
+//       initials: "AS"
+//     },
+//     {
+//       name: "Ms. Richa Jaiswal",
+//       role: "Review Board Coordinator",
+//       institution: "Peer Review Operations",
+//       initials: "RJ"
+//     },
+//     {
+//       name: "Mr. Shantanu Singh",
+//       role: "Sectional Reviewer",
+//       institution: "Forensic Physics & Ballistics",
+//       initials: "SS"
+//     }
+//   ];
+
+//   return (
+//     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans text-slate-800">
+//       <div className="max-w-6xl mx-auto">
+
+//         {/* HEADER SECTION */}
+//         <div className="text-center max-w-3xl mx-auto mb-16">
+//           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/80 mb-4 uppercase tracking-wider shadow-xs">
+//             <ShieldCheck size={14} className="text-indigo-600" />
+//             <span>Academic Governance & Peer-Review Council</span>
+//           </div>
+
+//           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-serif mb-4 leading-tight">
+//             Editorial Board Structure
+//           </h1>
+//           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+//             Distinguished scholars, researchers, forensic experts, and academicians overseeing the scientific integrity and peer-review process of <strong className="text-indigo-700">Forensic Patrika</strong>.
+//           </p>
+//         </div>
+
+//         {/* PATRON SECTION */}
+//         <div className="mb-14">
+//           <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200/90 max-w-3xl mx-auto relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+//             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-indigo-600 to-blue-600"></div>
+
+//             <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+//               <div className="relative shrink-0">
+//                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-4 border-white shadow-lg bg-indigo-50 flex items-center justify-center">
+//                   {patron.image ? (
+//                     <img
+//                       src={patron.image}
+//                       alt={patron.name}
+//                       className="w-full h-full object-cover"
+//                     />
+//                   ) : (
+//                     <span className="text-2xl font-bold text-indigo-700 font-serif">{patron.initials}</span>
+//                   )}
+//                 </div>
+//                 <span className="absolute -bottom-2 -right-2 bg-amber-500 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-xs uppercase">
+//                   Patron
+//                 </span>
+//               </div>
+
+//               <div className="space-y-1.5 flex-1">
+//                 <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block">
+//                   {patron.role}
+//                 </span>
+//                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-serif">
+//                   {patron.name}
+//                 </h3>
+//                 <p className="text-sm font-semibold text-indigo-700">
+//                   {patron.position}
+//                 </p>
+//                 <p className="text-xs text-slate-500">
+//                   {patron.institution}
+//                 </p>
+//                 <p className="text-xs text-slate-600 pt-2 border-t border-slate-100 italic">
+//                   "{patron.desc}"
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* BOARD LEADERSHIP & FOUNDERS */}
+//         <section className="mb-16">
+//           <div className="text-center mb-8">
+//             <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
+//               Board Leadership
+//             </span>
+//           </div>
+
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+//             {leadership.map((member, idx) => (
+//               <div
+//                 key={idx}
+//                 className="bg-white rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-indigo-300 flex flex-col items-center text-center group"
+//               >
+//                 <div className="relative mb-4">
+//                   <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-4 border-indigo-50 shadow-md bg-slate-100 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+//                     {member.image ? (
+//                       <img
+//                         src={member.image}
+//                         alt={member.name}
+//                         className="w-full h-full object-cover"
+//                       />
+//                     ) : (
+//                       <span className="text-2xl font-bold text-indigo-600">{member.initials}</span>
+//                     )}
+//                   </div>
+//                   <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs whitespace-nowrap">
+//                     {member.post}
+//                   </span>
+//                 </div>
+
+//                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors font-serif mt-2">
+//                   {member.name}
+//                 </h3>
+//                 <p className="text-xs font-bold text-indigo-600 uppercase tracking-wide mt-1">
+//                   {member.role}
+//                 </p>
+//                 <p className="text-xs text-slate-500 mt-1 mb-3">
+//                   {member.institution}
+//                 </p>
+
+//                 {member.expertise && (
+//                   <p className="text-[11px] text-slate-600 bg-slate-50 py-1.5 px-3 rounded-xl border border-slate-100 mb-4">
+//                     <strong className="text-slate-800">Domain:</strong> {member.expertise}
+//                   </p>
+//                 )}
+
+//                 {member.profileUrl && (
+//                   <a
+//                     href={member.profileUrl}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 hover:underline"
+//                   >
+//                     <span>View Academic Profile</span>
+//                     <ExternalLink size={12} />
+//                   </a>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         {/* SENIOR EDITORIAL BOARD */}
+//         <section className="mb-16">
+//           <div className="text-center mb-8">
+//             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+//               Senior Editorial Board
+//             </span>
+//           </div>
+
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+//             {seniorEditors.map((member, idx) => (
+//               <div
+//                 key={idx}
+//                 className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/90 text-center flex flex-col items-center justify-between"
+//               >
+//                 <div className="w-16 h-16 rounded-full bg-indigo-50 border-2 border-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg font-serif mb-3">
+//                   {member.initials}
+//                 </div>
+//                 <div>
+//                   <h4 className="font-bold text-slate-900 text-sm">{member.name}</h4>
+//                   <p className="text-xs font-semibold text-indigo-600 mt-0.5">{member.role}</p>
+//                   <p className="text-xs text-slate-400 mt-1">{member.institution}</p>
+//                   {member.expertise && (
+//                     <span className="inline-block text-[10px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded-md mt-2 border border-slate-100">
+//                       {member.expertise}
+//                     </span>
+//                   )}
+//                 </div>
+//                 {member.profileUrl && (
+//                   <a
+//                     href={member.profileUrl}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     className="mt-3 text-[11px] font-semibold text-indigo-600 hover:underline inline-flex items-center gap-1"
+//                   >
+//                     <span>Faculty Link</span>
+//                     <ExternalLink size={10} />
+//                   </a>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         {/* OPERATIONAL EDITORS */}
+//         <section className="mb-16">
+//           <div className="text-center mb-8">
+//             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+//               Editorial Operations & Production
+//             </span>
+//           </div>
+
+//           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+//             {editorialStaff.map((member, idx) => (
+//               <div
+//                 key={idx}
+//                 className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/90 text-center flex flex-col items-center justify-between"
+//               >
+//                 <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-100 border-2 border-indigo-100 flex items-center justify-center font-bold text-indigo-700 text-base mb-3 shadow-xs">
+//                   {member.image ? (
+//                     <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+//                   ) : (
+//                     member.initials
+//                   )}
+//                 </div>
+//                 <div>
+//                   <h4 className="font-bold text-slate-900 text-sm">{member.name}</h4>
+//                   <p className="text-xs font-semibold text-indigo-600 mt-0.5">{member.role}</p>
+//                   <p className="text-xs text-slate-400 mt-1">{member.institution}</p>
+//                   {member.expertise && (
+//                     <span className="inline-block text-[10px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded-md mt-2 border border-slate-100">
+//                       {member.expertise}
+//                     </span>
+//                   )}
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         {/* TECHNICAL & REVIEW ADVISORY */}
+//         <section className="mb-16">
+//           <div className="text-center mb-8">
+//             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+//               Technical & Advisory Support
+//             </span>
+//           </div>
+
+//           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-5xl mx-auto">
+//             {supportTeam.map((member, idx) => (
+//               <div
+//                 key={idx}
+//                 className="bg-white rounded-2xl p-4 shadow-xs border border-slate-200 text-center"
+//               >
+//                 <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs mx-auto mb-2">
+//                   {member.initials}
+//                 </div>
+//                 <h5 className="font-bold text-xs text-slate-800 leading-snug">{member.name}</h5>
+//                 <p className="text-[10px] font-semibold text-indigo-600 mt-0.5">{member.role}</p>
+//                 <p className="text-[10px] text-slate-400 mt-1">{member.institution}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         {/* SCHOLARLY STANDARDS COMMITMENT CARD */}
+//         <div className="bg-slate-900 rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden">
+//           <div className="relative z-10 max-w-3xl mx-auto text-center space-y-4">
+//             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
+//               <FileCheck size={14} /> Peer-Review Integrity
+//             </div>
+//             <h3 className="text-2xl sm:text-3xl font-bold font-serif">
+//               Our Commitment to Academic Rigor & Objectivity
+//             </h3>
+//             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+//               Forensic Patrika operates under double-blind peer review protocols. Reviewers and editors are committed to objective evaluation, confidentiality, conflict of interest disclosure, and fostering student-led and professional scholarship in forensic science and criminology.
+//             </p>
+//             <div className="pt-2 flex justify-center gap-4">
+//               <Link
+//                 to="/peer"
+//                 className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold shadow-md transition-all"
+//               >
+//                 Read Peer-Review Policy
+//               </Link>
+//               <Link
+//                 to="/ethics"
+//                 className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold border border-slate-700 transition-all"
+//               >
+//                 Ethics & Malpractice
+//               </Link>
+//             </div>
+//           </div>
+//           <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// }
+
 // import React from 'react'
 // import { FaUserTie, FaGraduationCap } from 'react-icons/fa';
 // import logo from '../assets/logos.png'

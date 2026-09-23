@@ -162,7 +162,7 @@ export default function Navbar() {
         { to: "/ai", label: "Artificial Intelligence", icon: <FaRobot className="text-indigo-500" /> },
         { to: "/right", label: "Rights & Permissions", icon: <FaCopyright className="text-orange-500" /> },
         { to: "/appeals", label: "Appeals & Complaints", icon: <FaExclamationCircle className="text-rose-500" /> },
-        // { to: "/correct", label: "Corrections & Retractions", icon: <FaUndoAlt className="text-amber-500" /> },
+        { to: "/correct", label: "Corrections & Retractions", icon: <FaUndoAlt className="text-amber-500" /> },
         { to: "/preprint", label: "Preprint Sharing", icon: <FaShareAlt className="text-violet-500" /> },
       ],
     },

@@ -1,10 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaLinkedin, FaFacebook, FaYoutube, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  FaLinkedin,
+  FaFacebook,
+  FaYoutube,
+  FaEnvelope,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FiArrowUpRight, FiArrowRight, FiGlobe, FiShield, FiBookOpen } from "react-icons/fi";
-import logo from '../assets/logoss.png';
-
+import {
+  FiArrowUpRight,
+  FiArrowRight,
+  FiGlobe,
+  FiShield,
+  FiBookOpen,
+} from "react-icons/fi";
+import logo from "../assets/logoss.png";
+import { FaUserGraduate } from "react-icons/fa6";
+import { FaUserEdit } from "react-icons/fa";
 const Footer = () => {
   const quickLinks = [
     { name: "Submit Research Paper", to: "/reserchform" },
@@ -36,10 +49,8 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 pt-16 pb-8 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* TOP BRAND & NAVIGATION GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          
           {/* Col 1 & 2: Brand Identity */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3 group">
@@ -61,19 +72,30 @@ const Footer = () => {
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed pr-4">
-              A peer-reviewed, open-access scholarly journal dedicated to advancing scientific research, critical inquiry, forensic methodologies, and ethical academic publishing.
+              A peer-reviewed, open-access scholarly journal dedicated to
+              advancing scientific research, critical inquiry, forensic
+              methodologies, and ethical academic publishing.
             </p>
 
             <div className="pt-2 space-y-2 text-xs text-slate-400">
               <div className="flex items-center gap-2">
+                <FaUserGraduate className="text-indigo-400 text-sm" />
+                <span>Founder : Indresh Kumar </span>
+              </div>
+              <div className="flex items-center gap-2">
                 <FaEnvelope className="text-indigo-400 text-sm" />
-                <a href="mailto:f.patrika.india@gmail.com" className="hover:text-white transition-colors">
+                <a
+                  href="mailto:f.patrika.india@gmail.com"
+                  className="hover:text-white transition-colors"
+                >
                   f.patrika.india@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <FiShield className="text-indigo-400 text-sm" />
-                <span>ISSN / Publication Peer-Reviewed Standards Compliant</span>
+                <span>
+                  ISSN / Publication Peer-Reviewed Standards Compliant
+                </span>
               </div>
             </div>
           </div>
@@ -140,12 +162,10 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
         </div>
 
         {/* BOTTOM BAR */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          
           <div className="flex items-center gap-2">
             <FiGlobe className="text-indigo-400 text-sm" />
             <span>Open Access Scholarly Platform • India & Global</span>
@@ -193,14 +213,25 @@ const Footer = () => {
 
           {/* Copyright */}
           <div>
-            © {new Date().getFullYear()} Forensic Patrika. All Rights Reserved.
+            <span>
+              © {new Date().getFullYear()}{" "}
+              <a href="https://www.forensicpatrika.com/">
+                {" "}
+                Forensic Patrika. All Rights Reserved.
+              </a>
+            </span>
+          </div>
+          <div className="flex ">
+            <FaUserEdit className="text-indigo-400 text-sm" />
+            <a href="https://www.linkedin.com/in/aravind-sant/" target="_blank">
+              {" "}
+              <span className="ml-2">Develop By </span>{" "}
+            </a>
           </div>
         </div>
-
       </div>
     </footer>
   );
 };
 
 export default Footer;
-
